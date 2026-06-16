@@ -10,22 +10,64 @@ window.addEventListener('load', () => {
 });
 
 /* ══════════════════════════════════════
-   MUSIC TOGGLE
+   MUSIC — YouTube IFrame API
 ══════════════════════════════════════ */
 const musicBtn = document.getElementById('music-btn');
-const bgMusic  = document.getElementById('bg-music');
+let ytPlayer = null;
 let musicPlaying = false;
+let ytReady = false;
+let playOnReady = false;
+
+// YouTube IFrame API callback (dipanggil oleh API bila sedia)
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: '1_3puR9HpKw',
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      loop: 1,
+      playlist: '1_3puR9HpKw',
+      mute: 0,
+      rel: 0,
+      modestbranding: 1,
+    },
+    events: {
+      onReady: function () {
+        ytReady = true;
+        ytPlayer.setVolume(70);
+        if (playOnReady) {
+          ytPlayer.playVideo();
+          musicPlaying = true;
+          musicBtn.classList.remove('muted');
+        }
+      },
+      onStateChange: function (e) {
+        // Bila video habis, loop balik
+        if (e.data === YT.PlayerState.ENDED) {
+          ytPlayer.seekTo(0);
+          ytPlayer.playVideo();
+        }
+      }
+    }
+  });
+};
+
+function playMusic() {
+  if (!ytReady) { playOnReady = true; return; }
+  ytPlayer.playVideo();
+  musicPlaying = true;
+  musicBtn.classList.remove('muted');
+}
+
+function pauseMusic() {
+  if (!ytReady || !ytPlayer) return;
+  ytPlayer.pauseVideo();
+  musicPlaying = false;
+  musicBtn.classList.add('muted');
+}
 
 musicBtn.addEventListener('click', () => {
-  if (musicPlaying) {
-    bgMusic.pause();
-    musicBtn.classList.add('muted');
-    musicPlaying = false;
-  } else {
-    bgMusic.play().catch(() => {});
-    musicBtn.classList.remove('muted');
-    musicPlaying = true;
-  }
+  if (musicPlaying) { pauseMusic(); } else { playMusic(); }
 });
 
 /* ══════════════════════════════════════
@@ -46,7 +88,7 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
 
   setTimeout(() => {
     doorAnim.classList.add('done');
-    bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
+    playMusic();
     checkFadeIn();
     startParallax();
   }, 1800);
