@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
    MUSIC TOGGLE
 ══════════════════════════════════════ */
 const musicBtn = document.getElementById('music-btn');
-const bgMusic = document.getElementById('bg-music');
+const bgMusic  = document.getElementById('bg-music');
 let musicPlaying = false;
 
 musicBtn.addEventListener('click', () => {
@@ -33,28 +33,22 @@ musicBtn.addEventListener('click', () => {
 ══════════════════════════════════════ */
 document.getElementById('buka-kad-btn').addEventListener('click', () => {
   const coverScreen = document.getElementById('cover-screen');
-  const doorAnim = document.getElementById('door-animation');
+  const doorAnim    = document.getElementById('door-animation');
   const mainContent = document.getElementById('main-content');
 
-  // Hide cover, show door animation
   coverScreen.style.opacity = '0';
   coverScreen.style.pointerEvents = 'none';
   setTimeout(() => coverScreen.remove(), 600);
 
-  // Trigger door opening
   doorAnim.classList.add('opening');
-
-  // Reveal main content behind
   mainContent.classList.remove('hidden');
   mainContent.classList.add('visible');
 
-  // After animation completes, remove door overlay
   setTimeout(() => {
     doorAnim.classList.add('done');
-    // Start music
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
-    // Trigger first section fade-in
     checkFadeIn();
+    startParallax();
   }, 1800);
 });
 
@@ -62,77 +56,96 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
    SCROLL FADE-IN
 ══════════════════════════════════════ */
 function checkFadeIn() {
-  const sections = document.querySelectorAll('.fade-section');
-  sections.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.88) {
+  document.querySelectorAll('.fade-section').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
       el.classList.add('in-view');
     }
   });
 }
-
 window.addEventListener('scroll', checkFadeIn, { passive: true });
 checkFadeIn();
 
 /* ══════════════════════════════════════
-   FALLING PETALS
+   PARALLAX FLOWERS ON SCROLL
 ══════════════════════════════════════ */
-function createPetals() {
-  const canvas = document.getElementById('petals-canvas');
-  if (!canvas) return;
+function startParallax() {
+  const flowers = document.querySelectorAll('.parallax-flower');
+  let ticking = false;
 
-  for (let i = 0; i < 18; i++) {
-    const petal = document.createElement('div');
-    petal.className = 'petal';
+  function applyParallax() {
+    const scrollY = window.scrollY;
+    flowers.forEach(el => {
+      const speed  = parseFloat(el.dataset.speed) || 0.2;
+      const rect   = el.closest('section, footer')?.getBoundingClientRect();
+      const sectionOffset = rect ? (rect.top + scrollY) : 0;
+      const relY   = scrollY - sectionOffset;
+      const moveY  = relY * speed;
 
-    const size = 8 + Math.random() * 10;
-    const left = Math.random() * 100;
-    const duration = 6 + Math.random() * 8;
-    const delay = Math.random() * 10;
-    const hue = Math.random() > 0.5 ? '#e8b4bb' : '#c9728a';
-
-    petal.style.cssText = `
-      left: ${left}%;
-      width: ${size}px;
-      height: ${size * 1.4}px;
-      background: radial-gradient(ellipse, ${hue}, #9e3a52);
-      animation-duration: ${duration}s;
-      animation-delay: -${delay}s;
-    `;
-    canvas.appendChild(petal);
+      // Preserve existing transform (scaleX, scaleY, rotate etc.)
+      const base = el.dataset.baseTransform || '';
+      el.style.transform = base + ` translateY(${moveY}px)`;
+    });
+    ticking = false;
   }
-}
 
-createPetals();
+  // Store base transforms before we override them
+  flowers.forEach(el => {
+    const computed = window.getComputedStyle(el).transform;
+    // Read inline style transform as base (set by CSS classes)
+    el.dataset.baseTransform = el.style.transform || '';
+  });
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(applyParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  applyParallax();
+}
 
 /* ══════════════════════════════════════
-   COUNTDOWN TIMER
+   FALLING PETALS
 ══════════════════════════════════════ */
-const weddingDate = new Date('2025-10-25T10:00:00+08:00');
+(function createPetals() {
+  const canvas = document.getElementById('petals-canvas');
+  if (!canvas) return;
+  const colors = ['#e8b4bb', '#c9728a', '#d4a0a8', '#f0c8d0', '#b85070'];
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size  = 8 + Math.random() * 12;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${size}px; height:${size*1.4}px;
+      background:radial-gradient(ellipse,${color},#9e3a52);
+      animation-duration:${6+Math.random()*8}s;
+      animation-delay:-${Math.random()*12}s;
+    `;
+    canvas.appendChild(p);
+  }
+})();
+
+/* ══════════════════════════════════════
+   COUNTDOWN — 04 Oktober 2026
+══════════════════════════════════════ */
+const weddingDate = new Date('2026-10-04T10:00:00+08:00');
 
 function updateCountdown() {
-  const now = new Date();
-  const diff = weddingDate - now;
-
+  const diff = weddingDate - new Date();
   if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '00';
-    document.getElementById('cd-hours').textContent = '00';
-    document.getElementById('cd-mins').textContent = '00';
-    document.getElementById('cd-secs').textContent = '00';
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+      document.getElementById(id).textContent = '00';
+    });
     return;
   }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/864e5)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%864e5)/36e5)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor((diff%36e5)/6e4)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor((diff%6e4)/1e3)).padStart(2,'0');
 }
-
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
@@ -140,26 +153,51 @@ setInterval(updateCountdown, 1000);
    ADD TO CALENDAR
 ══════════════════════════════════════ */
 document.getElementById('add-calendar-btn').addEventListener('click', () => {
-  const start = '20251025T020000Z'; // 10:00 AM MYT = 02:00 UTC
-  const end   = '20251025T140000Z'; // 10:00 PM MYT = 14:00 UTC
-  const title = encodeURIComponent('Majlis Perkahwinan Aisyah & Marwan');
-  const loc   = encodeURIComponent('Masjid Al-Hidayah, Shah Alam, Selangor');
-  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`;
-  window.open(url, '_blank');
+  const start = '20261004T020000Z';
+  const end   = '20261004T140000Z';
+  const title = encodeURIComponent('Majlis Perkahwinan Nabila & Azman');
+  const loc   = encodeURIComponent('Kampung Baru, Kuala Lumpur');
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`, '_blank');
+});
+
+/* ══════════════════════════════════════
+   SALAM KAUT — COPY BUTTON
+══════════════════════════════════════ */
+document.querySelectorAll('.btn-copy').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.dataset.copy;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Disalin!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // Fallback for browsers without clipboard API
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      btn.textContent = '✓ Disalin!';
+      setTimeout(() => btn.textContent = btn.dataset.origText || 'Salin', 2000);
+    });
+  });
 });
 
 /* ══════════════════════════════════════
    GALLERY SLIDER
 ══════════════════════════════════════ */
 (function () {
-  const track = document.getElementById('gallery-track');
+  const track    = document.getElementById('gallery-track');
   const dotsWrap = document.getElementById('gallery-dots');
-  const slides = track ? track.querySelectorAll('.gallery-slide') : [];
+  if (!track) return;
+  const slides = track.querySelectorAll('.gallery-slide');
   let current = 0;
 
-  if (!track || slides.length === 0) return;
-
-  // Build dots
   slides.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
@@ -177,15 +215,12 @@ document.getElementById('add-calendar-btn').addEventListener('click', () => {
 
   document.getElementById('gallery-prev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('gallery-next').addEventListener('click', () => goTo(current + 1));
-
-  // Auto-slide every 4s
   setInterval(() => goTo(current + 1), 4000);
 
-  // Touch/swipe support
   let startX = 0;
   const slider = document.getElementById('gallery-slider');
   slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  slider.addEventListener('touchend', e => {
+  slider.addEventListener('touchend',   e => {
     const diff = startX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
@@ -209,8 +244,8 @@ document.getElementById('ucapan-form').addEventListener('submit', function (e) {
   const list = document.getElementById('ucapan-list');
   const item = document.createElement('div');
   item.className = 'ucapan-item';
-  item.innerHTML = `<strong>${escapeHtml(nama)}</strong><p>${escapeHtml(msg)}</p>`;
   item.style.animation = 'fadeInUp 0.4s ease';
+  item.innerHTML = `<strong>${escapeHtml(nama)}</strong><p>${escapeHtml(msg)}</p>`;
   list.prepend(item);
 
   this.reset();
