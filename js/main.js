@@ -327,14 +327,32 @@ if (ucapanForm) {
 }
 
 /* ══════════════════════════════════════
-   RSVP FORM
+   RSVP FORM — Supabase
 ══════════════════════════════════════ */
 const rsvpForm = document.getElementById('rsvp-form');
 if (rsvpForm) {
   rsvpForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    this.classList.add('hidden');
-    document.getElementById('rsvp-success').classList.remove('hidden');
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const nama     = document.getElementById('rsvp-name').value.trim();
+    const bilangan = document.getElementById('rsvp-guests').value;
+    const hadir    = document.getElementById('rsvp-status').value;
+
+    submitBtn.textContent = 'Menghantar...';
+    submitBtn.disabled = true;
+
+    fetch(`${SB_URL}/rest/v1/rsvp`, {
+      method: 'POST',
+      headers: { ...sbHeaders(), 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ nama, bilangan, hadir })
+    }).then(() => {
+      this.classList.add('hidden');
+      document.getElementById('rsvp-success').classList.remove('hidden');
+    }).catch(() => {
+      submitBtn.textContent = 'Hantar RSVP';
+      submitBtn.disabled = false;
+      alert('Ralat. Sila cuba lagi.');
+    });
   });
 }
 
