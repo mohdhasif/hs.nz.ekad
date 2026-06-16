@@ -634,15 +634,50 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
 }
 .section-gallery .section-title { margin-bottom: 0.8rem; }
-.section-gallery .doa-wrap { margin-bottom: 0.6rem; }
-.section-gallery .ucapan-section {
+.section-gallery .doa-wrap { margin-bottom: 0; }
+
+/* ══════════════════════════════════════
+   DOA & UCAPAN SECTION
+══════════════════════════════════════ */
+.section-ucapan {
+  background: linear-gradient(160deg, #fdf5f6 0%, #fdf0f2 100%);
+  overflow: hidden;
+}
+.section-ucapan .ucapan-section-inner {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding-top: clamp(16px, 5vh, 36px);
+  padding-bottom: clamp(16px, 5vh, 36px);
+  overflow: hidden;
+  height: 100%;
+}
+.ucapan-header-card {
+  text-align: center;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 0.8rem;
+  flex-shrink: 0;
+}
+.ucapan-header-card .section-title { margin-bottom: 0.4rem; }
+.ucapan-desc {
+  font-size: clamp(0.74rem, 1.8vw, 0.85rem);
+  color: var(--text-mid);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.section-ucapan .ucapan-section {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   min-height: 0;
 }
-.section-gallery .ucapan-list {
+.section-ucapan .ucapan-list {
   flex: 1;
   min-height: 0;
   max-height: none;
@@ -740,57 +775,58 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,175,55,0.5); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* Ucapan list */
+/* Ucapan list — 2-column grid of cards */
 .ucapan-list {
-  margin-top: 0.6rem;
-  max-width: 420px;
+  margin-top: 0.7rem;
+  max-width: 560px;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-height: clamp(140px, 25vh, 260px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 14px;
-  overflow: hidden;
-  overflow-y: auto;
+  align-content: start;
+  padding-right: 2px;
 }
 .ucapan-item {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px 14px;
-  border-bottom: 1px solid rgba(212,175,55,0.12);
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 14px;
+  padding: 10px 12px;
   animation: fadeInUp 0.3s ease;
   text-align: left;
+  box-shadow: 0 2px 8px rgba(107,29,42,0.06);
 }
-.ucapan-item:last-child { border-bottom: none; }
+.ucapan-item-head { display: flex; align-items: center; gap: 8px; }
 .ucapan-avatar {
-  width: 32px; height: 32px;
+  width: 28px; height: 28px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--burgundy), #c0415a);
   color: white;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  margin-top: 1px;
 }
-.ucapan-body { flex: 1; min-width: 0; }
-.ucapan-body strong { display: inline; font-size: 0.8rem; color: var(--burgundy); font-weight: 700; margin-right: 4px; }
-.ucapan-body p { display: inline; font-size: 0.8rem; color: #5a2535; line-height: 1.6; margin: 0; word-break: break-word; font-family: 'Playfair Display', serif; font-style: italic; }
+.ucapan-body { min-width: 0; }
+.ucapan-body strong { display: block; font-size: 0.78rem; color: var(--burgundy); font-weight: 700; }
+.ucapan-item p { font-size: 0.74rem; color: #5a2535; line-height: 1.55; margin: 0; word-break: break-word; }
 .ucapan-time {
-  display: block;
-  font-size: 0.58rem;
-  color: #b5909a;
-  margin-top: 3px;
-  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
+.ucapan-time::before { content: '📅'; font-size: 0.6rem; }
 
 /* ══════════════════════════════════════
    RSVP
