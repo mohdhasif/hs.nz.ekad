@@ -172,33 +172,44 @@
         <img src="assets/flowers/17_bouquet_blush_red.png"      class="pf-side right" alt="" onerror="this.style.display='none'" />
       </div>
       <div class="section-inner">
-        <h2 class="section-title">Salam Kaut 💝</h2>
-        <p class="salam-sub">Hadiah dalam bentuk digital amat dihargai. Imbas QR untuk transfer.</p>
-        <div class="salam-cards">
-          <div class="salam-card">
-            <div class="salam-icon">🏦</div>
-            <h3>DuitNow / Bank Transfer</h3>
-            <div class="qr-wrap" id="qr-duitnow">
-              <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
-              <div class="qr-fallback"><span>📲</span><p>Upload <code>qr-duitnow.jpg</code></p></div>
-            </div>
-            <p class="salam-name">Nurul Nabila Binti Nor Azman</p>
-            <p class="salam-bank">CIMB · DuitNow QR</p>
-            <button class="btn-copy" data-copy="Nurul Nabila Binti Nor Azman">Salin Nama</button>
+        <div class="salam-header">
+          <p class="salam-title-top">— Hadiah Pengantin —</p>
+          <h2 class="section-title">Salam Kaut 💝</h2>
+          <p class="salam-sub">Imbas QR atau pindah melalui bank. Amat dihargai.</p>
+        </div>
+
+        <div class="salam-single">
+          <!-- QR — tap to enlarge -->
+          <div class="qr-wrap-big" id="qr-duitnow" onclick="document.getElementById('qr-modal').classList.add('open')">
+            <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow" class="qr-img-big" onerror="this.parentElement.classList.add('qr-placeholder')" />
+            <div class="qr-fallback-big"><span>📲</span><p>QR tidak dijumpai</p></div>
+            <div class="qr-tap-hint">👆 Ketuk untuk besarkan</div>
           </div>
-          <div class="salam-card">
-            <div class="salam-icon">💚</div>
-            <h3>Touch 'n Go eWallet</h3>
-            <div class="qr-wrap" id="qr-tng">
-              <img src="assets/images/qr-tng.png" alt="QR TNG" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
-              <div class="qr-fallback"><span>📲</span><p>Upload <code>qr-tng.png</code></p></div>
+
+          <!-- Bank details -->
+          <div class="salam-info">
+            <p class="salam-name-big">Nurul Nabila</p>
+            <p class="salam-bank-name">CIMB Bank</p>
+            <div class="acc-row">
+              <span class="acc-num" id="acc-display">7618845421</span>
+              <button class="btn-copy-acc" data-copy="7618845421" aria-label="Salin nombor akaun">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Salin</span>
+              </button>
             </div>
-            <p class="salam-name">Nabila binti Rashid</p>
-            <p class="salam-bank">TNG eWallet</p>
-            <button class="btn-copy" data-copy="0123456789">Salin No. Telefon</button>
           </div>
         </div>
+
         <p class="salam-note">✨ Semoga Allah merahmati anda sekeluarga.</p>
+      </div>
+
+      <!-- QR Modal -->
+      <div id="qr-modal" class="qr-modal" onclick="this.classList.remove('open')">
+        <div class="qr-modal-inner" onclick="event.stopPropagation()">
+          <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow Besar" />
+          <p>Nurul Nabila · CIMB Bank</p>
+          <button onclick="document.getElementById('qr-modal').classList.remove('open')">✕ Tutup</button>
+        </div>
       </div>
     </section>
 
