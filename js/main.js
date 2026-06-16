@@ -17,6 +17,7 @@ const bgMusic   = document.getElementById('bg-music');
 let musicPlaying = false;
 
 function playMusic() {
+  if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
   bgMusic.play().catch(() => {});
   musicPlaying = true;
   musicBtn.classList.remove('muted');
@@ -50,6 +51,7 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
 
   setTimeout(() => {
     doorAnim.classList.add('done');
+    if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
     initFadeIn();
     startParallax();
