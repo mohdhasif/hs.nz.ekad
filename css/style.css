@@ -654,6 +654,47 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .ucapan-form textarea:focus { border-color:var(--burgundy); }
 .btn-submit { padding:0.65rem; background:var(--gold); color:var(--text-dark); border-radius:99px; font-size:0.88rem; font-weight:600; transition:background 0.2s; }
 .btn-submit:hover { background:var(--gold-light); }
+.btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
+
+/* Ucapan list */
+.ucapan-list {
+  margin-top: 0.8rem;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dusty-pink) transparent;
+}
+.ucapan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 12px;
+  padding: 10px 12px;
+  animation: fadeInUp 0.4s ease;
+  text-align: left;
+}
+.ucapan-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--burgundy), #9b2d3f);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ucapan-body { flex: 1; min-width: 0; }
+.ucapan-body strong { display: block; font-size: 0.82rem; color: var(--burgundy); font-weight: 600; margin-bottom: 2px; }
+.ucapan-body p { font-size: 0.78rem; color: var(--text-dark); line-height: 1.5; margin: 0; word-break: break-word; }
+.ucapan-time { font-size: 0.62rem; color: var(--text-mid); margin-top: 3px; display: block; }
 
 /* ══════════════════════════════════════
    RSVP

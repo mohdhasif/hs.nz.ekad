@@ -264,10 +264,11 @@
         <div class="ucapan-section">
           <button id="toggle-ucapan-form" class="btn-ucapan">💬 Tinggalkan Ucapan</button>
           <form id="ucapan-form" class="ucapan-form hidden">
-            <input type="text" id="ucapan-nama" placeholder="Nama anda" required />
-            <textarea id="ucapan-msg" placeholder="Ucapan atau doa..." rows="2" required></textarea>
-            <button type="submit" class="btn-submit">Hantar</button>
+            <input type="text" id="ucapan-nama" placeholder="Nama anda" maxlength="60" required />
+            <textarea id="ucapan-msg" placeholder="Ucapan atau doa..." rows="2" maxlength="300" required></textarea>
+            <button type="submit" class="btn-submit" id="ucapan-submit">Hantar 💌</button>
           </form>
+          <div id="ucapan-list" class="ucapan-list"></div>
         </div>
       </div>
     </section>

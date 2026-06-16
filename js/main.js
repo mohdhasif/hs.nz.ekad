@@ -240,14 +240,67 @@ document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
 })();
 
 /* ══════════════════════════════════════
-   UCAPAN FORM
+   UCAPAN — JSONBin + localStorage
+   ──────────────────────────────────────
+   Setup (percuma):
+   1. Daftar di https://jsonbin.io
+   2. Cipta bin baru dengan kandungan: []
+   3. Isi JSONBIN_KEY dan JSONBIN_ID di bawah
 ══════════════════════════════════════ */
+const JSONBIN_KEY = '';  // ← tampal X-Master-Key anda di sini
+const JSONBIN_ID  = '';  // ← tampal Bin ID anda di sini
+const LS_KEY      = 'ekad_ucapan';
+
+function ucapanSave(list) {
+  localStorage.setItem(LS_KEY, JSON.stringify(list));
+  if (!JSONBIN_KEY || !JSONBIN_ID) return Promise.resolve();
+  return fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_ID}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_KEY },
+    body: JSON.stringify(list)
+  });
+}
+
+function ucapanLoad() {
+  if (!JSONBIN_KEY || !JSONBIN_ID) {
+    return Promise.resolve(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
+  }
+  return fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_ID}/latest`, {
+    headers: { 'X-Master-Key': JSONBIN_KEY }
+  })
+  .then(r => r.json())
+  .then(d => {
+    const list = Array.isArray(d.record) ? d.record : [];
+    localStorage.setItem(LS_KEY, JSON.stringify(list));
+    return list;
+  })
+  .catch(() => JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
+}
+
+function renderUcapan(list) {
+  const el = document.getElementById('ucapan-list');
+  if (!el) return;
+  if (!list.length) { el.innerHTML = ''; return; }
+  el.innerHTML = list.slice().reverse().map(u => `
+    <div class="ucapan-item">
+      <div class="ucapan-avatar">${escapeHtml(u.nama[0].toUpperCase())}</div>
+      <div class="ucapan-body">
+        <strong>${escapeHtml(u.nama)}</strong>
+        <p>${escapeHtml(u.msg)}</p>
+        <span class="ucapan-time">${u.tarikh || ''}</span>
+      </div>
+    </div>`).join('');
+}
+
+// Load ucapan on page load
+ucapanLoad().then(renderUcapan);
+
 const toggleUcapanBtn = document.getElementById('toggle-ucapan-form');
 if (toggleUcapanBtn) {
   toggleUcapanBtn.addEventListener('click', function () {
     const form = document.getElementById('ucapan-form');
     form.classList.toggle('hidden');
-    this.textContent = form.classList.contains('hidden') ? 'Tinggalkan Ucapan' : 'Tutup';
+    this.innerHTML = form.classList.contains('hidden') ? '💬 Tinggalkan Ucapan' : '✕ Tutup';
   });
 }
 
@@ -259,18 +312,27 @@ if (ucapanForm) {
     const msg  = document.getElementById('ucapan-msg').value.trim();
     if (!nama || !msg) return;
 
-    const list = document.getElementById('ucapan-list');
-    if (list) {
-      const item = document.createElement('div');
-      item.className = 'ucapan-item';
-      item.style.animation = 'fadeInUp 0.4s ease';
-      item.innerHTML = `<strong>${escapeHtml(nama)}</strong><p>${escapeHtml(msg)}</p>`;
-      list.prepend(item);
-    }
+    const submitBtn = document.getElementById('ucapan-submit');
+    submitBtn.textContent = 'Menghantar...';
+    submitBtn.disabled = true;
 
-    this.reset();
-    this.classList.add('hidden');
-    if (toggleUcapanBtn) toggleUcapanBtn.textContent = 'Tinggalkan Ucapan';
+    const tarikh = new Date().toLocaleDateString('ms-MY', { day:'numeric', month:'long', year:'numeric' });
+    const entry  = { nama, msg, tarikh };
+
+    ucapanLoad().then(list => {
+      list.push(entry);
+      return ucapanSave(list).then(() => list);
+    }).then(list => {
+      renderUcapan(list);
+      this.reset();
+      this.classList.add('hidden');
+      if (toggleUcapanBtn) toggleUcapanBtn.innerHTML = '💬 Tinggalkan Ucapan';
+      submitBtn.textContent = 'Hantar 💌';
+      submitBtn.disabled = false;
+    }).catch(() => {
+      submitBtn.textContent = 'Hantar 💌';
+      submitBtn.disabled = false;
+    });
   });
 }
 
