@@ -793,6 +793,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding-right: 2px;
 }
 .ucapan-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -804,7 +805,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   animation: fadeInUp 0.3s ease;
   text-align: left;
   box-shadow: 0 2px 8px rgba(107,29,42,0.06);
+  overflow: hidden;
 }
+.ucapan-item::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; right: -10px;
+  width: 48px; height: 48px;
+  background: url('../assets/flowers/01_bouquet_blush_peony.png') center/contain no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.ucapan-item:nth-child(even)::after {
+  background-image: url('../assets/flowers/03_bouquet_burgundy_peony_butterfly.png');
+}
+.ucapan-item-head, .ucapan-item p, .ucapan-time { position: relative; z-index: 1; }
 .ucapan-item-head { display: flex; align-items: center; gap: 8px; }
 .ucapan-avatar {
   width: 28px; height: 28px;
@@ -818,7 +834,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .ucapan-body { min-width: 0; }
 .ucapan-body strong { display: block; font-size: 0.78rem; color: var(--burgundy); font-weight: 700; }
-.ucapan-item p { font-size: 0.74rem; color: #5a2535; line-height: 1.55; margin: 0; word-break: break-word; }
+.ucapan-item p { font-size: 0.74rem; color: #5a2535; line-height: 1.55; margin: 0; word-break: break-word; padding-bottom: 14px; }
 .ucapan-time {
   display: flex;
   align-items: center;
