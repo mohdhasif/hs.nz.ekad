@@ -243,11 +243,12 @@ document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
    UCAPAN — Supabase + localStorage
 ══════════════════════════════════════ */
 const SB_URL = 'https://nlqfghwfudisdbvihwae.supabase.co';
-const SB_KEY = 'sb_publishable_NOyUH3crdzriXePn3j4gyQ_xQbnB33K';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5scWZnaHdmdWRpc2Ridmlod2FlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2Mjg4NjEsImV4cCI6MjA5NzIwNDg2MX0.STXKJ9j5beBLQa6B_YNapXDLhuFvXjIARaeDZSZKypE';
+const SB_PUB = 'sb_publishable_NOyUH3crdzriXePn3j4gyQ_xQbnB33K';
 const LS_KEY = 'ekad_ucapan';
 
 function sbHeaders() {
-  return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' };
+  return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'x-sb-publishable-key': SB_PUB };
 }
 
 function ucapanSave(entry) {
