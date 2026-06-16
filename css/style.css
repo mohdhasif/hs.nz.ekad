@@ -784,18 +784,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Ucapan list — single column, scrollable, ornament dividers */
 .ucapan-list-wrap {
   position: relative;
-  margin-top: 0.7rem;
+  margin-top: 1rem;
+  padding: 14px;
 }
 .ucapan-corner {
   position: absolute;
-  width: clamp(60px, 16vw, 90px);
+  width: clamp(46px, 12vw, 64px);
   height: auto;
-  z-index: 2;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.92;
+  opacity: 0.85;
 }
-.ucapan-corner-tl { top: -18px; left: -14px; transform: rotate(-8deg); }
-.ucapan-corner-br { bottom: -18px; right: -14px; transform: rotate(178deg); }
+.ucapan-corner-tl { top: -6px; left: -6px; transform: rotate(-8deg); }
+.ucapan-corner-br { bottom: -6px; right: -6px; transform: rotate(178deg); }
 .ucapan-list {
   position: relative;
   z-index: 1;
@@ -808,11 +809,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(212,175,55,0.22);
+  border: 1.5px solid rgba(212,175,55,0.4);
   border-radius: 16px;
-  padding: 4px 16px;
+  padding: 14px 18px;
+  box-shadow: 0 4px 18px rgba(107,29,42,0.1);
 }
 .ucapan-item {
   position: relative;
