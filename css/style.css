@@ -677,11 +677,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   min-height: 0;
 }
-.section-ucapan .ucapan-list-wrap {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-}
 .section-ucapan .ucapan-list {
   flex: 1;
   min-height: 0;
@@ -781,62 +776,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,175,55,0.5); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* Ucapan list — single column, scrollable, ornament dividers */
-.ucapan-list-wrap {
-  position: relative;
-  margin-top: 1rem;
-  padding: 28px 10px;
-}
-.ucapan-corner {
-  position: absolute;
-  width: clamp(70px, 20vw, 110px);
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.95;
-}
-.ucapan-corner-tl { top: -22px; left: -16px; transform: rotate(-8deg); }
-.ucapan-corner-br { bottom: -22px; right: -16px; transform: rotate(178deg); }
+/* Ucapan list — floats on section background, no box, dashed dividers */
 .ucapan-list {
   position: relative;
   z-index: 1;
   width: 100%;
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0.8rem auto 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(212,175,55,0.4);
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 18px rgba(107,29,42,0.1);
+  padding: 4px 2px;
 }
 .ucapan-item {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 12px 2px;
+  padding: 12px 4px;
   animation: fadeInUp 0.3s ease;
   text-align: left;
+  border-bottom: 1px dashed rgba(212,175,55,0.4);
 }
-.ucapan-item:not(:last-child) {
-  border-bottom: none;
-}
-.ucapan-item:not(:last-child)::after {
-  content: '❀';
-  display: block;
-  text-align: center;
-  color: var(--gold);
-  font-size: 0.75rem;
-  opacity: 0.6;
-  margin-top: 8px;
-}
+.ucapan-item:last-child { border-bottom: none; }
 .ucapan-item-head { display: flex; align-items: center; gap: 9px; }
 .ucapan-avatar {
   width: 30px; height: 30px;
