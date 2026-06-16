@@ -671,14 +671,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .ucapan-section { text-align:center; }
 
 .btn-ucapan {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 0.55rem 1.6rem;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.65rem 1.6rem;
   background: linear-gradient(135deg, var(--burgundy), #9b2d3f);
   color: white;
-  border-radius: 99px;
-  font-size: 0.82rem;
+  border-radius: 12px;
+  font-size: 0.84rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   box-shadow: 0 3px 12px rgba(107,29,42,0.3);
