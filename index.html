@@ -91,7 +91,7 @@
       </div>
     </section>
 
-    <!-- ── 2. BUTIRAN MAJLIS ── -->
+    <!-- ── 2. BUTIRAN MAJLIS + COUNTDOWN ── -->
     <section id="section-details" class="snap-section section-details fade-section">
       <div class="pf pf-light">
         <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
@@ -100,28 +100,16 @@
         <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-br parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
         <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
         <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/17_bouquet_blush_red.png"  class="pf-side left"  alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/16_bouquet_round_pink.png" class="pf-side right" alt="" onerror="this.style.display='none'" />
       </div>
-      <div class="section-inner">
-        <div class="det-heading">
-          <p class="det-sub">— Dengan penuh rasa syukur —</p>
-          <h2 class="section-title">Majlis Perkahwinan</h2>
-          <div class="det-ornament">✦ ✦ ✦</div>
-        </div>
+      <div class="section-inner details-combined">
+
+        <!-- Top: event card -->
         <div class="majlis-single">
           <div class="majlis-badge-top">
             <span class="ms-icon">🌸</span>
-            <span class="ms-badge">Majlis Sanding</span>
+            <span class="ms-badge">Majlis Sanding · 04.10.2026</span>
           </div>
           <ul class="majlis-list">
-            <li>
-              <div class="ml-icon">📅</div>
-              <div class="ml-text">
-                <span class="ml-label">Tarikh &amp; Hari</span>
-                <span>04 Oktober 2026 · Ahad</span>
-              </div>
-            </li>
             <li>
               <div class="ml-icon">🕖</div>
               <div class="ml-text">
@@ -144,38 +132,30 @@
               </div>
             </li>
           </ul>
-          <div class="majlis-gold-line"><span>◆</span></div>
-          <p class="majlis-doa">Bismillah, semoga majlis ini dipermudahkan Allah.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- ── 3. COUNTDOWN ── -->
-    <section id="section-countdown" class="snap-section section-countdown fade-section">
-      <div class="pf pf-dark">
-        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="pf-tl parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tr parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-bl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-br parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t pf-dim" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b pf-dim" alt="" onerror="this.style.display='none'" />
-      </div>
-      <div class="section-inner">
-        <h2 class="section-title ivory">Kami Akan Bernikah Dalam</h2>
-        <div class="countdown-wrap">
-          <div class="countdown-unit"><span id="cd-days">00</span><label>Hari</label></div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span id="cd-hours">00</span><label>Jam</label></div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span id="cd-mins">00</span><label>Minit</label></div>
-          <div class="countdown-sep">:</div>
-          <div class="countdown-unit"><span id="cd-secs">00</span><label>Saat</label></div>
+        <!-- Divider -->
+        <div class="det-sep"><span>✦</span></div>
+
+        <!-- Bottom: countdown + buttons -->
+        <div class="countdown-block">
+          <p class="cd-label">Majlis bermula dalam</p>
+          <div class="countdown-wrap">
+            <div class="countdown-unit"><span id="cd-days">00</span><label>Hari</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span id="cd-hours">00</span><label>Jam</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span id="cd-mins">00</span><label>Minit</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span id="cd-secs">00</span><label>Saat</label></div>
+          </div>
+          <div class="lokasi-btns">
+            <a href="https://maps.google.com/?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi">📍 Lokasi</a>
+            <a href="https://www.waze.com/ul?q=Kampung+Baru+Kuala+Lumpur"  target="_blank" class="btn-lokasi outline">🚗 Waze</a>
+            <button id="add-calendar-btn" class="btn-lokasi outline">📅 Kalendar</button>
+          </div>
         </div>
-        <div class="lokasi-btns">
-          <a href="https://maps.google.com/?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi">📍 Lihat Lokasi</a>
-          <a href="https://www.waze.com/ul?q=Kampung+Baru+Kuala+Lumpur"  target="_blank" class="btn-lokasi outline">🚗 Waze</a>
-          <button id="add-calendar-btn" class="btn-lokasi outline">📅 Kalendar</button>
-        </div>
+
       </div>
     </section>
 
