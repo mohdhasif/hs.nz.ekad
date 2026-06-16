@@ -785,18 +785,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .ucapan-list-wrap {
   position: relative;
   margin-top: 1rem;
-  padding: 14px;
+  padding: 28px 10px;
 }
 .ucapan-corner {
   position: absolute;
-  width: clamp(46px, 12vw, 64px);
+  width: clamp(70px, 20vw, 110px);
   height: auto;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.95;
 }
-.ucapan-corner-tl { top: -6px; left: -6px; transform: rotate(-8deg); }
-.ucapan-corner-br { bottom: -6px; right: -6px; transform: rotate(178deg); }
+.ucapan-corner-tl { top: -22px; left: -16px; transform: rotate(-8deg); }
+.ucapan-corner-br { bottom: -22px; right: -16px; transform: rotate(178deg); }
 .ucapan-list {
   position: relative;
   z-index: 1;
@@ -813,7 +813,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   backdrop-filter: blur(10px);
   border: 1.5px solid rgba(212,175,55,0.4);
   border-radius: 16px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   box-shadow: 0 4px 18px rgba(107,29,42,0.1);
 }
 .ucapan-item {
