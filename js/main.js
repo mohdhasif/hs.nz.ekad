@@ -51,23 +51,31 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
   setTimeout(() => {
     doorAnim.classList.add('done');
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
-    checkFadeIn();
+    initFadeIn();
     startParallax();
   }, 1800);
 });
 
 /* ══════════════════════════════════════
-   SCROLL FADE-IN
+   SCROLL FADE-IN (snap-aware)
 ══════════════════════════════════════ */
-function checkFadeIn() {
-  document.querySelectorAll('.fade-section').forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
-      el.classList.add('in-view');
-    }
-  });
+function initFadeIn() {
+  // With scroll-snap each section fills the screen — trigger all at once
+  // as user scrolls into each snap section
+  const mainContent = document.getElementById('main-content');
+
+  function checkFadeIn() {
+    document.querySelectorAll('.fade-section').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.95) {
+        el.classList.add('in-view');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkFadeIn, { passive: true });
+  checkFadeIn();
 }
-window.addEventListener('scroll', checkFadeIn, { passive: true });
-checkFadeIn();
 
 /* ══════════════════════════════════════
    PARALLAX FLOWERS ON SCROLL
@@ -76,28 +84,24 @@ function startParallax() {
   const flowers = document.querySelectorAll('.parallax-flower');
   let ticking = false;
 
+  // Store base transforms
+  flowers.forEach(el => {
+    el.dataset.baseTransform = el.style.transform || '';
+  });
+
   function applyParallax() {
     const scrollY = window.scrollY;
     flowers.forEach(el => {
-      const speed  = parseFloat(el.dataset.speed) || 0.2;
-      const rect   = el.closest('section, footer')?.getBoundingClientRect();
-      const sectionOffset = rect ? (rect.top + scrollY) : 0;
-      const relY   = scrollY - sectionOffset;
-      const moveY  = relY * speed;
-
-      // Preserve existing transform (scaleX, scaleY, rotate etc.)
-      const base = el.dataset.baseTransform || '';
+      const speed = parseFloat(el.dataset.speed) || 0.2;
+      const rect  = el.closest('.snap-section')?.getBoundingClientRect();
+      const sectionTop = rect ? rect.top : 0;
+      // Parallax relative to section viewport position
+      const moveY = sectionTop * speed * -1;
+      const base  = el.dataset.baseTransform || '';
       el.style.transform = base + ` translateY(${moveY}px)`;
     });
     ticking = false;
   }
-
-  // Store base transforms before we override them
-  flowers.forEach(el => {
-    const computed = window.getComputedStyle(el).transform;
-    // Read inline style transform as base (set by CSS classes)
-    el.dataset.baseTransform = el.style.transform || '';
-  });
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -179,7 +183,6 @@ document.querySelectorAll('.btn-copy').forEach(btn => {
         btn.classList.remove('copied');
       }, 2000);
     }).catch(() => {
-      // Fallback for browsers without clipboard API
       const ta = document.createElement('textarea');
       ta.value = text;
       document.body.appendChild(ta);
@@ -233,38 +236,49 @@ document.querySelectorAll('.btn-copy').forEach(btn => {
 /* ══════════════════════════════════════
    UCAPAN FORM
 ══════════════════════════════════════ */
-document.getElementById('toggle-ucapan-form').addEventListener('click', function () {
-  const form = document.getElementById('ucapan-form');
-  form.classList.toggle('hidden');
-  this.textContent = form.classList.contains('hidden') ? 'Tinggalkan Ucapan' : 'Tutup';
-});
+const toggleUcapanBtn = document.getElementById('toggle-ucapan-form');
+if (toggleUcapanBtn) {
+  toggleUcapanBtn.addEventListener('click', function () {
+    const form = document.getElementById('ucapan-form');
+    form.classList.toggle('hidden');
+    this.textContent = form.classList.contains('hidden') ? 'Tinggalkan Ucapan' : 'Tutup';
+  });
+}
 
-document.getElementById('ucapan-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const nama = document.getElementById('ucapan-nama').value.trim();
-  const msg  = document.getElementById('ucapan-msg').value.trim();
-  if (!nama || !msg) return;
+const ucapanForm = document.getElementById('ucapan-form');
+if (ucapanForm) {
+  ucapanForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const nama = document.getElementById('ucapan-nama').value.trim();
+    const msg  = document.getElementById('ucapan-msg').value.trim();
+    if (!nama || !msg) return;
 
-  const list = document.getElementById('ucapan-list');
-  const item = document.createElement('div');
-  item.className = 'ucapan-item';
-  item.style.animation = 'fadeInUp 0.4s ease';
-  item.innerHTML = `<strong>${escapeHtml(nama)}</strong><p>${escapeHtml(msg)}</p>`;
-  list.prepend(item);
+    const list = document.getElementById('ucapan-list');
+    if (list) {
+      const item = document.createElement('div');
+      item.className = 'ucapan-item';
+      item.style.animation = 'fadeInUp 0.4s ease';
+      item.innerHTML = `<strong>${escapeHtml(nama)}</strong><p>${escapeHtml(msg)}</p>`;
+      list.prepend(item);
+    }
 
-  this.reset();
-  this.classList.add('hidden');
-  document.getElementById('toggle-ucapan-form').textContent = 'Tinggalkan Ucapan';
-});
+    this.reset();
+    this.classList.add('hidden');
+    if (toggleUcapanBtn) toggleUcapanBtn.textContent = 'Tinggalkan Ucapan';
+  });
+}
 
 /* ══════════════════════════════════════
    RSVP FORM
 ══════════════════════════════════════ */
-document.getElementById('rsvp-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  this.classList.add('hidden');
-  document.getElementById('rsvp-success').classList.remove('hidden');
-});
+const rsvpForm = document.getElementById('rsvp-form');
+if (rsvpForm) {
+  rsvpForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    this.classList.add('hidden');
+    document.getElementById('rsvp-success').classList.remove('hidden');
+  });
+}
 
 /* ══════════════════════════════════════
    HELPERS
