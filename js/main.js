@@ -62,21 +62,27 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
    SCROLL FADE-IN (snap-aware)
 ══════════════════════════════════════ */
 function initFadeIn() {
-  // With scroll-snap each section fills the screen — trigger all at once
-  // as user scrolls into each snap section
-  const mainContent = document.getElementById('main-content');
-
   function checkFadeIn() {
     document.querySelectorAll('.fade-section').forEach(el => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.95) {
+      if (rect.top < window.innerHeight * 1.1) {
         el.classList.add('in-view');
       }
     });
   }
 
-  window.addEventListener('scroll', checkFadeIn, { passive: true });
+  // Trigger visible section immediately, then re-check on every snap scroll
   checkFadeIn();
+  window.addEventListener('scroll', checkFadeIn, { passive: true });
+
+  // Also trigger each section as it snaps into view using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
 }
 
 /* ══════════════════════════════════════
