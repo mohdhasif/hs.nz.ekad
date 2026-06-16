@@ -24,7 +24,7 @@
     <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="load-flower br" alt="" onerror="this.style.display='none'" />
   </div>
 
-  <!-- Music Toggle -->
+  <!-- Sticky music button -->
   <button id="music-btn" aria-label="Toggle Music">♪</button>
   <audio id="bg-music" loop src="assets/audio/wedding-music.mp3" preload="auto"></audio>
 
@@ -41,17 +41,15 @@
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
       </div>
     </div>
-    <!-- Big corner bouquets -->
     <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="cover-flower tl" alt="" onerror="this.style.display='none'" />
     <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="cover-flower tr" alt="" onerror="this.style.display='none'" />
     <img src="assets/flowers/01_bouquet_blush_peony.png"               class="cover-flower bl" alt="" onerror="this.style.display='none'" />
     <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="cover-flower br" alt="" onerror="this.style.display='none'" />
-    <!-- Accent mid-side -->
     <img src="assets/flowers/09_accent_pink_flower.png"  class="cover-flower ml" alt="" onerror="this.style.display='none'" />
     <img src="assets/flowers/12_accent_blush_peony.png"  class="cover-flower mr" alt="" onerror="this.style.display='none'" />
   </section>
 
-  <!-- DOOR ANIMATION OVERLAY -->
+  <!-- DOOR ANIMATION -->
   <div id="door-animation" class="door-animation">
     <div class="door-left"></div>
     <div class="door-right"></div>
@@ -59,30 +57,23 @@
   </div>
 
   <!-- ══════════════════════════════
-       MAIN CONTENT
+       SCROLL SNAP CONTAINER
   ══════════════════════════════ -->
-  <main id="main-content" class="main-content hidden">
+  <div id="main-content" class="main-content hidden">
 
-    <!-- ── HERO ── -->
-    <section id="section-hero" class="section-hero fade-section">
-
-      <!-- Floral strip atas & bawah -->
-      <img src="assets/flowers/18_top_border_floral.png" class="hero-strip top" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/18_top_border_floral.png" class="hero-strip bottom" alt="" onerror="this.style.display='none'" />
-
-      <!-- Bouquet kiri atas & bawah -->
-      <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="hero-bouquet left-top parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="hero-bouquet left-bot parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-
-      <!-- Bouquet kanan atas & bawah -->
-      <img src="assets/flowers/01_bouquet_blush_peony.png"               class="hero-bouquet right-top parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="hero-bouquet right-bot parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-
-      <!-- Accent kecil tengah kiri & kanan -->
-      <img src="assets/flowers/13_accent_pink_dahlia.png" class="hero-accent left  parallax-flower" data-speed="0.30" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/09_accent_pink_flower.png" class="hero-accent right parallax-flower" data-speed="0.25" alt="" onerror="this.style.display='none'" />
-
-      <!-- Frame + kandungan utama -->
+    <!-- ── 1. HERO ── -->
+    <section id="section-hero" class="snap-section section-hero fade-section">
+      <div class="pf">
+        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="pf-tl parallax-flower" data-speed="0.15" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tr parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-bl parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-br parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/13_accent_pink_dahlia.png" class="pf-accent left"  alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/09_accent_pink_flower.png" class="pf-accent right" alt="" onerror="this.style.display='none'" />
+      </div>
+      <div id="petals-canvas"></div>
       <div class="hero-frame">
         <div class="hero-inner">
           <p class="hero-walimatul">— Walimatul Urus —</p>
@@ -98,123 +89,66 @@
           <a href="#section-details" class="scroll-down-hint">↓</a>
         </div>
       </div>
-
-      <div id="petals-canvas"></div>
     </section>
 
-    <!-- ── BUTIRAN MAJLIS ── -->
-    <section id="section-details" class="section-details fade-section">
-
-      <!-- Floral strip atas -->
-      <img src="assets/flowers/18_top_border_floral.png" class="det-strip top" alt="" onerror="this.style.display='none'" />
-
-      <!-- Bouquet besar — tumpang dari tepi -->
-      <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="det-bloom tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/01_bouquet_blush_peony.png"               class="det-bloom tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="det-bloom bl parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="det-bloom br parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-
-      <!-- Accent kecil tengah -->
-      <img src="assets/flowers/09_accent_pink_flower.png"  class="det-accent left  parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/13_accent_pink_dahlia.png"  class="det-accent right parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-
+    <!-- ── 2. BUTIRAN MAJLIS ── -->
+    <section id="section-details" class="snap-section section-details fade-section">
+      <div class="pf pf-light">
+        <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-bl parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="pf-br parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/17_bouquet_blush_red.png"  class="pf-side left"  alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/16_bouquet_round_pink.png" class="pf-side right" alt="" onerror="this.style.display='none'" />
+      </div>
       <div class="section-inner">
-
-        <!-- Tajuk dengan ornamen -->
         <div class="det-heading">
           <div class="det-ornament">✦ ✦ ✦</div>
           <h2 class="section-title">Butiran Majlis</h2>
           <div class="det-ornament">✦ ✦ ✦</div>
         </div>
-
         <div class="majlis-grid">
-
-          <!-- Kad Akad Nikah -->
           <div class="majlis-card">
             <div class="majlis-card-top">
               <div class="majlis-icon-wrap">🕌</div>
               <div class="majlis-badge">Akad Nikah</div>
             </div>
             <ul class="majlis-list">
-              <li>
-                <div class="ml-icon">📅</div>
-                <div class="ml-text"><span class="ml-label">Tarikh</span>04 Oktober 2026</div>
-              </li>
-              <li>
-                <div class="ml-icon">📆</div>
-                <div class="ml-text"><span class="ml-label">Hari</span>Ahad</div>
-              </li>
-              <li>
-                <div class="ml-icon">🕙</div>
-                <div class="ml-text"><span class="ml-label">Masa</span>10:00 Pagi</div>
-              </li>
-              <li>
-                <div class="ml-icon">📍</div>
-                <div class="ml-text"><span class="ml-label">Lokasi</span>Kampung Baru, Kuala Lumpur</div>
-              </li>
-              <li>
-                <div class="ml-icon">👔</div>
-                <div class="ml-text"><span class="ml-label">Tema</span>Burgundy Smart Casual</div>
-              </li>
+              <li><div class="ml-icon">📅</div><div class="ml-text"><span class="ml-label">Tarikh</span>04 Oktober 2026 · Ahad</div></li>
+              <li><div class="ml-icon">🕙</div><div class="ml-text"><span class="ml-label">Masa</span>10:00 Pagi</div></li>
+              <li><div class="ml-icon">📍</div><div class="ml-text"><span class="ml-label">Lokasi</span>Kampung Baru, Kuala Lumpur</div></li>
+              <li><div class="ml-icon">👔</div><div class="ml-text"><span class="ml-label">Tema</span>Burgundy Smart Casual</div></li>
             </ul>
           </div>
-
-          <!-- Pembahagi tengah (desktop) -->
-          <div class="majlis-divider">
-            <div class="md-line"></div>
-            <div class="md-diamond">◆</div>
-            <div class="md-line"></div>
-          </div>
-
-          <!-- Kad Majlis Sanding -->
+          <div class="majlis-divider"><div class="md-line"></div><div class="md-diamond">◆</div><div class="md-line"></div></div>
           <div class="majlis-card">
             <div class="majlis-card-top">
               <div class="majlis-icon-wrap">🌸</div>
               <div class="majlis-badge">Majlis Sanding</div>
             </div>
             <ul class="majlis-list">
-              <li>
-                <div class="ml-icon">📅</div>
-                <div class="ml-text"><span class="ml-label">Tarikh</span>04 Oktober 2026</div>
-              </li>
-              <li>
-                <div class="ml-icon">📆</div>
-                <div class="ml-text"><span class="ml-label">Hari</span>Ahad</div>
-              </li>
-              <li>
-                <div class="ml-icon">🕖</div>
-                <div class="ml-text"><span class="ml-label">Masa</span>7:00 Malam</div>
-              </li>
-              <li>
-                <div class="ml-icon">📍</div>
-                <div class="ml-text"><span class="ml-label">Lokasi</span>Kampung Baru, Kuala Lumpur</div>
-              </li>
-              <li>
-                <div class="ml-icon">👗</div>
-                <div class="ml-text"><span class="ml-label">Tema</span>Burgundy Smart Casual</div>
-              </li>
+              <li><div class="ml-icon">📅</div><div class="ml-text"><span class="ml-label">Tarikh</span>04 Oktober 2026 · Ahad</div></li>
+              <li><div class="ml-icon">🕖</div><div class="ml-text"><span class="ml-label">Masa</span>7:00 Malam</div></li>
+              <li><div class="ml-icon">📍</div><div class="ml-text"><span class="ml-label">Lokasi</span>Kampung Baru, Kuala Lumpur</div></li>
+              <li><div class="ml-icon">👗</div><div class="ml-text"><span class="ml-label">Tema</span>Burgundy Smart Casual</div></li>
             </ul>
           </div>
-
         </div>
       </div>
-
-      <!-- Floral strip bawah -->
-      <img src="assets/flowers/18_top_border_floral.png" class="det-strip bottom" alt="" onerror="this.style.display='none'" />
     </section>
 
-    <!-- ── COUNTDOWN ── -->
-    <section id="section-countdown" class="section-countdown fade-section">
-      <!-- Full-height side bouquets -->
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png" class="cd-flower left  parallax-flower" data-speed="0.28" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/04_bouquet_hotpink_peony.png"        class="cd-flower right parallax-flower" data-speed="0.32" alt="" onerror="this.style.display='none'" />
-      <!-- Top corners -->
-      <img src="assets/flowers/17_bouquet_blush_red.png"  class="cd-flower top-l parallax-flower" data-speed="0.15" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/16_bouquet_round_pink.png" class="cd-flower top-r parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-      <!-- Bottom accents -->
-      <img src="assets/flowers/09_accent_pink_flower.png"  class="cd-flower bot-l parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/13_accent_pink_dahlia.png"  class="cd-flower bot-r parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-
+    <!-- ── 3. COUNTDOWN ── -->
+    <section id="section-countdown" class="snap-section section-countdown fade-section">
+      <div class="pf pf-dark">
+        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="pf-tl parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tr parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-bl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-br parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t pf-dim" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b pf-dim" alt="" onerror="this.style.display='none'" />
+      </div>
       <div class="section-inner">
         <h2 class="section-title ivory">Kami Akan Bernikah Dalam</h2>
         <div class="countdown-wrap">
@@ -227,36 +161,35 @@
           <div class="countdown-unit"><span id="cd-secs">00</span><label>Saat</label></div>
         </div>
         <div class="lokasi-btns">
-          <a href="https://maps.google.com/?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi">📍 Lihat Lokasi (Google Maps)</a>
-          <a href="https://www.waze.com/ul?q=Kampung+Baru+Kuala+Lumpur"  target="_blank" class="btn-lokasi outline">🚗 Buka Waze</a>
-          <button id="add-calendar-btn" class="btn-lokasi outline">📅 Tambah ke Kalendar</button>
+          <a href="https://maps.google.com/?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi">📍 Lihat Lokasi</a>
+          <a href="https://www.waze.com/ul?q=Kampung+Baru+Kuala+Lumpur"  target="_blank" class="btn-lokasi outline">🚗 Waze</a>
+          <button id="add-calendar-btn" class="btn-lokasi outline">📅 Kalendar</button>
         </div>
       </div>
     </section>
 
-    <!-- ── SALAM KAUT ── -->
-    <section id="section-salam" class="section-salam fade-section">
-      <img src="assets/flowers/18_top_border_floral.png" class="section-top-border" alt="" onerror="this.style.display='none'" />
-      <!-- 4 big corner bouquets -->
-      <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="salam-flower tl parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="salam-flower tr parallax-flower" data-speed="0.25" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/01_bouquet_blush_peony.png"               class="salam-flower bl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="salam-flower br parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-
+    <!-- ── 4. SALAM KAUT ── -->
+    <section id="section-salam" class="snap-section section-salam fade-section">
+      <div class="pf">
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="pf-tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="pf-tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="pf-bl parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="pf-br parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/04_bouquet_hotpink_peony.png"  class="pf-side left"  alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/17_bouquet_blush_red.png"      class="pf-side right" alt="" onerror="this.style.display='none'" />
+      </div>
       <div class="section-inner">
         <h2 class="section-title">Salam Kaut 💝</h2>
-        <p class="salam-sub">Hadiah dalam bentuk digital amat dihargai.<br>Imbas kod QR di bawah untuk transfer.</p>
+        <p class="salam-sub">Hadiah dalam bentuk digital amat dihargai. Imbas QR untuk transfer.</p>
         <div class="salam-cards">
           <div class="salam-card">
             <div class="salam-icon">🏦</div>
             <h3>DuitNow / Bank Transfer</h3>
             <div class="qr-wrap" id="qr-duitnow">
               <img src="assets/images/qr-duitnow.png" alt="QR DuitNow" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
-              <div class="qr-fallback">
-                <span>📲</span>
-                <p>QR akan dipaparkan<br>setelah gambar diupload</p>
-                <small>Nama fail: <code>qr-duitnow.png</code></small>
-              </div>
+              <div class="qr-fallback"><span>📲</span><p>Upload <code>qr-duitnow.png</code></p></div>
             </div>
             <p class="salam-name">Nabila binti Rashid</p>
             <p class="salam-bank">Maybank · 1234 5678 9012</p>
@@ -267,33 +200,29 @@
             <h3>Touch 'n Go eWallet</h3>
             <div class="qr-wrap" id="qr-tng">
               <img src="assets/images/qr-tng.png" alt="QR TNG" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
-              <div class="qr-fallback">
-                <span>📲</span>
-                <p>QR akan dipaparkan<br>setelah gambar diupload</p>
-                <small>Nama fail: <code>qr-tng.png</code></small>
-              </div>
+              <div class="qr-fallback"><span>📲</span><p>Upload <code>qr-tng.png</code></p></div>
             </div>
             <p class="salam-name">Nabila binti Rashid</p>
             <p class="salam-bank">TNG eWallet</p>
             <button class="btn-copy" data-copy="0123456789">Salin No. Telefon</button>
           </div>
         </div>
-        <p class="salam-note">✨ Terima kasih atas kebaikan hati anda. Semoga Allah merahmati anda sekeluarga.</p>
+        <p class="salam-note">✨ Semoga Allah merahmati anda sekeluarga.</p>
       </div>
-      <img src="assets/flowers/18_top_border_floral.png" class="section-top-border flip" alt="" onerror="this.style.display='none'" />
     </section>
 
-    <!-- ── GALERI + UCAPAN ── -->
-    <section id="section-gallery" class="section-gallery fade-section">
-      <!-- Big corner wreaths -->
-      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner tl parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner bl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner br parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-      <!-- Side accents -->
-      <img src="assets/flowers/04_bouquet_hotpink_peony.png"  class="gallery-side left  parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/17_bouquet_blush_red.png"      class="gallery-side right parallax-flower" data-speed="0.19" alt="" onerror="this.style.display='none'" />
-
+    <!-- ── 5. GALERI ── -->
+    <section id="section-gallery" class="snap-section section-gallery fade-section">
+      <div class="pf">
+        <img src="assets/flowers/11_corner_wreath_burgundy.png" class="pf-tl parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/11_corner_wreath_burgundy.png" class="pf-tr parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/11_corner_wreath_burgundy.png" class="pf-bl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/11_corner_wreath_burgundy.png" class="pf-br parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/12_accent_blush_peony.png" class="pf-accent left"  alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/09_accent_pink_flower.png" class="pf-accent right" alt="" onerror="this.style.display='none'" />
+      </div>
       <div class="section-inner">
         <h2 class="section-title">Kenangan Indah</h2>
         <div class="gallery-slider" id="gallery-slider">
@@ -311,87 +240,74 @@
           <p class="doa-quote">Ya Allah, satukanlah kami dalam kebaikan dan kekalkanlah cinta kami hingga ke syurga.</p>
         </div>
         <div class="ucapan-section">
-          <h3 class="ucapan-title">Ucapan &amp; Doa</h3>
-          <div class="ucapan-list" id="ucapan-list">
-            <div class="ucapan-item"><strong>Keluarga Zulkifli</strong><p>Selamat pengantin baru Nabila & Hasif! Semoga dipenuhi barakah. 🌸</p></div>
-            <div class="ucapan-item"><strong>Rakan-rakan</strong><p>Tahniah! Semoga bahagia dunia akhirat. Aamiin ✨</p></div>
-          </div>
-          <button id="toggle-ucapan-form" class="btn-ucapan">Tinggalkan Ucapan</button>
+          <button id="toggle-ucapan-form" class="btn-ucapan">💬 Tinggalkan Ucapan</button>
           <form id="ucapan-form" class="ucapan-form hidden">
             <input type="text" id="ucapan-nama" placeholder="Nama anda" required />
-            <textarea id="ucapan-msg" placeholder="Tulis ucapan atau doa..." rows="3" required></textarea>
-            <button type="submit" class="btn-submit">Hantar Ucapan</button>
+            <textarea id="ucapan-msg" placeholder="Ucapan atau doa..." rows="2" required></textarea>
+            <button type="submit" class="btn-submit">Hantar</button>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- ── RSVP ── -->
-    <section id="section-rsvp" class="section-rsvp fade-section">
-      <img src="assets/flowers/18_top_border_floral.png" class="section-top-border flip-dark" alt="" onerror="this.style.display='none'" />
-      <!-- Big side bouquets -->
-      <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="rsvp-flower left  parallax-flower" data-speed="0.22" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png"  class="rsvp-flower right parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-      <!-- Top accents -->
-      <img src="assets/flowers/12_accent_blush_peony.png" class="rsvp-accent tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/09_accent_pink_flower.png" class="rsvp-accent tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-
-      <div class="section-inner">
-        <div class="rsvp-contact-wrap">
-          <div class="rsvp-box">
-            <h2 class="section-title ivory">Sila Sahkan Kehadiran</h2>
-            <form id="rsvp-form" class="rsvp-form">
-              <div class="form-group"><label for="rsvp-name">Nama Penuh</label><input type="text" id="rsvp-name" placeholder="Nama anda" required /></div>
+    <!-- ── 6. RSVP ── -->
+    <section id="section-rsvp" class="snap-section section-rsvp fade-section">
+      <div class="pf pf-dark">
+        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="pf-tl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tr parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-bl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-br parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t pf-dim" alt="" onerror="this.style.display='none'" />
+        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b pf-dim" alt="" onerror="this.style.display='none'" />
+      </div>
+      <div class="section-inner rsvp-inner">
+        <div class="rsvp-box">
+          <h2 class="section-title ivory">Sila Sahkan Kehadiran</h2>
+          <form id="rsvp-form" class="rsvp-form">
+            <div class="rsvp-row">
               <div class="form-group">
-                <label for="rsvp-guests">Bilangan Tetamu</label>
+                <label>Nama Penuh</label>
+                <input type="text" id="rsvp-name" placeholder="Nama anda" required />
+              </div>
+              <div class="form-group">
+                <label>Bilangan</label>
                 <select id="rsvp-guests">
-                  <option value="1">1 orang</option><option value="2">2 orang</option>
-                  <option value="3">3 orang</option><option value="4">4 orang</option>
-                  <option value="5+">5 orang ke atas</option>
+                  <option value="1">1</option><option value="2">2</option>
+                  <option value="3">3</option><option value="4">4</option>
+                  <option value="5+">5+</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="rsvp-status">Status Kehadiran</label>
-                <select id="rsvp-status">
-                  <option value="hadir">Hadir</option>
-                  <option value="tidak-hadir">Tidak Dapat Hadir</option>
-                  <option value="mungkin">Mungkin Hadir</option>
-                </select>
-              </div>
-              <button type="submit" class="btn-rsvp">Hantar RSVP</button>
-            </form>
-            <div id="rsvp-success" class="rsvp-success hidden"><p>✅ Terima kasih! Kehadiran anda telah direkodkan.</p></div>
-          </div>
+            </div>
+            <div class="form-group">
+              <label>Status Kehadiran</label>
+              <select id="rsvp-status">
+                <option value="hadir">✅ Hadir</option>
+                <option value="tidak-hadir">❌ Tidak Dapat Hadir</option>
+                <option value="mungkin">🤔 Mungkin Hadir</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-rsvp">Hantar RSVP</button>
+          </form>
+          <div id="rsvp-success" class="rsvp-success hidden"><p>✅ Terima kasih! Kehadiran anda telah direkodkan.</p></div>
+        </div>
+
+        <div class="rsvp-right">
           <div class="contact-box">
             <h3 class="contact-title">Hubungi Kami</h3>
-            <a href="https://wa.me/60123456789?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20Nabila%20%26%20Hasif" target="_blank" class="btn-contact whatsapp"><span>💬</span> WhatsApp</a>
-            <a href="tel:+60123456789" class="btn-contact phone"><span>📞</span> Hubungi Pengantin</a>
+            <a href="https://wa.me/60123456789" target="_blank" class="btn-contact whatsapp"><span>💬</span> WhatsApp</a>
+            <a href="tel:+60123456789" class="btn-contact phone"><span>📞</span> Telefon</a>
             <a href="mailto:nabila.hasif2026@gmail.com" class="btn-contact email"><span>✉️</span> Email</a>
+          </div>
+          <div class="footer-mini">
+            <p class="footer-names">Nabila &amp; Hasif</p>
+            <p class="footer-thanks">Terima Kasih 🤍 <em>Jazakumullahu Khairan</em></p>
+            <p class="footer-date">04 · 10 · 2026</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── FOOTER ── -->
-    <footer id="footer" class="footer">
-      <!-- Big bottom bouquets -->
-      <img src="assets/flowers/01_bouquet_blush_peony.png"              class="footer-flower left  parallax-flower" data-speed="0.10" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"       class="footer-flower right parallax-flower" data-speed="0.10" alt="" onerror="this.style.display='none'" />
-      <!-- Top accents inside footer -->
-      <img src="assets/flowers/16_bouquet_round_pink.png" class="footer-top left  parallax-flower" data-speed="0.08" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/04_bouquet_hotpink_peony.png" class="footer-top right parallax-flower" data-speed="0.08" alt="" onerror="this.style.display='none'" />
-      <!-- Mid accent -->
-      <img src="assets/flowers/09_accent_pink_flower.png"  class="footer-mid ml parallax-flower" data-speed="0.06" alt="" onerror="this.style.display='none'" />
-      <img src="assets/flowers/13_accent_pink_dahlia.png"  class="footer-mid mr parallax-flower" data-speed="0.06" alt="" onerror="this.style.display='none'" />
-
-      <div class="footer-inner">
-        <p class="footer-names">Nabila &amp; Hasif</p>
-        <p class="footer-thanks">Terima Kasih 🤍<br><em>Jazakumullahu Khairan</em></p>
-        <p class="footer-date">04 · 10 · 2026</p>
-      </div>
-    </footer>
-
-  </main>
+  </div><!-- end main-content -->
 
   <script src="js/main.js"></script>
 </body>
