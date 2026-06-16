@@ -180,30 +180,25 @@ document.getElementById('add-calendar-btn').addEventListener('click', () => {
 });
 
 /* ══════════════════════════════════════
-   SALAM KAUT — COPY BUTTON
+   SALAM KAUT — COPY BUTTONS
 ══════════════════════════════════════ */
-document.querySelectorAll('.btn-copy').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const text = btn.dataset.copy;
-    navigator.clipboard.writeText(text).then(() => {
-      const orig = btn.textContent;
-      btn.textContent = '✓ Disalin!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.classList.remove('copied');
-      }, 2000);
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-      btn.textContent = '✓ Disalin!';
-      setTimeout(() => btn.textContent = btn.dataset.origText || 'Salin', 2000);
-    });
+function copyText(btn, text) {
+  const origHTML = btn.innerHTML;
+  const doSuccess = () => {
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Disalin!</span>';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = origHTML; btn.classList.remove('copied'); }, 2000);
+  };
+  navigator.clipboard.writeText(text).then(doSuccess).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); ta.remove();
+    doSuccess();
   });
+}
+
+document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
+  btn.addEventListener('click', () => copyText(btn, btn.dataset.copy));
 });
 
 /* ══════════════════════════════════════
