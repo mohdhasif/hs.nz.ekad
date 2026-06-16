@@ -677,6 +677,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   min-height: 0;
 }
+.section-ucapan .ucapan-list-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
 .section-ucapan .ucapan-list {
   flex: 1;
   min-height: 0;
@@ -776,19 +781,46 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,175,55,0.5); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* Ucapan list — floats on section background, no box, dashed dividers */
+/* Ucapan list — bordered card with asymmetric corner flowers */
+.ucapan-list-wrap {
+  position: relative;
+  margin-top: 0.8rem;
+  padding: 30px 16px 42px;
+}
+.ucapan-corner {
+  position: absolute;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+.ucapan-corner-tl {
+  top: -10px; left: -10px;
+  width: clamp(44px, 11vw, 60px);
+  transform: rotate(-10deg);
+}
+.ucapan-corner-br {
+  bottom: -16px; right: -14px;
+  width: clamp(80px, 22vw, 130px);
+  transform: rotate(176deg);
+}
 .ucapan-list {
   position: relative;
   z-index: 1;
   width: 100%;
   max-width: 100%;
-  margin: 0.8rem auto 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
-  padding: 4px 2px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(212,175,55,0.4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 18px rgba(107,29,42,0.1);
 }
 .ucapan-item {
   position: relative;
