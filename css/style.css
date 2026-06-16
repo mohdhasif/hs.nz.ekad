@@ -394,41 +394,105 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    SALAM KAUT
 ══════════════════════════════════════ */
 .section-salam {
-  background: linear-gradient(160deg, #fdf5f6 0%, var(--ivory) 100%);
+  background: linear-gradient(160deg, #fdf5f6 0%, #faf0f2 50%, #f5e8eb 100%);
+  align-items: stretch;
+  flex-direction: column;
+  padding: 0;
 }
 
-.salam-header { text-align:center; margin-bottom:clamp(10px,2vw,18px); }
-.salam-title-top { font-size:0.75rem; color:var(--text-mid); letter-spacing:2px; font-style:italic; margin-bottom:0.2rem; }
-.salam-sub { color:var(--text-mid); font-size:0.8rem; line-height:1.6; margin-top:0.2rem; }
+.section-salam .section-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(10px,2vh,18px);
+  padding: clamp(16px,4vh,36px) clamp(20px,5vw,48px);
+}
 
-/* Single salam card */
+.salam-header { text-align:center; }
+.salam-title-top { font-size:0.75rem; color:var(--text-mid); letter-spacing:3px; font-style:italic; margin-bottom:0.2rem; }
+.salam-header .section-title { margin-bottom:0.2rem; }
+.salam-sub { color:var(--text-mid); font-size:0.82rem; line-height:1.7; margin:0; }
+
+/* Single salam card — bigger, centred */
 .salam-single {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 4vw, 36px);
+  gap: clamp(18px, 5vw, 40px);
   background: white;
-  border: 1px solid rgba(212,175,55,0.4);
-  border-radius: 20px;
-  padding: clamp(16px,3vw,28px) clamp(18px,4vw,36px);
-  box-shadow: 0 6px 30px rgba(107,29,42,0.10);
-  max-width: 460px;
-  margin: 0 auto clamp(10px,2vw,16px);
+  border: 1px solid rgba(212,175,55,0.42);
+  border-radius: 22px;
+  padding: clamp(18px,3.5vw,32px) clamp(20px,5vw,40px);
+  box-shadow: 0 8px 40px rgba(107,29,42,0.11), inset 0 1px 0 rgba(255,255,255,0.9);
+  max-width: 500px;
+  margin: 0 auto;
   position: relative;
+  width: 100%;
 }
-.salam-single::before { content:''; position:absolute; top:10px; left:10px; width:16px; height:16px; border-top:1.5px solid rgba(212,175,55,0.5); border-left:1.5px solid rgba(212,175,55,0.5); }
-.salam-single::after  { content:''; position:absolute; bottom:10px; right:10px; width:16px; height:16px; border-bottom:1.5px solid rgba(212,175,55,0.5); border-right:1.5px solid rgba(212,175,55,0.5); }
+.salam-single::before { content:''; position:absolute; top:12px; left:12px; width:20px; height:20px; border-top:1.5px solid rgba(212,175,55,0.5); border-left:1.5px solid rgba(212,175,55,0.5); }
+.salam-single::after  { content:''; position:absolute; bottom:12px; right:12px; width:20px; height:20px; border-bottom:1.5px solid rgba(212,175,55,0.5); border-right:1.5px solid rgba(212,175,55,0.5); }
 
-/* QR big — tappable */
+/* QR big — tappable, larger */
 .qr-wrap-big {
   position: relative;
   flex-shrink: 0;
-  width: clamp(110px, 28vw, 160px);
-  height: clamp(110px, 28vw, 160px);
+  width: clamp(120px, 32vw, 180px);
+  height: clamp(120px, 32vw, 180px);
   cursor: pointer;
-  border-radius: 14px;
-  border: 2px solid var(--gold);
+  border-radius: 16px;
+  border: 2.5px solid var(--gold);
   background: white;
-  padding: 6px;
+  padding: 7px;
+  box-shadow: 0 4px 20px rgba(107,29,42,0.14);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.qr-wrap-big:hover  { transform: scale(1.04); box-shadow: 0 8px 28px rgba(107,29,42,0.20); }
+.qr-wrap-big:active { transform: scale(0.97); }
+.qr-img-big { width:100%; height:100%; object-fit:contain; border-radius:10px; display:block; }
+.qr-wrap-big.qr-placeholder .qr-img-big { display:none; }
+.qr-fallback-big { display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; gap:4px; }
+.qr-wrap-big.qr-placeholder .qr-fallback-big { display:flex; }
+.qr-fallback-big span { font-size:2rem; }
+.qr-fallback-big p { font-size:0.7rem; color:var(--text-mid); text-align:center; }
+.qr-tap-hint {
+  position: absolute; bottom:-22px; left:50%; transform:translateX(-50%);
+  font-size:0.6rem; color:var(--text-mid); white-space:nowrap; letter-spacing:0.3px;
+}
+
+/* Bank info — bigger text */
+.salam-info { flex:1; }
+.salam-name-big { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,3.5vw,1.5rem); color:var(--burgundy); font-weight:600; margin-bottom:3px; }
+.salam-bank-name { font-size:0.82rem; color:var(--text-mid); margin-bottom:clamp(12px,2.5vw,20px); }
+
+.acc-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.acc-num { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,4vw,1.7rem); font-weight:700; color:var(--text-dark); letter-spacing:1.5px; }
+.btn-copy-acc {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--burgundy); color:white;
+  padding:7px 14px; border-radius:99px;
+  font-size:0.76rem; font-weight:500;
+  transition:background 0.2s,transform 0.2s;
+  flex-shrink:0;
+}
+.btn-copy-acc:hover  { background:var(--burgundy-light); transform:scale(1.04); }
+.btn-copy-acc.copied { background:#2d9e5f; }
+.btn-copy-acc svg { flex-shrink:0; }
+
+/* Verse box at bottom */
+.salam-verse {
+  text-align: center;
+  background: rgba(107,29,42,0.06);
+  border: 1px solid rgba(212,175,55,0.28);
+  border-radius: 14px;
+  padding: clamp(10px,2vw,16px) clamp(16px,4vw,28px);
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+.salam-verse-ar { font-size:clamp(1rem,3vw,1.3rem); color:var(--burgundy); margin-bottom:4px; font-family:'Playfair Display',serif; direction:rtl; }
+.salam-verse-tr { font-size:clamp(0.68rem,1.8vw,0.78rem); color:var(--text-mid); font-style:italic; line-height:1.6; }
+
+.salam-note { text-align:center; font-size:0.78rem; color:var(--text-mid); font-style:italic; }
   box-shadow: 0 4px 16px rgba(107,29,42,0.12);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -591,10 +655,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .countdown-sep { font-size: 1.2rem; margin-top: -10px; }
 
   /* Salam — tighter on mobile */
+  .section-salam .section-inner { padding: 14px 18px; gap: 12px; }
   .salam-single { padding: 14px 16px; gap: 14px; }
-  .qr-wrap-big { width: 100px; height: 100px; }
-  .acc-num { font-size: 1.1rem; }
-  .qr-tap-hint { font-size: 0.58rem; }
+  .qr-wrap-big { width: 105px; height: 105px; }
+  .acc-num { font-size: 1.15rem; }
+  .salam-verse { padding: 10px 14px; }
 
   /* RSVP */
   .rsvp-inner { grid-template-columns: 1fr; gap: 14px; overflow-y: auto; }
