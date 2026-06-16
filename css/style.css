@@ -677,6 +677,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   min-height: 0;
 }
+.section-ucapan .ucapan-list-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
 .section-ucapan .ucapan-list {
   flex: 1;
   min-height: 0;
@@ -777,8 +782,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
 /* Ucapan list — single column, scrollable, ornament dividers */
-.ucapan-list {
+.ucapan-list-wrap {
+  position: relative;
   margin-top: 0.7rem;
+}
+.ucapan-corner {
+  position: absolute;
+  width: clamp(60px, 16vw, 90px);
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.92;
+}
+.ucapan-corner-tl { top: -18px; left: -14px; transform: rotate(-8deg); }
+.ucapan-corner-br { bottom: -18px; right: -14px; transform: rotate(178deg); }
+.ucapan-list {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 100%;
   margin-left: auto;
