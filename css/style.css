@@ -303,61 +303,92 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    BUTIRAN MAJLIS + COUNTDOWN (combined)
 ══════════════════════════════════════ */
 .section-details {
-  background: linear-gradient(175deg, #f9eff1 0%, #fdf6f0 45%, #2a0a10 100%);
+  background: linear-gradient(180deg, #f9eff1 0%, #faf4f0 55%, #f9eff1 100%);
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
 }
 
 .details-combined {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 2vw, 18px);
   width: 100%;
-  max-width: 500px;
+  max-width: 100%;
+  padding: 0;
+  gap: 0;
+}
+
+/* Top half — light, card */
+.details-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px,4vw,32px) clamp(16px,5vw,40px) clamp(10px,2vw,20px);
+  position: relative; z-index: 4;
 }
 
 /* Event card */
 .majlis-single {
-  background: rgba(255,255,255,0.90);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(212,175,55,0.45);
-  border-radius: 18px;
-  padding: clamp(14px,2.5vw,26px) clamp(18px,4vw,40px);
-  box-shadow: 0 6px 30px rgba(107,29,42,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: clamp(14px,2.5vw,26px) clamp(20px,4vw,44px);
+  box-shadow: 0 8px 36px rgba(107,29,42,0.13), inset 0 1px 0 rgba(255,255,255,0.9);
   position: relative;
+  width: 100%;
+  max-width: 460px;
 }
-.majlis-single::before { content:''; position:absolute; top:10px; left:10px; width:18px; height:18px; border-top:2px solid rgba(212,175,55,0.55); border-left:2px solid rgba(212,175,55,0.55); }
-.majlis-single::after  { content:''; position:absolute; bottom:10px; right:10px; width:18px; height:18px; border-bottom:2px solid rgba(212,175,55,0.55); border-right:2px solid rgba(212,175,55,0.55); }
+.majlis-single::before { content:''; position:absolute; top:10px; left:10px; width:18px; height:18px; border-top:2px solid rgba(212,175,55,0.5); border-left:2px solid rgba(212,175,55,0.5); }
+.majlis-single::after  { content:''; position:absolute; bottom:10px; right:10px; width:18px; height:18px; border-bottom:2px solid rgba(212,175,55,0.5); border-right:2px solid rgba(212,175,55,0.5); }
 
-.majlis-badge-top { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:clamp(10px,2vw,16px); padding-bottom:clamp(8px,1.5vw,14px); border-bottom:1px solid rgba(212,175,55,0.22); }
-.ms-icon  { font-size:1.3rem; }
-.ms-badge { background:linear-gradient(135deg,var(--burgundy),#9b2d3f); color:white; font-family:'Playfair Display',serif; font-size:clamp(0.7rem,1.8vw,0.8rem); font-weight:600; letter-spacing:2px; padding:4px 16px; border-radius:99px; text-transform:uppercase; box-shadow:0 4px 14px rgba(107,29,42,0.28); }
+.majlis-badge-top { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:clamp(10px,2vw,16px); padding-bottom:clamp(8px,1.5vw,14px); border-bottom:1px solid rgba(212,175,55,0.2); }
+.ms-icon  { font-size:1.2rem; }
+.ms-badge { background:linear-gradient(135deg,var(--burgundy),#9b2d3f); color:white; font-family:'Playfair Display',serif; font-size:clamp(0.68rem,1.8vw,0.78rem); font-weight:600; letter-spacing:2px; padding:5px 18px; border-radius:99px; text-transform:uppercase; box-shadow:0 4px 14px rgba(107,29,42,0.28); }
 
-.majlis-list { list-style:none; display:flex; flex-direction:column; gap:clamp(6px,1.2vw,10px); }
-.majlis-list li { display:flex; align-items:center; gap:10px; padding-bottom:clamp(6px,1.2vw,10px); border-bottom:1px solid rgba(212,175,55,0.12); }
+.majlis-list { list-style:none; display:flex; flex-direction:column; gap:clamp(6px,1.2vw,11px); }
+.majlis-list li { display:flex; align-items:center; gap:10px; padding-bottom:clamp(6px,1.2vw,11px); border-bottom:1px solid rgba(212,175,55,0.10); }
 .majlis-list li:last-child { border-bottom:none; padding-bottom:0; }
-.ml-icon  { font-size:0.9rem; width:28px; height:28px; background:linear-gradient(135deg,#fdf0f2,#f5dde0); border:1px solid rgba(212,175,55,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ml-icon  { font-size:0.9rem; width:30px; height:30px; background:linear-gradient(135deg,#fdf0f2,#f5dde0); border:1px solid rgba(212,175,55,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .ml-text  { display:flex; flex-direction:column; gap:1px; }
 .ml-label { display:block; font-size:0.56rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; }
 .ml-text span:not(.ml-label) { font-size:clamp(0.8rem,2vw,0.88rem); color:var(--text-dark); font-weight:500; }
 
-/* Section divider */
-.det-sep { display:flex; align-items:center; gap:10px; color:var(--gold); font-size:0.5rem; opacity:0.65; }
-.det-sep::before,.det-sep::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,0.4),transparent); }
+/* Bottom half — dark panel for countdown */
+.countdown-block {
+  background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
+  text-align: center;
+  padding: clamp(14px,3vw,24px) clamp(16px,5vw,40px) clamp(16px,3vw,24px);
+  position: relative; z-index: 4;
+}
 
-/* Countdown block (sits below card, on dark gradient) */
-.countdown-block { text-align: center; }
-.cd-label { font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:0.6rem; }
+/* Gold line between card and countdown */
+.details-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 clamp(16px,5vw,40px);
+  background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
+  position: relative; z-index: 4;
+}
+.details-divider::before,
+.details-divider::after { content:''; flex:1; height:1px; background:rgba(212,175,55,0.35); }
+.details-divider span { color:var(--gold); font-size:0.5rem; opacity:0.8; flex-shrink:0; }
 
-.countdown-wrap { display:flex; align-items:center; justify-content:center; gap:clamp(6px,2vw,16px); margin:0 0 0.9rem; }
+.cd-label { font-size:0.68rem; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:0.7rem; }
+
+.countdown-wrap { display:flex; align-items:center; justify-content:center; gap:clamp(6px,2vw,14px); margin:0 0 clamp(10px,2vw,16px); }
 .countdown-unit { text-align:center; }
-.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-size:clamp(1.5rem,5vw,2.4rem); color:white; line-height:1; background:rgba(255,255,255,0.1); border:1px solid rgba(212,175,55,0.4); border-radius:10px; padding:7px 13px; min-width:54px; }
-.countdown-unit label { display:block; font-size:0.6rem; letter-spacing:2px; color:var(--dusty-pink); text-transform:uppercase; margin-top:4px; }
-.countdown-sep { font-size:1.4rem; color:var(--gold); font-weight:bold; margin-top:-12px; }
+.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-size:clamp(1.6rem,5.5vw,2.6rem); color:white; line-height:1; background:rgba(255,255,255,0.08); border:1px solid rgba(212,175,55,0.45); border-radius:12px; padding:8px 14px; min-width:58px; }
+.countdown-unit label { display:block; font-size:0.58rem; letter-spacing:2px; color:var(--dusty-pink); text-transform:uppercase; margin-top:5px; }
+.countdown-sep { font-size:1.5rem; color:var(--gold); font-weight:bold; margin-top:-14px; }
 
 .lokasi-btns { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.1rem; border-radius:99px; font-size:0.8rem; font-family:'Poppins',sans-serif; font-weight:500; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
-.btn-lokasi.outline { background:transparent; color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.45); }
+.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.2rem; border-radius:99px; font-size:0.8rem; font-family:'Poppins',sans-serif; font-weight:500; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
+.btn-lokasi.outline { background:transparent; color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.4); }
 .btn-lokasi:hover         { transform:scale(1.04); }
-.btn-lokasi.outline:hover { border-color:white; background:rgba(255,255,255,0.1); }
+.btn-lokasi.outline:hover { border-color:white; background:rgba(255,255,255,0.08); }
 
 /* ══════════════════════════════════════
    SALAM KAUT
@@ -553,9 +584,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-frame { width: 88vw; padding: 20px 18px; }
 
   /* Combined details section */
-  .details-combined { gap: 8px; }
+  .details-top { padding: 12px 16px 10px; }
   .majlis-single { padding: 12px 16px; }
-  .countdown-unit span { min-width: 46px; padding: 6px 10px; }
+  .countdown-block { padding: 12px 16px 14px; }
+  .countdown-unit span { min-width: 48px; padding: 6px 10px; font-size: 1.5rem; }
+  .countdown-sep { font-size: 1.2rem; margin-top: -10px; }
 
   /* Salam — tighter on mobile */
   .salam-single { padding: 14px 16px; gap: 14px; }
