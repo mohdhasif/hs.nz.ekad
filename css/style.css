@@ -623,6 +623,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ══════════════════════════════════════ */
 .section-gallery {
   background: linear-gradient(160deg, #fdf5f6 0%, #fdf0f2 100%);
+  overflow: hidden;
+}
+.section-gallery .section-inner {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding-top: clamp(16px, 5vh, 40px);
+  padding-bottom: clamp(16px, 5vh, 40px);
+  overflow: hidden;
+}
+.section-gallery .section-title { margin-bottom: 0.8rem; }
+.section-gallery .doa-wrap { margin-bottom: 0.6rem; }
+.section-gallery .ucapan-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+.section-gallery .ucapan-list {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+  margin-bottom: 0;
 }
 
 .gallery-slider { position:relative; max-width:600px; margin:0 auto 1.2rem; overflow:hidden; border-radius:14px; box-shadow:0 4px 20px rgba(107,29,42,0.12); }
@@ -665,7 +689,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 180px;
+  max-height: clamp(140px, 25vh, 260px);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
