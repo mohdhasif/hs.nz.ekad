@@ -240,41 +240,33 @@ document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
 })();
 
 /* ══════════════════════════════════════
-   UCAPAN — JSONBin + localStorage
-   ──────────────────────────────────────
-   Setup (percuma):
-   1. Daftar di https://jsonbin.io
-   2. Cipta bin baru dengan kandungan: []
-   3. Isi JSONBIN_KEY dan JSONBIN_ID di bawah
+   UCAPAN — Supabase + localStorage
 ══════════════════════════════════════ */
-const JSONBIN_KEY = '$2a$10$qMFAOyhbmsX/cvhVsuHNL.smnyjJrjIuQk01GAXPQCdXU2GtqDArK';
-const JSONBIN_ID  = '6a319f4eda38895dfecbb201';
-const LS_KEY      = 'ekad_ucapan';
+const SB_URL = 'https://nlqfghwfudisdbvihwae.supabase.co';
+const SB_KEY = 'sb_publishable_NOyUH3crdzriXePn3j4gyQ_xQbnB33K';
+const LS_KEY = 'ekad_ucapan';
 
-function ucapanSave(list) {
-  localStorage.setItem(LS_KEY, JSON.stringify(list));
-  if (!JSONBIN_KEY || !JSONBIN_ID) return Promise.resolve();
-  return fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_ID}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_KEY },
-    body: JSON.stringify(list)
+function sbHeaders() {
+  return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' };
+}
+
+function ucapanSave(entry) {
+  return fetch(`${SB_URL}/rest/v1/ucapan`, {
+    method: 'POST',
+    headers: { ...sbHeaders(), 'Prefer': 'return=minimal' },
+    body: JSON.stringify(entry)
   });
 }
 
 function ucapanLoad() {
-  if (!JSONBIN_KEY || !JSONBIN_ID) {
-    return Promise.resolve(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
-  }
-  return fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_ID}/latest`, {
-    headers: { 'X-Master-Key': JSONBIN_KEY }
-  })
-  .then(r => r.json())
-  .then(d => {
-    const list = Array.isArray(d.record) ? d.record : [];
-    localStorage.setItem(LS_KEY, JSON.stringify(list));
-    return list;
-  })
-  .catch(() => JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
+  return fetch(`${SB_URL}/rest/v1/ucapan?select=*&order=id.asc`, { headers: sbHeaders() })
+    .then(r => r.json())
+    .then(data => {
+      const list = Array.isArray(data) ? data : [];
+      localStorage.setItem(LS_KEY, JSON.stringify(list));
+      return list;
+    })
+    .catch(() => JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
 }
 
 function renderUcapan(list) {
@@ -319,10 +311,7 @@ if (ucapanForm) {
     const tarikh = new Date().toLocaleDateString('ms-MY', { day:'numeric', month:'long', year:'numeric' });
     const entry  = { nama, msg, tarikh };
 
-    ucapanLoad().then(list => {
-      list.push(entry);
-      return ucapanSave(list).then(() => list);
-    }).then(list => {
+    ucapanSave(entry).then(() => ucapanLoad()).then(list => {
       renderUcapan(list);
       this.reset();
       this.classList.add('hidden');
