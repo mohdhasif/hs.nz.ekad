@@ -52,6 +52,7 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
   // Show hero immediately, set up observer for other sections
   initFadeIn();
   startParallax();
+  initSectionSnapScroll();
 
   setTimeout(() => {
     doorAnim.classList.add('done');
@@ -59,6 +60,88 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
   }, 1800);
 });
+
+/* ══════════════════════════════════════
+   FORCE ONE-SECTION-PER-SCROLL
+══════════════════════════════════════ */
+function initSectionSnapScroll() {
+  const sections = Array.from(document.querySelectorAll('.snap-section'));
+  if (!sections.length) return;
+
+  let isAnimating = false;
+  let currentIndex = 0;
+
+  function indexAtScroll() {
+    const y = window.scrollY;
+    let closest = 0;
+    let minDist = Infinity;
+    sections.forEach((sec, i) => {
+      const dist = Math.abs(sec.offsetTop - y);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    return closest;
+  }
+
+  function goToSection(index) {
+    index = Math.max(0, Math.min(sections.length - 1, index));
+    currentIndex = index;
+    isAnimating = true;
+    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { isAnimating = false; }, 900);
+  }
+
+  currentIndex = indexAtScroll();
+
+  function findScrollableAncestor(el) {
+    while (el && el !== document.body) {
+      if (el.scrollHeight > el.clientHeight) {
+        const style = getComputedStyle(el);
+        if (style.overflowY === 'auto' || style.overflowY === 'scroll') return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function innerScrollCanConsume(el, deltaY) {
+    const scrollable = findScrollableAncestor(el);
+    if (!scrollable) return false;
+    if (deltaY > 0) return scrollable.scrollTop + scrollable.clientHeight < scrollable.scrollHeight - 1;
+    return scrollable.scrollTop > 0;
+  }
+
+  window.addEventListener('wheel', (e) => {
+    if (innerScrollCanConsume(e.target, e.deltaY)) return;
+    if (isAnimating) { e.preventDefault(); return; }
+    e.preventDefault();
+    currentIndex = indexAtScroll();
+    if (e.deltaY > 0) goToSection(currentIndex + 1);
+    else if (e.deltaY < 0) goToSection(currentIndex - 1);
+  }, { passive: false });
+
+  let touchStartY = 0;
+  let touchStartTarget = null;
+  window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchStartTarget = e.target;
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    if (isAnimating) return;
+    const diff = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) < 40) return;
+    if (innerScrollCanConsume(touchStartTarget, diff)) return;
+    currentIndex = indexAtScroll();
+    if (diff > 0) goToSection(currentIndex + 1);
+    else goToSection(currentIndex - 1);
+  }, { passive: true });
+
+  window.addEventListener('keydown', (e) => {
+    if (isAnimating) return;
+    if (['ArrowDown','PageDown'].includes(e.key)) { e.preventDefault(); currentIndex = indexAtScroll(); goToSection(currentIndex + 1); }
+    else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); currentIndex = indexAtScroll(); goToSection(currentIndex - 1); }
+  }, { passive: false });
+}
 
 /* ══════════════════════════════════════
    SCROLL FADE-IN (snap-aware)
