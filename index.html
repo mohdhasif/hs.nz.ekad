@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kad Jemputan — Aisyah & Marwan</title>
+  <title>Kad Jemputan — Nabila & Azman</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -11,37 +11,30 @@
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════
-       1. LOADING SCREEN
-  ══════════════════════════════════════ -->
+  <!-- LOADING SCREEN -->
   <div id="loading-screen">
     <div class="loading-inner">
-      <div class="monogram">A <span class="divider">|</span> M</div>
+      <div class="monogram">N <span class="divider">|</span> A</div>
       <p class="loading-text">Loading...</p>
       <div class="loading-bar"><div class="loading-fill"></div></div>
     </div>
     <img src="assets/flowers/11_corner_wreath_burgundy.png" class="load-flower tl" alt="" />
-    <img src="assets/flowers/11_corner_wreath_burgundy.png" class="load-flower br" alt="" />
+    <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="load-flower br" alt="" />
+    <img src="assets/flowers/01_bouquet_blush_peony.png" class="load-flower tr" alt="" />
+    <img src="assets/flowers/07_bouquet_watercolor_burgundy.png" class="load-flower bl" alt="" />
   </div>
 
-  <!-- Music Toggle (sticky) -->
-  <button id="music-btn" aria-label="Toggle Music">
-    <span class="music-icon on">♪</span>
-    <span class="music-icon off" style="display:none">♪</span>
-  </button>
+  <!-- Music Toggle -->
+  <button id="music-btn" aria-label="Toggle Music">♪</button>
   <audio id="bg-music" loop src="assets/audio/wedding-music.mp3"></audio>
 
-  <!-- ══════════════════════════════════════
-       2. COVER SCREEN (Closed Door)
-  ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════
+       COVER SCREEN
+  ══════════════════════════════ -->
   <section id="cover-screen" class="cover-screen">
     <div class="door-closed">
-      <div class="door-panel left-panel">
-        <div class="door-handle right-handle"></div>
-      </div>
-      <div class="door-panel right-panel">
-        <div class="door-handle left-handle"></div>
-      </div>
+      <div class="door-panel left-panel"><div class="door-handle right-handle"></div></div>
+      <div class="door-panel right-panel"><div class="door-handle left-handle"></div></div>
       <div class="cover-overlay">
         <p class="cover-greeting">Assalamualaikum</p>
         <p class="cover-invited">You're Invited</p>
@@ -50,76 +43,84 @@
     </div>
     <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="deco-flower cover-tl" alt="" />
     <img src="assets/flowers/01_bouquet_blush_peony.png" class="deco-flower cover-br" alt="" />
+    <img src="assets/flowers/09_accent_pink_flower.png" class="deco-flower cover-tr" alt="" />
+    <img src="assets/flowers/12_accent_blush_peony.png" class="deco-flower cover-bl" alt="" />
   </section>
 
-  <!-- ══════════════════════════════════════
-       3. DOOR ANIMATION OVERLAY
-  ══════════════════════════════════════ -->
+  <!-- DOOR ANIMATION OVERLAY -->
   <div id="door-animation" class="door-animation">
     <div class="door-left"></div>
     <div class="door-right"></div>
     <div class="door-light"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       MAIN CONTENT (hidden until door opens)
-  ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════ -->
   <main id="main-content" class="main-content hidden">
 
-    <!-- 4. HERO -->
+    <!-- HERO -->
     <section id="section-hero" class="section-hero fade-section">
-      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner tl" alt="" />
-      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner tr" alt="" />
-      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner bl" alt="" />
-      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner br" alt="" />
+      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner tl parallax-flower" data-speed="0.3" alt="" />
+      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner tr parallax-flower" data-speed="0.25" alt="" />
+      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner bl parallax-flower" data-speed="0.2" alt="" />
+      <img src="assets/flowers/08_border_corner_burgundy_berry.png" class="hero-corner br parallax-flower" data-speed="0.35" alt="" />
+      <img src="assets/flowers/09_accent_pink_flower.png" class="hero-float f1 parallax-flower" data-speed="0.15" alt="" />
+      <img src="assets/flowers/12_accent_blush_peony.png" class="hero-float f2 parallax-flower" data-speed="0.4" alt="" />
+      <img src="assets/flowers/13_accent_pink_dahlia.png" class="hero-float f3 parallax-flower" data-speed="0.2" alt="" />
       <div class="hero-inner">
         <p class="hero-walimatul">— Walimatul Urus —</p>
         <h1 class="hero-names">
-          <span class="bride">Aisyah</span>
+          <span class="bride">Nabila</span>
           <span class="ampersand">&amp;</span>
-          <span class="groom">Marwan</span>
+          <span class="groom">Azman</span>
         </h1>
-        <p class="hero-date">25 · 10 · 2025</p>
+        <p class="hero-date">04 · 10 · 2026</p>
         <p class="hero-invite">Dengan penuh rasa syukur dan kegembiraan,<br>kami menjemput kehadiran anda sekeluarga.</p>
         <a href="#section-details" class="scroll-down-hint">↓</a>
       </div>
       <div id="petals-canvas"></div>
     </section>
 
-    <!-- 5. BUTIRAN MAJLIS -->
+    <!-- BUTIRAN MAJLIS -->
     <section id="section-details" class="section-details fade-section">
       <img src="assets/flowers/18_top_border_floral.png" class="section-top-border" alt="" />
+      <img src="assets/flowers/02_border_left_burgundy_soft.png" class="side-flower left parallax-flower" data-speed="0.18" alt="" />
+      <img src="assets/flowers/14_side_border_white_burgundy.png" class="side-flower right parallax-flower" data-speed="0.22" alt="" />
+      <img src="assets/flowers/06_border_corner_watercolor.png" class="section-corner-deco tl parallax-flower" data-speed="0.12" alt="" />
+      <img src="assets/flowers/06_border_corner_watercolor.png" class="section-corner-deco br parallax-flower" data-speed="0.16" alt="" />
       <div class="section-inner">
         <h2 class="section-title">Butiran Majlis</h2>
         <div class="majlis-grid">
           <div class="majlis-card">
             <div class="majlis-badge">Akad Nikah</div>
             <ul class="majlis-list">
-              <li><span class="icon">📅</span> 25 Oktober 2025</li>
-              <li><span class="icon">📆</span> Sabtu</li>
+              <li><span class="icon">📅</span> 04 Oktober 2026</li>
+              <li><span class="icon">📆</span> Ahad</li>
               <li><span class="icon">🕙</span> 10:00 AM</li>
-              <li><span class="icon">📍</span> Masjid Al-Hidayah<br><small>Shah Alam, Selangor</small></li>
+              <li><span class="icon">📍</span> Kampung Baru<br><small>Kuala Lumpur</small></li>
               <li><span class="icon">👔</span> Tema Burgundy Smart Casual</li>
             </ul>
           </div>
           <div class="majlis-card">
             <div class="majlis-badge">Majlis Sanding</div>
             <ul class="majlis-list">
-              <li><span class="icon">📅</span> 25 Oktober 2025</li>
-              <li><span class="icon">📆</span> Sabtu</li>
+              <li><span class="icon">📅</span> 04 Oktober 2026</li>
+              <li><span class="icon">📆</span> Ahad</li>
               <li><span class="icon">🕖</span> 7:00 PM</li>
-              <li><span class="icon">📍</span> Dewan Seri Melati<br><small>Shah Alam, Selangor</small></li>
+              <li><span class="icon">📍</span> Kampung Baru<br><small>Kuala Lumpur</small></li>
               <li><span class="icon">👗</span> Tema Burgundy Smart Casual</li>
             </ul>
           </div>
         </div>
       </div>
-      <img src="assets/flowers/02_border_left_burgundy_soft.png" class="side-flower left" alt="" />
-      <img src="assets/flowers/14_side_border_white_burgundy.png" class="side-flower right" alt="" />
     </section>
 
-    <!-- 6. COUNTDOWN + LOKASI -->
+    <!-- COUNTDOWN + LOKASI -->
     <section id="section-countdown" class="section-countdown fade-section">
+      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png" class="countdown-flower left parallax-flower" data-speed="0.28" alt="" />
+      <img src="assets/flowers/04_bouquet_hotpink_peony.png" class="countdown-flower right parallax-flower" data-speed="0.32" alt="" />
+      <img src="assets/flowers/17_bouquet_blush_red.png" class="countdown-flower top-left parallax-flower" data-speed="0.15" alt="" />
       <div class="section-inner">
         <h2 class="section-title ivory">Kami Akan Bernikah Dalam</h2>
         <div class="countdown-wrap">
@@ -132,38 +133,79 @@
           <div class="countdown-unit"><span id="cd-secs">00</span><label>Saat</label></div>
         </div>
         <div class="lokasi-btns">
-          <a href="https://maps.google.com/?q=Dewan+Seri+Melati+Shah+Alam" target="_blank" class="btn-lokasi">
+          <a href="https://maps.google.com/?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi">
             📍 Lihat Lokasi (Google Maps)
           </a>
-          <a href="https://www.waze.com/ul?q=Dewan+Seri+Melati+Shah+Alam" target="_blank" class="btn-lokasi outline">
+          <a href="https://www.waze.com/ul?q=Kampung+Baru+Kuala+Lumpur" target="_blank" class="btn-lokasi outline">
             🚗 Buka Waze
           </a>
           <button id="add-calendar-btn" class="btn-lokasi outline">📅 Tambah ke Kalendar</button>
         </div>
       </div>
-      <img src="assets/flowers/07_bouquet_watercolor_burgundy.png" class="countdown-flower left" alt="" />
-      <img src="assets/flowers/04_bouquet_hotpink_peony.png" class="countdown-flower right" alt="" />
     </section>
 
-    <!-- 7. GALERI + UCAPAN -->
-    <section id="section-gallery" class="section-gallery fade-section">
+    <!-- SALAM KAUT / E-HADIAH -->
+    <section id="section-salam" class="section-salam fade-section">
       <img src="assets/flowers/18_top_border_floral.png" class="section-top-border" alt="" />
+      <img src="assets/flowers/01_bouquet_blush_peony.png" class="salam-flower tl parallax-flower" data-speed="0.2" alt="" />
+      <img src="assets/flowers/16_bouquet_round_pink.png" class="salam-flower tr parallax-flower" data-speed="0.25" alt="" />
+      <img src="assets/flowers/15_bouquet_big_pink_ladybug.png" class="salam-flower bl parallax-flower" data-speed="0.18" alt="" />
+      <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="salam-flower br parallax-flower" data-speed="0.3" alt="" />
+      <div class="section-inner">
+        <h2 class="section-title">Salam Kaut 💝</h2>
+        <p class="salam-sub">Hadiah dalam bentuk digital amat dihargai.<br>Imbas kod QR di bawah untuk transfer.</p>
+        <div class="salam-cards">
+          <!-- QR DuitNow -->
+          <div class="salam-card">
+            <div class="salam-icon">🏦</div>
+            <h3>DuitNow / Bank Transfer</h3>
+            <div class="qr-wrap" id="qr-duitnow">
+              <img src="assets/images/qr-duitnow.png" alt="QR DuitNow" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
+              <div class="qr-fallback">
+                <span>📲</span>
+                <p>QR akan dipaparkan<br>setelah gambar diupload</p>
+                <small>Nama fail: <code>qr-duitnow.png</code></small>
+              </div>
+            </div>
+            <p class="salam-name">Nabila binti Rashid</p>
+            <p class="salam-bank">Maybank · 1234 5678 9012</p>
+            <button class="btn-copy" data-copy="1234567890123">Salin No. Akaun</button>
+          </div>
+
+          <!-- QR TNG -->
+          <div class="salam-card">
+            <div class="salam-icon">💚</div>
+            <h3>Touch 'n Go eWallet</h3>
+            <div class="qr-wrap" id="qr-tng">
+              <img src="assets/images/qr-tng.png" alt="QR TNG" class="qr-img" onerror="this.parentElement.classList.add('qr-placeholder')" />
+              <div class="qr-fallback">
+                <span>📲</span>
+                <p>QR akan dipaparkan<br>setelah gambar diupload</p>
+                <small>Nama fail: <code>qr-tng.png</code></small>
+              </div>
+            </div>
+            <p class="salam-name">Nabila binti Rashid</p>
+            <p class="salam-bank">TNG eWallet</p>
+            <button class="btn-copy" data-copy="0123456789">Salin No. Telefon</button>
+          </div>
+        </div>
+        <p class="salam-note">✨ Terima kasih atas kebaikan hati anda. Semoga Allah merahmati anda sekeluarga.</p>
+      </div>
+    </section>
+
+    <!-- GALERI + UCAPAN -->
+    <section id="section-gallery" class="section-gallery fade-section">
+      <img src="assets/flowers/18_top_border_floral.png" class="section-top-border flip" alt="" />
+      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner tl parallax-flower" data-speed="0.2" alt="" />
+      <img src="assets/flowers/11_corner_wreath_burgundy.png" class="gallery-corner br parallax-flower" data-speed="0.15" alt="" />
       <div class="section-inner">
         <h2 class="section-title">Kenangan Indah</h2>
         <div class="gallery-slider" id="gallery-slider">
           <div class="gallery-track" id="gallery-track">
-            <div class="gallery-slide placeholder-slide">
-              <div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div>
-            </div>
-            <div class="gallery-slide placeholder-slide">
-              <div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div>
-            </div>
-            <div class="gallery-slide placeholder-slide">
-              <div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div>
-            </div>
-            <div class="gallery-slide placeholder-slide">
-              <div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div>
-            </div>
+            <div class="gallery-slide placeholder-slide"><div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div></div>
+            <div class="gallery-slide placeholder-slide"><div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div></div>
+            <div class="gallery-slide placeholder-slide"><div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div></div>
+            <div class="gallery-slide placeholder-slide"><div class="gallery-placeholder">📷<br><small>Foto Pasangan</small></div></div>
           </div>
           <button class="gallery-btn prev" id="gallery-prev">&#8249;</button>
           <button class="gallery-btn next" id="gallery-next">&#8250;</button>
@@ -180,12 +222,12 @@
           <h3 class="ucapan-title">Ucapan &amp; Doa</h3>
           <div class="ucapan-list" id="ucapan-list">
             <div class="ucapan-item">
-              <strong>Keluarga Azman</strong>
-              <p>Selamat pengantin baru! Semoga rumah tangga kalian dipenuhi barakah. 🌸</p>
+              <strong>Keluarga Zulkifli</strong>
+              <p>Selamat pengantin baru Nabila & Azman! Semoga dipenuhi barakah. 🌸</p>
             </div>
             <div class="ucapan-item">
-              <strong>Rakan-rakan UiTM</strong>
-              <p>Tahniah Aisyah & Marwan! Semoga bahagia dunia akhirat. Aamiin ✨</p>
+              <strong>Rakan-rakan</strong>
+              <p>Tahniah! Semoga bahagia dunia akhirat. Aamiin ✨</p>
             </div>
           </div>
           <button id="toggle-ucapan-form" class="btn-ucapan">Tinggalkan Ucapan</button>
@@ -198,8 +240,10 @@
       </div>
     </section>
 
-    <!-- 8. RSVP + FOOTER -->
+    <!-- RSVP + FOOTER -->
     <section id="section-rsvp" class="section-rsvp fade-section">
+      <img src="assets/flowers/17_bouquet_blush_red.png" class="rsvp-flower left parallax-flower" data-speed="0.22" alt="" />
+      <img src="assets/flowers/04_bouquet_hotpink_peony.png" class="rsvp-flower right parallax-flower" data-speed="0.18" alt="" />
       <div class="section-inner">
         <div class="rsvp-contact-wrap">
           <div class="rsvp-box">
@@ -233,16 +277,15 @@
               <p>✅ Terima kasih! Kehadiran anda telah direkodkan.</p>
             </div>
           </div>
-
           <div class="contact-box">
             <h3 class="contact-title">Hubungi Kami</h3>
-            <a href="https://wa.me/60123456789?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20Aisyah%20%26%20Marwan" target="_blank" class="btn-contact whatsapp">
+            <a href="https://wa.me/60123456789?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20majlis%20Nabila%20%26%20Azman" target="_blank" class="btn-contact whatsapp">
               <span>💬</span> WhatsApp
             </a>
             <a href="tel:+60123456789" class="btn-contact phone">
               <span>📞</span> Hubungi Pengantin
             </a>
-            <a href="mailto:aisyah.marwan2025@gmail.com" class="btn-contact email">
+            <a href="mailto:nabila.azman2026@gmail.com" class="btn-contact email">
               <span>✉️</span> Email
             </a>
           </div>
@@ -252,12 +295,14 @@
 
     <!-- FOOTER -->
     <footer id="footer" class="footer">
-      <img src="assets/flowers/16_bouquet_round_pink.png" class="footer-flower left" alt="" />
-      <img src="assets/flowers/16_bouquet_round_pink.png" class="footer-flower right" alt="" />
+      <img src="assets/flowers/16_bouquet_round_pink.png" class="footer-flower left parallax-flower" data-speed="0.12" alt="" />
+      <img src="assets/flowers/16_bouquet_round_pink.png" class="footer-flower right parallax-flower" data-speed="0.12" alt="" />
+      <img src="assets/flowers/09_accent_pink_flower.png" class="footer-accent left2 parallax-flower" data-speed="0.08" alt="" />
+      <img src="assets/flowers/13_accent_pink_dahlia.png" class="footer-accent right2 parallax-flower" data-speed="0.08" alt="" />
       <div class="footer-inner">
-        <p class="footer-names">Aisyah &amp; Marwan</p>
+        <p class="footer-names">Nabila &amp; Azman</p>
         <p class="footer-thanks">Terima Kasih 🤍<br><em>Jazakumullahu Khairan</em></p>
-        <p class="footer-date">25 · 10 · 2025</p>
+        <p class="footer-date">04 · 10 · 2026</p>
       </div>
     </footer>
 
