@@ -49,12 +49,14 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
   mainContent.classList.remove('hidden');
   mainContent.classList.add('visible');
 
+  // Show hero immediately, set up observer for other sections
+  initFadeIn();
+  startParallax();
+
   setTimeout(() => {
     doorAnim.classList.add('done');
     if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
-    initFadeIn();
-    startParallax();
   }, 1800);
 });
 
@@ -62,27 +64,28 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
    SCROLL FADE-IN (snap-aware)
 ══════════════════════════════════════ */
 function initFadeIn() {
-  function checkFadeIn() {
-    document.querySelectorAll('.fade-section').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 1.1) {
-        el.classList.add('in-view');
-      }
-    });
+  const sections = document.querySelectorAll('.fade-section');
+
+  // Hero: show instantly with no animation delay
+  const hero = document.getElementById('section-hero');
+  if (hero) {
+    hero.style.transition = 'none';
+    hero.classList.add('in-view');
   }
 
-  // Trigger visible section immediately, then re-check on every snap scroll
-  checkFadeIn();
-  window.addEventListener('scroll', checkFadeIn, { passive: true });
-
-  // Also trigger each section as it snaps into view using IntersectionObserver
+  // All other sections: animate in when they snap into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('in-view');
+      if (entry.isIntersecting) {
+        entry.target.style.transition = '';
+        entry.target.classList.add('in-view');
+      }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.2 });
 
-  document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+  sections.forEach(el => {
+    if (el.id !== 'section-hero') observer.observe(el);
+  });
 }
 
 /* ══════════════════════════════════════
