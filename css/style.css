@@ -94,13 +94,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .door-panel.right-panel { border-left:  2px solid var(--gold); transform-origin: right center; }
 .door-panel::before { content:''; position:absolute; inset:20px; border:1px solid rgba(212,175,55,0.3); }
 .door-panel::after  { content:''; position:absolute; inset:35px; border:1px solid rgba(212,175,55,0.15); }
-.door-handle { position:absolute; top:50%; width:10px; height:40px; background:var(--gold); border-radius:5px; transform:translateY(-50%); }
-.right-handle { right:12px; } .left-handle { left:12px; }
+.door-handle { position:absolute; top:65%; width:8px; height:36px; background:var(--gold); border-radius:4px; transform:translateY(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.right-handle { right:14px; } .left-handle { left:14px; }
 
 .cover-overlay {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   z-index: 2; pointer-events: none;
+  padding-bottom: 20%;
 }
 .cover-greeting { font-family:'Great Vibes',cursive; font-size:clamp(2rem,6vw,3.5rem); color:var(--dusty-pink); text-shadow:0 2px 8px rgba(0,0,0,0.5); animation:fadeInUp 1s ease 0.3s both; }
 .cover-invited  { font-family:'Playfair Display',serif; font-size:clamp(1rem,3vw,1.5rem); color:rgba(255,255,255,0.85); letter-spacing:4px; margin:0.5rem 0 2rem; animation:fadeInUp 1s ease 0.5s both; }
