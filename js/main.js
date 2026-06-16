@@ -276,12 +276,12 @@ function renderUcapan(list) {
   if (!list.length) { el.innerHTML = ''; return; }
   el.innerHTML = list.slice().reverse().map(u => `
     <div class="ucapan-item">
-      <div class="ucapan-avatar">${escapeHtml(u.nama[0].toUpperCase())}</div>
-      <div class="ucapan-body">
-        <strong>${escapeHtml(u.nama)}</strong>
-        <p>${escapeHtml(u.msg)}</p>
-        <span class="ucapan-time">${u.tarikh || ''}</span>
+      <div class="ucapan-item-head">
+        <div class="ucapan-avatar">${escapeHtml(u.nama[0].toUpperCase())}</div>
+        <div class="ucapan-body"><strong>${escapeHtml(u.nama)}</strong></div>
       </div>
+      <p>${escapeHtml(u.msg)}</p>
+      <span class="ucapan-time">${u.tarikh || ''}</span>
     </div>`).join('');
 }
 
