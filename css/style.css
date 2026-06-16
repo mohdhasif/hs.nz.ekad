@@ -776,73 +776,68 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(212,175,55,0.5); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-/* Ucapan list — 2-column grid of cards */
+/* Ucapan list — single column, scrollable, ornament dividers */
 .ucapan-list {
   margin-top: 0.7rem;
   width: 100%;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--dusty-pink) transparent;
-  align-content: start;
-  padding-right: 2px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,175,55,0.22);
+  border-radius: 16px;
+  padding: 4px 16px;
 }
 .ucapan-item {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 14px;
-  padding: 10px 12px;
+  gap: 4px;
+  padding: 12px 2px;
   animation: fadeInUp 0.3s ease;
   text-align: left;
-  box-shadow: 0 2px 8px rgba(107,29,42,0.06);
-  overflow: hidden;
 }
-.ucapan-item::after {
-  content: '';
-  position: absolute;
-  bottom: -10px; right: -10px;
-  width: 48px; height: 48px;
-  background: url('../assets/flowers/01_bouquet_blush_peony.png') center/contain no-repeat;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
+.ucapan-item:not(:last-child) {
+  border-bottom: none;
 }
-.ucapan-item:nth-child(even)::after {
-  background-image: url('../assets/flowers/03_bouquet_burgundy_peony_butterfly.png');
+.ucapan-item:not(:last-child)::after {
+  content: '❀';
+  display: block;
+  text-align: center;
+  color: var(--gold);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 8px;
 }
-.ucapan-item-head, .ucapan-item p, .ucapan-time { position: relative; z-index: 1; }
-.ucapan-item-head { display: flex; align-items: center; gap: 8px; }
+.ucapan-item-head { display: flex; align-items: center; gap: 9px; }
 .ucapan-avatar {
-  width: 28px; height: 28px;
+  width: 30px; height: 30px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--burgundy), #c0415a);
   color: white;
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .ucapan-body { min-width: 0; }
-.ucapan-body strong { display: block; font-size: 0.78rem; color: var(--burgundy); font-weight: 700; }
-.ucapan-item p { font-size: 0.74rem; color: #5a2535; line-height: 1.55; margin: 0; word-break: break-word; padding-bottom: 14px; }
+.ucapan-body strong { display: block; font-size: 0.82rem; color: var(--burgundy); font-weight: 700; }
+.ucapan-item p { font-size: 0.78rem; color: #5a2535; line-height: 1.6; margin: 0 0 0 39px; word-break: break-word; }
 .ucapan-time {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   color: var(--gold);
   font-weight: 600;
   letter-spacing: 0.02em;
+  margin-left: 39px;
 }
 .ucapan-time::before { content: '📅'; font-size: 0.6rem; }
 
