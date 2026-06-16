@@ -247,8 +247,8 @@ document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
    2. Cipta bin baru dengan kandungan: []
    3. Isi JSONBIN_KEY dan JSONBIN_ID di bawah
 ══════════════════════════════════════ */
-const JSONBIN_KEY = '';  // ← tampal X-Master-Key anda di sini
-const JSONBIN_ID  = '';  // ← tampal Bin ID anda di sini
+const JSONBIN_KEY = '$2a$10$qMFAOyhbmsX/cvhVsuHNL.smnyjJrjIuQk01GAXPQCdXU2GtqDArK';
+const JSONBIN_ID  = '6a319f4eda38895dfecbb201';
 const LS_KEY      = 'ekad_ucapan';
 
 function ucapanSave(list) {
