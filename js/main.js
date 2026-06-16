@@ -10,58 +10,20 @@ window.addEventListener('load', () => {
 });
 
 /* ══════════════════════════════════════
-   MUSIC — YouTube IFrame API
+   MUSIC TOGGLE
 ══════════════════════════════════════ */
-const musicBtn = document.getElementById('music-btn');
-let ytPlayer = null;
+const musicBtn  = document.getElementById('music-btn');
+const bgMusic   = document.getElementById('bg-music');
 let musicPlaying = false;
-let ytReady = false;
-let playOnReady = false;
-
-// YouTube IFrame API callback (dipanggil oleh API bila sedia)
-window.onYouTubeIframeAPIReady = function () {
-  ytPlayer = new YT.Player('yt-player', {
-    videoId: '1_3puR9HpKw',
-    playerVars: {
-      autoplay: 0,
-      controls: 0,
-      loop: 1,
-      playlist: '1_3puR9HpKw',
-      mute: 0,
-      rel: 0,
-      modestbranding: 1,
-    },
-    events: {
-      onReady: function () {
-        ytReady = true;
-        ytPlayer.setVolume(70);
-        if (playOnReady) {
-          ytPlayer.playVideo();
-          musicPlaying = true;
-          musicBtn.classList.remove('muted');
-        }
-      },
-      onStateChange: function (e) {
-        // Bila video habis, loop balik
-        if (e.data === YT.PlayerState.ENDED) {
-          ytPlayer.seekTo(0);
-          ytPlayer.playVideo();
-        }
-      }
-    }
-  });
-};
 
 function playMusic() {
-  if (!ytReady) { playOnReady = true; return; }
-  ytPlayer.playVideo();
+  bgMusic.play().catch(() => {});
   musicPlaying = true;
   musicBtn.classList.remove('muted');
 }
 
 function pauseMusic() {
-  if (!ytReady || !ytPlayer) return;
-  ytPlayer.pauseVideo();
+  bgMusic.pause();
   musicPlaying = false;
   musicBtn.classList.add('muted');
 }
@@ -88,7 +50,7 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
 
   setTimeout(() => {
     doorAnim.classList.add('done');
-    playMusic();
+    bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
     checkFadeIn();
     startParallax();
   }, 1800);
