@@ -300,63 +300,62 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @keyframes petalFall { 0%{opacity:0;transform:translateY(-20px) rotate(0deg);} 10%{opacity:0.7;} 90%{opacity:0.5;} 100%{opacity:0;transform:translateY(100vh) rotate(360deg) translateX(60px);} }
 
 /* ══════════════════════════════════════
-   BUTIRAN MAJLIS
+   BUTIRAN MAJLIS + COUNTDOWN (combined)
 ══════════════════════════════════════ */
 .section-details {
-  background: linear-gradient(160deg, #f9eff1 0%, #fdf6f0 50%, #f9eff1 100%);
+  background: linear-gradient(175deg, #f9eff1 0%, #fdf6f0 45%, #2a0a10 100%);
 }
 
-.det-heading { text-align: center; margin-bottom: clamp(0.8rem,2vw,1.4rem); }
-.det-sub { font-size: 0.78rem; color: var(--text-mid); letter-spacing: 2px; font-style: italic; margin-bottom: 0.3rem; }
-.det-ornament { font-size: 0.55rem; letter-spacing: 8px; color: var(--gold); opacity: 0.8; margin: 4px 0 0; }
+.details-combined {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 18px);
+  width: 100%;
+  max-width: 500px;
+}
 
-/* Single majlis card */
+/* Event card */
 .majlis-single {
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.90);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(212,175,55,0.45);
-  border-radius: 20px;
-  padding: clamp(20px,3.5vw,38px) clamp(24px,5vw,56px);
-  box-shadow: 0 8px 40px rgba(107,29,42,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
-  max-width: 480px;
-  margin: 0 auto;
+  border-radius: 18px;
+  padding: clamp(14px,2.5vw,26px) clamp(18px,4vw,40px);
+  box-shadow: 0 6px 30px rgba(107,29,42,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
   position: relative;
 }
-.majlis-single::before { content:''; position:absolute; top:12px; left:12px; width:20px; height:20px; border-top:2px solid rgba(212,175,55,0.55); border-left:2px solid rgba(212,175,55,0.55); border-radius:2px 0 0 0; }
-.majlis-single::after  { content:''; position:absolute; bottom:12px; right:12px; width:20px; height:20px; border-bottom:2px solid rgba(212,175,55,0.55); border-right:2px solid rgba(212,175,55,0.55); border-radius:0 0 2px 0; }
+.majlis-single::before { content:''; position:absolute; top:10px; left:10px; width:18px; height:18px; border-top:2px solid rgba(212,175,55,0.55); border-left:2px solid rgba(212,175,55,0.55); }
+.majlis-single::after  { content:''; position:absolute; bottom:10px; right:10px; width:18px; height:18px; border-bottom:2px solid rgba(212,175,55,0.55); border-right:2px solid rgba(212,175,55,0.55); }
 
-.majlis-badge-top { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:clamp(14px,2.5vw,22px); padding-bottom:clamp(12px,2vw,18px); border-bottom:1px solid rgba(212,175,55,0.22); }
-.ms-icon { font-size:1.5rem; }
-.ms-badge { background:linear-gradient(135deg,var(--burgundy),#9b2d3f); color:white; font-family:'Playfair Display',serif; font-size:0.82rem; font-weight:600; letter-spacing:2.5px; padding:5px 20px; border-radius:99px; text-transform:uppercase; box-shadow:0 4px 14px rgba(107,29,42,0.28); }
+.majlis-badge-top { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:clamp(10px,2vw,16px); padding-bottom:clamp(8px,1.5vw,14px); border-bottom:1px solid rgba(212,175,55,0.22); }
+.ms-icon  { font-size:1.3rem; }
+.ms-badge { background:linear-gradient(135deg,var(--burgundy),#9b2d3f); color:white; font-family:'Playfair Display',serif; font-size:clamp(0.7rem,1.8vw,0.8rem); font-weight:600; letter-spacing:2px; padding:4px 16px; border-radius:99px; text-transform:uppercase; box-shadow:0 4px 14px rgba(107,29,42,0.28); }
 
-.majlis-list { list-style:none; display:flex; flex-direction:column; gap:clamp(8px,1.5vw,14px); }
-.majlis-list li { display:flex; align-items:center; gap:12px; padding-bottom:clamp(8px,1.5vw,13px); border-bottom:1px solid rgba(212,175,55,0.12); }
+.majlis-list { list-style:none; display:flex; flex-direction:column; gap:clamp(6px,1.2vw,10px); }
+.majlis-list li { display:flex; align-items:center; gap:10px; padding-bottom:clamp(6px,1.2vw,10px); border-bottom:1px solid rgba(212,175,55,0.12); }
 .majlis-list li:last-child { border-bottom:none; padding-bottom:0; }
-.ml-icon { font-size:1rem; width:32px; height:32px; background:linear-gradient(135deg,#fdf0f2,#f5dde0); border:1px solid rgba(212,175,55,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.ml-text { display:flex; flex-direction:column; gap:1px; }
-.ml-label { display:block; font-size:0.58rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; }
-.ml-text span:not(.ml-label) { font-size:clamp(0.82rem,2vw,0.9rem); color:var(--text-dark); font-weight:500; }
+.ml-icon  { font-size:0.9rem; width:28px; height:28px; background:linear-gradient(135deg,#fdf0f2,#f5dde0); border:1px solid rgba(212,175,55,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ml-text  { display:flex; flex-direction:column; gap:1px; }
+.ml-label { display:block; font-size:0.56rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.ml-text span:not(.ml-label) { font-size:clamp(0.8rem,2vw,0.88rem); color:var(--text-dark); font-weight:500; }
 
-.majlis-gold-line { display:flex; align-items:center; gap:10px; margin:clamp(12px,2vw,18px) 0 8px; color:var(--gold); font-size:0.55rem; opacity:0.7; }
-.majlis-gold-line::before,.majlis-gold-line::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,0.5),transparent); }
-.majlis-doa { text-align:center; font-style:italic; font-size:clamp(0.72rem,1.8vw,0.82rem); color:var(--text-mid); }
+/* Section divider */
+.det-sep { display:flex; align-items:center; gap:10px; color:var(--gold); font-size:0.5rem; opacity:0.65; }
+.det-sep::before,.det-sep::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,0.4),transparent); }
 
-/* ══════════════════════════════════════
-   COUNTDOWN
-══════════════════════════════════════ */
-.section-countdown {
-  background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
-}
+/* Countdown block (sits below card, on dark gradient) */
+.countdown-block { text-align: center; }
+.cd-label { font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:0.6rem; }
 
-.countdown-wrap { display:flex; align-items:center; justify-content:center; gap:clamp(10px,3vw,28px); margin:1.5rem 0; flex-wrap:wrap; }
+.countdown-wrap { display:flex; align-items:center; justify-content:center; gap:clamp(6px,2vw,16px); margin:0 0 0.9rem; }
 .countdown-unit { text-align:center; }
-.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-size:clamp(2rem,7vw,3.6rem); color:white; line-height:1; background:rgba(255,255,255,0.1); border:1px solid rgba(212,175,55,0.4); border-radius:10px; padding:10px 18px; min-width:72px; }
-.countdown-unit label { display:block; font-size:0.7rem; letter-spacing:2px; color:var(--dusty-pink); text-transform:uppercase; margin-top:6px; }
-.countdown-sep { font-size:1.8rem; color:var(--gold); font-weight:bold; margin-top:-14px; }
+.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-size:clamp(1.5rem,5vw,2.4rem); color:white; line-height:1; background:rgba(255,255,255,0.1); border:1px solid rgba(212,175,55,0.4); border-radius:10px; padding:7px 13px; min-width:54px; }
+.countdown-unit label { display:block; font-size:0.6rem; letter-spacing:2px; color:var(--dusty-pink); text-transform:uppercase; margin-top:4px; }
+.countdown-sep { font-size:1.4rem; color:var(--gold); font-weight:bold; margin-top:-12px; }
 
-.lokasi-btns { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:1.5rem; }
-.btn-lokasi  { display:inline-flex; align-items:center; gap:6px; padding:0.6rem 1.4rem; border-radius:99px; font-size:0.84rem; font-family:'Poppins',sans-serif; font-weight:500; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
-.btn-lokasi.outline { background:transparent; color:white; border-color:rgba(255,255,255,0.5); }
+.lokasi-btns { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.1rem; border-radius:99px; font-size:0.8rem; font-family:'Poppins',sans-serif; font-weight:500; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
+.btn-lokasi.outline { background:transparent; color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.45); }
 .btn-lokasi:hover         { transform:scale(1.04); }
 .btn-lokasi.outline:hover { border-color:white; background:rgba(255,255,255,0.1); }
 
@@ -486,13 +485,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Hero */
   .hero-frame { width: 88vw; padding: 20px 18px; }
 
-  /* Butiran Majlis — single card tighter */
-  .majlis-single { padding: 18px 20px; }
-
-  /* Countdown */
-  .countdown-sep { display: none; }
-  .countdown-wrap { gap: 8px; }
-  .countdown-unit span { min-width: 58px; padding: 8px 12px; font-size: 1.7rem; }
+  /* Combined details section */
+  .details-combined { gap: 8px; }
+  .majlis-single { padding: 12px 16px; }
+  .countdown-unit span { min-width: 46px; padding: 6px 10px; }
 
   /* Salam — stack vertically on small phones */
   .salam-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
