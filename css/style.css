@@ -418,16 +418,46 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .section-salam .section-inner {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: clamp(10px,2vh,18px);
   padding: clamp(16px,4vh,36px) clamp(20px,5vw,48px);
+}
+
+/* Double-border card frame wrapping whole Tanda Kasih content */
+.salam-card-frame {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px,2vh,16px);
+  border: 1px solid rgba(107,29,42,0.3);
+  border-radius: 18px;
+  padding: clamp(14px,3vh,22px) clamp(14px,3.5vw,22px);
+  position: relative;
+}
+.salam-card-frame::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed rgba(212,175,55,0.55);
+  border-radius: 12px;
+  pointer-events: none;
 }
 
 .salam-header { text-align:center; }
 .salam-title-top { font-size:0.75rem; color:var(--text-mid); letter-spacing:3px; font-style:italic; margin-bottom:0.2rem; }
 .salam-header .section-title { margin-bottom:0.2rem; }
 .salam-sub { color:var(--text-mid); font-size:0.82rem; line-height:1.7; margin:0; }
+
+/* Ornamental dividers (used above title and between QR block and verse) */
+.salam-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 0.5rem;
+}
+.salam-divider span:first-child,
+.salam-divider span:last-child { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); max-width: 70px; }
+.salam-divider-icon { color: var(--gold); font-size: 0.7rem; flex: none; }
+.salam-divider-sm { margin: 0; }
 
 /* Single salam card — bigger, centred */
 .salam-single {
