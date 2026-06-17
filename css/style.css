@@ -438,9 +438,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: clamp(10px,2vh,16px);
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(107,29,42,0.3);
   border-radius: 18px;
   padding: clamp(14px,3vh,22px) clamp(14px,3.5vw,22px);
+  box-shadow: 0 8px 32px rgba(107,29,42,0.14);
   position: relative;
 }
 .salam-card-frame::before {
