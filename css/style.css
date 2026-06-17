@@ -415,6 +415,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0;
 }
 
+/* Richer, denser floral framing to match Tanda Kasih reference */
+.section-salam .pf-strip-t,
+.section-salam .pf-strip-b { height: clamp(110px, 18vw, 190px); opacity: 0.95; }
+.section-salam .pf-tl,
+.section-salam .pf-tr,
+.section-salam .pf-bl,
+.section-salam .pf-br { width: clamp(220px, 36vw, 420px); opacity: 0.95; }
+
 .section-salam .section-inner {
   flex: 1;
   display: flex;
