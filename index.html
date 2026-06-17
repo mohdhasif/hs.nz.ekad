@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=47" />
+  <link rel="stylesheet" href="css/style.css?v=48" />
 </head>
 <body>
 
@@ -157,41 +157,45 @@
         <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
       </div>
       <div class="section-inner">
-        <div class="salam-header">
-          <p class="salam-title-top">— Hadiah Pengantin —</p>
-          <h2 class="section-title">Salam Kaut 💝</h2>
-          <p class="salam-sub">Imbas QR atau pindah melalui bank. Amat dihargai.</p>
-        </div>
-
-        <div class="salam-single">
-          <!-- QR — tap to enlarge -->
-          <div class="qr-wrap-big" id="qr-duitnow" onclick="document.getElementById('qr-modal').classList.add('open')">
-            <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow" class="qr-img-big" onerror="this.parentElement.classList.add('qr-placeholder')" />
-            <div class="qr-fallback-big"><span>📲</span><p>QR tidak dijumpai</p></div>
-            <div class="qr-tap-hint">👆 Ketuk untuk besarkan</div>
+        <div class="salam-card-frame">
+          <div class="salam-header">
+            <div class="salam-divider"><span></span><span class="salam-divider-icon">✦</span><span></span></div>
+            <h2 class="section-title">Tanda Kasih</h2>
+            <p class="salam-sub">Dengan penuh kesyukuran,<br>kami menghargai setiap doa dan tanda kasih yang diberikan.</p>
           </div>
 
-          <!-- Bank details -->
-          <div class="salam-info">
-            <p class="salam-name-big">Nurul Nabila</p>
-            <p class="salam-bank-name">CIMB Bank</p>
-            <div class="acc-row">
-              <span class="acc-num" id="acc-display">7618845421</span>
-              <button class="btn-copy-acc" data-copy="7618845421" aria-label="Salin nombor akaun">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span>Salin</span>
-              </button>
+          <div class="salam-single">
+            <!-- QR — tap to enlarge -->
+            <div class="qr-wrap-big" id="qr-duitnow" onclick="document.getElementById('qr-modal').classList.add('open')">
+              <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow" class="qr-img-big" onerror="this.parentElement.classList.add('qr-placeholder')" />
+              <div class="qr-fallback-big"><span>📲</span><p>QR tidak dijumpai</p></div>
+              <div class="qr-tap-hint">👆 Ketuk untuk besarkan</div>
+            </div>
+
+            <!-- Bank details -->
+            <div class="salam-info">
+              <p class="salam-name-big">Nurul Nabila</p>
+              <p class="salam-bank-name">CIMB Bank</p>
+              <div class="acc-row">
+                <span class="acc-num" id="acc-display">7618845421</span>
+                <button class="btn-copy-acc" data-copy="7618845421" aria-label="Salin nombor akaun">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Salin</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Verse / doa box -->
-        <div class="salam-verse">
-          <p class="salam-verse-ar">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا</p>
-          <p class="salam-verse-tr">Semoga Allah memberkati kamu berdua dan mencurahkan keberkatan ke atas kamu.</p>
-        </div>
+          <div class="salam-divider salam-divider-sm"><span></span><span class="salam-divider-icon">●</span><span></span></div>
 
-        <p class="salam-note">✨ Hadiah anda amat dihargai. Terima kasih kerana sudi hadir.</p>
+          <!-- Verse / doa box -->
+          <div class="salam-verse">
+            <p class="salam-verse-ar">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا</p>
+            <p class="salam-verse-tr">Semoga Allah memberkati kamu berdua dan mencurahkan keberkatan ke atas kamu.</p>
+          </div>
+
+          <p class="salam-note">Terima kasih atas doa dan kehadiran anda.</p>
+        </div>
       </div>
 
       <!-- QR Modal -->
@@ -323,6 +327,6 @@
 
   </div><!-- end main-content -->
 
-  <script src="js/main.js?v=47"></script>
+  <script src="js/main.js?v=48"></script>
 </body>
 </html>
