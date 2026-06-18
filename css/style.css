@@ -403,36 +403,47 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .countdown-block {
   background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
   text-align: center;
-  padding: clamp(14px,3vw,24px) clamp(16px,5vw,40px) clamp(16px,3vw,24px);
+  padding: clamp(28px,5vw,40px) clamp(16px,5vw,40px) clamp(16px,3vw,24px);
   position: relative; z-index: 4;
 }
 
-/* Gold line between card and countdown */
+/* Curved wave divider between light card area and dark countdown panel */
 .details-divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 clamp(16px,5vw,40px);
+  position: relative;
+  height: clamp(28px, 6vw, 44px);
   background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
-  position: relative; z-index: 4;
+  z-index: 4;
+  overflow: hidden;
 }
-.details-divider::before,
-.details-divider::after { content:''; flex:1; height:1px; background:rgba(212,175,55,0.35); }
-.details-divider span { color:var(--gold); font-size:0.5rem; opacity:0.8; flex-shrink:0; }
+.details-divider::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -8%; right: -8%;
+  height: 100%;
+  background: #f9eff1;
+  border-radius: 0 0 50% 50%;
+}
+.details-divider span { display: none; }
 
-.cd-label { font-size:0.68rem; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:0.7rem; }
+.cd-label {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem,3vw,1.3rem);
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  margin-bottom: clamp(12px,2.5vw,18px);
+}
 
 .countdown-wrap { display:flex; align-items:center; justify-content:center; gap:clamp(6px,2vw,14px); margin:0 0 clamp(10px,2vw,16px); }
 .countdown-unit { text-align:center; }
-.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-size:clamp(1.6rem,5.5vw,2.6rem); color:white; line-height:1; background:rgba(255,255,255,0.08); border:1px solid rgba(212,175,55,0.45); border-radius:12px; padding:8px 14px; min-width:58px; }
-.countdown-unit label { display:block; font-size:0.58rem; letter-spacing:2px; color:var(--dusty-pink); text-transform:uppercase; margin-top:5px; }
+.countdown-unit span { display:block; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(1.6rem,5.5vw,2.6rem); color:var(--burgundy); line-height:1; background:#fff; border-radius:12px; padding:8px 14px; min-width:58px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); }
+.countdown-unit label { display:block; font-size:0.58rem; letter-spacing:2px; color:var(--gold-light); text-transform:uppercase; font-weight:600; margin-top:6px; }
 .countdown-sep { font-size:1.5rem; color:var(--gold); font-weight:bold; margin-top:-14px; }
 
 .lokasi-btns { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.2rem; border-radius:99px; font-size:0.8rem; font-family:'Poppins',sans-serif; font-weight:500; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
-.btn-lokasi.outline { background:transparent; color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.4); }
-.btn-lokasi:hover         { transform:scale(1.04); }
-.btn-lokasi.outline:hover { border-color:white; background:rgba(255,255,255,0.08); }
+.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.2rem; border-radius:99px; font-size:0.74rem; font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
+.btn-lokasi.outline { background:var(--gold); color:var(--text-dark); border-color:var(--gold); }
+.btn-lokasi:hover { transform:scale(1.04); }
+.btn-lokasi.outline:hover { background:var(--gold-light); }
 
 /* ══════════════════════════════════════
    SALAM KAUT
