@@ -363,6 +363,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative; z-index: 4;
 }
 
+/* Heading above event card */
+.details-heading { text-align: center; margin-bottom: clamp(14px,2.5vh,22px); }
+.details-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  color: var(--burgundy);
+  line-height: 1.25;
+  margin-bottom: clamp(8px,1.5vh,14px);
+}
+.details-date-row { display:flex; align-items:center; justify-content:center; gap:8px; }
+.details-date { font-family:'Playfair Display',serif; font-size:clamp(0.85rem,2.2vw,1rem); color:var(--text-mid); letter-spacing:1px; }
+.details-heart { color: var(--gold); font-size: 0.8rem; }
+
 /* Event card */
 .majlis-single {
   background: rgba(255,255,255,0.92);
@@ -377,10 +390,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .majlis-single::before { content:''; position:absolute; top:10px; left:10px; width:18px; height:18px; border-top:2px solid rgba(212,175,55,0.5); border-left:2px solid rgba(212,175,55,0.5); }
 .majlis-single::after  { content:''; position:absolute; bottom:10px; right:10px; width:18px; height:18px; border-bottom:2px solid rgba(212,175,55,0.5); border-right:2px solid rgba(212,175,55,0.5); }
-
-.majlis-badge-top { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:clamp(10px,2vw,16px); padding-bottom:clamp(8px,1.5vw,14px); border-bottom:1px solid rgba(212,175,55,0.2); }
-.ms-icon  { font-size:1.2rem; }
-.ms-badge { background:linear-gradient(135deg,var(--burgundy),#9b2d3f); color:white; font-family:'Playfair Display',serif; font-size:clamp(0.68rem,1.8vw,0.78rem); font-weight:600; letter-spacing:2px; padding:5px 18px; border-radius:99px; text-transform:uppercase; box-shadow:0 4px 14px rgba(107,29,42,0.28); }
 
 .majlis-list { list-style:none; display:flex; flex-direction:column; gap:clamp(6px,1.2vw,11px); }
 .majlis-list li { display:flex; align-items:center; gap:10px; padding-bottom:clamp(6px,1.2vw,11px); border-bottom:1px solid rgba(212,175,55,0.10); }
