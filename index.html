@@ -7,9 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=52" />
+  <link rel="stylesheet" href="css/style.css?v=53" />
 </head>
 <body>
+<div id="app-frame">
 
   <!-- LOADING SCREEN -->
   <div id="loading-screen">
@@ -59,8 +60,9 @@
   <!-- ══════════════════════════════
        SCROLL SNAP CONTAINER
   ══════════════════════════════ -->
+  <div id="petals-canvas"></div>
+
   <div id="main-content" class="main-content hidden">
-    <div id="petals-canvas"></div>
 
     <!-- ── 1. HERO ── -->
     <section id="section-hero" class="snap-section section-hero fade-section">
@@ -197,15 +199,6 @@
           <p class="salam-note">Terima kasih atas doa dan kehadiran anda.</p>
         </div>
       </div>
-
-      <!-- QR Modal -->
-      <div id="qr-modal" class="qr-modal" onclick="this.classList.remove('open')">
-        <div class="qr-modal-inner" onclick="event.stopPropagation()">
-          <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow Besar" />
-          <p>Nurul Nabila · CIMB Bank</p>
-          <button onclick="document.getElementById('qr-modal').classList.remove('open')">✕ Tutup</button>
-        </div>
-      </div>
     </section>
 
     <!-- ── 5. GALERI ── -->
@@ -327,6 +320,17 @@
 
   </div><!-- end main-content -->
 
-  <script src="js/main.js?v=52"></script>
+  <!-- QR Modal -->
+  <div id="qr-modal" class="qr-modal" onclick="this.classList.remove('open')">
+    <div class="qr-modal-inner" onclick="event.stopPropagation()">
+      <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow Besar" />
+      <p>Nurul Nabila · CIMB Bank</p>
+      <button onclick="document.getElementById('qr-modal').classList.remove('open')">✕ Tutup</button>
+    </div>
+  </div>
+
+</div><!-- end app-frame -->
+
+  <script src="js/main.js?v=53"></script>
 </body>
 </html>
