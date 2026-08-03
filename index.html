@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=63" />
+  <link rel="stylesheet" href="css/style.css?v=64" />
 </head>
 <body>
 <div id="app-frame">
@@ -51,23 +51,87 @@
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
-          <!-- outer scallop ring -->
-          <div class="wax-ring-outer"></div>
-          <!-- inner decorative rim -->
-          <div class="wax-ring-inner"></div>
-          <!-- monogram content -->
-          <div class="wax-content">
-            <div class="wax-mono">
-              <span class="wm-letter wm-n">N</span>
-              <span class="wm-letter wm-h">H</span>
-            </div>
-            <div class="wax-divider">
-              <span class="wd-line"></span>
-              <span class="wd-amp">&amp;</span>
-              <span class="wd-line"></span>
-            </div>
-            <p class="wax-date-stamp">04 · 10 · 2026</p>
-          </div>
+          <svg class="wax-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Realistic wax gradient -->
+              <radialGradient id="wg" cx="34%" cy="28%" r="72%">
+                <stop offset="0%"   stop-color="#c0304e"/>
+                <stop offset="28%"  stop-color="#8a1430"/>
+                <stop offset="60%"  stop-color="#560a1e"/>
+                <stop offset="100%" stop-color="#2a0510"/>
+              </radialGradient>
+              <!-- Light sheen top-left -->
+              <radialGradient id="sheen" cx="28%" cy="22%" r="45%">
+                <stop offset="0%"  stop-color="rgba(255,255,255,0.14)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </radialGradient>
+              <!-- Gold gradient for rings/text -->
+              <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#f8e49a"/>
+                <stop offset="40%"  stop-color="#d4a843"/>
+                <stop offset="75%"  stop-color="#c49228"/>
+                <stop offset="100%" stop-color="#e8c860"/>
+              </linearGradient>
+              <!-- Gold for large text -->
+              <linearGradient id="gt" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stop-color="#fff0cc"/>
+                <stop offset="45%"  stop-color="#e8c860"/>
+                <stop offset="100%" stop-color="#c49228"/>
+              </linearGradient>
+              <!-- Drop-shadow filter -->
+              <filter id="sf" x="-15%" y="-15%" width="130%" height="130%">
+                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1a0008" flood-opacity="0.65"/>
+                <feDropShadow dx="0" dy="3"  stdDeviation="5"  flood-color="#700020" flood-opacity="0.35"/>
+              </filter>
+              <!-- Subtle text glow -->
+              <filter id="tg" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b"/>
+                <feColorMatrix in="b" type="matrix" values="1 0.7 0 0 0.1  0.6 0.4 0 0 0  0 0 0 0 0  0 0 0 0.6 0" result="gb"/>
+                <feMerge><feMergeNode in="gb"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Curved date path -->
+              <path id="dp" d="M 52,148 A 63,63 0 0,0 168,148"/>
+            </defs>
+
+            <!-- Wax body -->
+            <circle cx="110" cy="108" r="100" fill="url(#wg)" filter="url(#sf)"/>
+            <!-- Sheen overlay -->
+            <circle cx="110" cy="108" r="100" fill="url(#sheen)"/>
+
+            <!-- Outer decorative ring — dashed gold border -->
+            <circle cx="110" cy="108" r="97" fill="none" stroke="url(#gg)" stroke-width="4.5" stroke-dasharray="4.8 3.2"/>
+            <!-- Ring 2 — solid thin -->
+            <circle cx="110" cy="108" r="90" fill="none" stroke="url(#gg)" stroke-width="1.2" opacity="0.75"/>
+            <!-- Ring 3 — hairline -->
+            <circle cx="110" cy="108" r="86" fill="none" stroke="url(#gg)" stroke-width="0.5" opacity="0.35"/>
+
+            <!-- Top small diamond ornament -->
+            <text x="110" y="37" text-anchor="middle" font-size="10" fill="url(#gg)" opacity="0.85">◆</text>
+
+            <!-- Main monogram N & H in Great Vibes cursive -->
+            <text x="110" y="124"
+              text-anchor="middle"
+              font-family="'Great Vibes', cursive"
+              font-size="74"
+              fill="url(#gt)"
+              filter="url(#tg)">N&#x26;H</text>
+
+            <!-- Hairline divider below mono -->
+            <line x1="60" y1="138" x2="92"  y2="138" stroke="url(#gg)" stroke-width="0.7" opacity="0.7"/>
+            <text x="110" y="142" text-anchor="middle"
+              font-family="'Playfair Display', serif" font-style="italic"
+              font-size="10" fill="url(#gg)" opacity="0.8">Nabila &amp; Hasif</text>
+            <line x1="128" y1="138" x2="160" y2="138" stroke="url(#gg)" stroke-width="0.7" opacity="0.7"/>
+
+            <!-- Date curved along bottom arc -->
+            <text font-family="'Poppins', sans-serif" font-size="8" letter-spacing="2.8"
+              fill="url(#gg)" opacity="0.60">
+              <textPath href="#dp" startOffset="50%" text-anchor="middle">04  ·  10  ·  2026</textPath>
+            </text>
+
+            <!-- Bottom small diamond ornament -->
+            <text x="110" y="184" text-anchor="middle" font-size="8" fill="url(#gg)" opacity="0.6">◆</text>
+          </svg>
         </div>
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
       </div>
@@ -226,6 +290,6 @@
 
 </div><!-- end app-frame -->
 
-  <script src="js/main.js?v=63"></script>
+  <script src="js/main.js?v=64"></script>
 </body>
 </html>
