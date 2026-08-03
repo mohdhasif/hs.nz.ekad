@@ -175,8 +175,8 @@ setInterval(updateCountdown, 1000);
    ADD TO CALENDAR
 ══════════════════════════════════════ */
 document.getElementById('add-calendar-btn').addEventListener('click', () => {
-  const start = '20261004T020000Z';
-  const end   = '20261004T140000Z';
+  const start = '20261004T030000Z';
+  const end   = '20261004T100000Z';
   const title = encodeURIComponent('Majlis Perkahwinan Nabila & Hasif');
   const loc   = encodeURIComponent('Kampung Baru, Kuala Lumpur');
   window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${loc}`, '_blank');
