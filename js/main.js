@@ -38,26 +38,22 @@ musicBtn.addEventListener('click', () => {
 ══════════════════════════════════════ */
 document.getElementById('buka-kad-btn').addEventListener('click', () => {
   const coverScreen = document.getElementById('cover-screen');
-  const doorAnim    = document.getElementById('door-animation');
   const mainContent = document.getElementById('main-content');
 
-  coverScreen.style.opacity = '0';
-  coverScreen.style.pointerEvents = 'none';
-  setTimeout(() => coverScreen.remove(), 600);
+  // Card-lift: cover slides up + fades, content appears beneath
+  coverScreen.classList.add('opening');
+  setTimeout(() => coverScreen.remove(), 850);
 
-  doorAnim.classList.add('opening');
   mainContent.classList.remove('hidden');
   mainContent.classList.add('visible');
 
-  // Show hero immediately, set up observer for other sections
   initFadeIn();
   startParallax();
 
   setTimeout(() => {
-    doorAnim.classList.add('done');
     if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
-  }, 1800);
+  }, 600);
 });
 
 /* ══════════════════════════════════════
