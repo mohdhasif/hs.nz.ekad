@@ -310,22 +310,99 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ── BUKA KAD button ─────────────── */
-.btn-buka {
+/* Wax seal button — wrapper carries the shadow (clip-path clips box-shadow) */
+.buka-seal-wrap {
   pointer-events: all;
-  background: rgba(92,18,40,0.82);
-  color: rgba(255,230,180,0.95);
-  padding: 0.7rem 2.3rem;
-  border-radius: 99px;
-  font-size: clamp(0.8rem, 2.2cqw, 1rem);
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  border: 1.5px solid var(--gold);
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  animation: fadeInUp 1s ease 0.8s both;
-  box-shadow: 0 4px 18px rgba(80,10,25,0.4);
-  backdrop-filter: blur(4px);
+  filter:
+    drop-shadow(0 14px 32px rgba(35,3,12,0.80))
+    drop-shadow(0  4px 10px rgba(0,0,0,0.55));
+  animation: fadeInUp 1s ease 0.6s both;
 }
-.btn-buka:hover { background: rgba(139,32,64,0.95); transform: scale(1.04); }
+
+/* The seal itself */
+.btn-buka {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+
+  width:  clamp(130px, 32cqw, 168px);
+  height: clamp(130px, 32cqw, 168px);
+
+  /* Realistic wax: highlight top-left, shadow bottom-right, deep maroon core */
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(215,85,115,0.72) 0%, transparent 46%),
+    radial-gradient(ellipse at 70% 76%, rgba(8,1,4,0.52)      0%, transparent 46%),
+    radial-gradient(circle, #9b2040 0%, #6c1028 42%, #3e0812 72%, #210510 100%);
+
+  /* 16-scallop edge — 32 alternating outer/inner points */
+  clip-path: polygon(
+    50%  6%,   57.8% 10.8%, 66.9%  9.4%,  72.2% 16.8%,
+    81.1% 18.9%, 83.3% 27.8%, 90.7% 33.3%, 89.3% 42.2%,
+    94%  50%,   89.3% 57.8%, 90.7% 66.8%, 83.3% 72.2%,
+    81.1% 81.1%, 72.2% 83.3%, 66.9% 90.7%, 57.8% 89.3%,
+    50%  94%,   42.2% 89.3%, 33.2% 90.7%, 27.8% 83.3%,
+    18.9% 81.1%, 16.8% 72.2%,  9.4% 66.8%, 10.8% 57.8%,
+    6%   50%,   10.8% 42.2%,   9.4% 33.3%, 16.8% 27.8%,
+    18.9% 18.9%, 27.8% 16.8%, 33.2%  9.4%, 42.2% 10.8%
+  );
+
+  transition: transform 0.18s ease;
+}
+.btn-buka:active  { transform: scale(0.95); }
+.btn-buka:hover   { transform: scale(1.05); }
+
+/* Gold inner ring via pseudo-element */
+.btn-buka::before {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border: 1.5px solid rgba(212,168,67,0.45);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Top-left sheen */
+.btn-buka::after {
+  content: '';
+  position: absolute;
+  top: 10%; left: 14%;
+  width: 42%; height: 36%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.buka-nh {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(16px, 4cqw, 22px);
+  color: rgba(255,242,185,0.97);
+  line-height: 1;
+  letter-spacing: 1px;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(212,168,67,0.6);
+}
+
+.buka-divider {
+  display: block;
+  width: clamp(28px, 7cqw, 38px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,168,67,0.55), transparent);
+  pointer-events: none;
+}
+
+.buka-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(10px, 2.4cqw, 13.5px);
+  font-style: italic;
+  color: rgba(255,228,160,0.88);
+  letter-spacing: 1.8px;
+  pointer-events: none;
+}
 
 /* ══════════════════════════════════════
    DOOR ANIMATION — not used
