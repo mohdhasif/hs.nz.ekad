@@ -194,20 +194,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ══════════════════════════════════════ */
 .wax-seal {
   position: relative;
-  width: clamp(155px, 36cqw, 225px);
-  height: clamp(155px, 36cqw, 225px);
+  width: clamp(140px, 32cqw, 200px);
+  height: auto;
+  aspect-ratio: 280 / 300;
   border-radius: 0;
-  /* Realistic wax: highlight top-left, deep shadow bottom-right */
-  background:
-    radial-gradient(ellipse at 30% 25%, rgba(168,50,85,0.9) 0%, transparent 55%),
-    radial-gradient(ellipse at 72% 72%, rgba(30,4,12,0.6) 0%, transparent 50%),
-    radial-gradient(circle, #8b1d3c 0%, #5f1026 40%, #3a0814 72%, #230510 100%);
-  box-shadow:
-    0 14px 45px rgba(80,5,25,0.65),
-    0 4px  14px rgba(0,0,0,0.45),
-    inset 0  5px 14px rgba(255,255,255,0.14),
-    inset 0 -7px 16px rgba(0,0,0,0.42),
-    inset 0  0   40px rgba(0,0,0,0.15);
+  background: transparent;
+  box-shadow: none;
   display: flex; align-items: center; justify-content: center;
   animation: fadeInUp 1s ease 0.5s both;
   z-index: 0;
