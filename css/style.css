@@ -189,58 +189,132 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 10; pointer-events: none;
 }
 
-/* ── WAX SEAL — burgundy/gold ──────── */
+/* ══════════════════════════════════════
+   WAX SEAL — premium monogram
+══════════════════════════════════════ */
 .wax-seal {
   position: relative;
-  width: clamp(120px, 27cqw, 185px);
-  height: clamp(120px, 27cqw, 185px);
+  width: clamp(140px, 31cqw, 205px);
+  height: clamp(140px, 31cqw, 205px);
   border-radius: 50%;
-  background: radial-gradient(circle at 33% 28%, #8b2040 0%, #5c1228 45%, #3d0a1a 75%, #2a0510 100%);
+  /* Realistic wax: highlight top-left, deep shadow bottom-right */
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(168,50,85,0.9) 0%, transparent 55%),
+    radial-gradient(ellipse at 72% 72%, rgba(30,4,12,0.6) 0%, transparent 50%),
+    radial-gradient(circle, #8b1d3c 0%, #5f1026 40%, #3a0814 72%, #230510 100%);
   box-shadow:
-    0 8px 30px rgba(90,10,30,0.55),
-    0 2px 8px  rgba(0,0,0,0.35),
-    inset 0 3px 8px rgba(255,255,255,0.12),
-    inset 0 -4px 10px rgba(0,0,0,0.3);
+    0 14px 45px rgba(80,5,25,0.65),
+    0 4px  14px rgba(0,0,0,0.45),
+    inset 0  5px 14px rgba(255,255,255,0.14),
+    inset 0 -7px 16px rgba(0,0,0,0.42),
+    inset 0  0   40px rgba(0,0,0,0.15);
   display: flex; align-items: center; justify-content: center;
   animation: fadeInUp 1s ease 0.5s both;
+  z-index: 0;
 }
 
-/* Scalloped gold ring */
-.wax-seal-ring {
-  position: absolute; inset: -5px;
+/* ── Outer scallop ring — gold ─────── */
+.wax-ring-outer {
+  position: absolute;
+  inset: -7px;
   border-radius: 50%;
+  /* alternating gold tones create the scallop texture */
   background: conic-gradient(
     from 0deg,
-    #b8872a 0deg,  #d4a843 12deg, #b8872a 24deg,
-    #d4a843 36deg, #b8872a 48deg, #d4a843 60deg,
-    #b8872a 72deg, #d4a843 84deg, #b8872a 96deg,
-    #d4a843 108deg,#b8872a 120deg,#d4a843 132deg,
-    #b8872a 144deg,#d4a843 156deg,#b8872a 168deg,
-    #d4a843 180deg,#b8872a 192deg,#d4a843 204deg,
-    #b8872a 216deg,#d4a843 228deg,#b8872a 240deg,
-    #d4a843 252deg,#b8872a 264deg,#d4a843 276deg,
-    #b8872a 288deg,#d4a843 300deg,#b8872a 312deg,
-    #d4a843 324deg,#b8872a 336deg,#d4a843 348deg,
-    #b8872a 360deg
+    #c49a2e 0deg, #e8c055 7.5deg, #c49a2e 15deg,
+    #e8c055 22.5deg,#c49a2e 30deg, #e8c055 37.5deg,
+    #c49a2e 45deg, #e8c055 52.5deg,#c49a2e 60deg,
+    #e8c055 67.5deg,#c49a2e 75deg, #e8c055 82.5deg,
+    #c49a2e 90deg, #e8c055 97.5deg,#c49a2e 105deg,
+    #e8c055 112.5deg,#c49a2e 120deg,#e8c055 127.5deg,
+    #c49a2e 135deg,#e8c055 142.5deg,#c49a2e 150deg,
+    #e8c055 157.5deg,#c49a2e 165deg,#e8c055 172.5deg,
+    #c49a2e 180deg,#e8c055 187.5deg,#c49a2e 195deg,
+    #e8c055 202.5deg,#c49a2e 210deg,#e8c055 217.5deg,
+    #c49a2e 225deg,#e8c055 232.5deg,#c49a2e 240deg,
+    #e8c055 247.5deg,#c49a2e 255deg,#e8c055 262.5deg,
+    #c49a2e 270deg,#e8c055 277.5deg,#c49a2e 285deg,
+    #e8c055 292.5deg,#c49a2e 300deg,#e8c055 307.5deg,
+    #c49a2e 315deg,#e8c055 322.5deg,#c49a2e 330deg,
+    #e8c055 337.5deg,#c49a2e 345deg,#e8c055 352.5deg,
+    #c49a2e 360deg
   );
-  -webkit-mask: radial-gradient(circle, transparent 42%, black 44%);
-  mask: radial-gradient(circle, transparent 42%, black 44%);
+  /* reveal only the outer ring band */
+  -webkit-mask: radial-gradient(circle, transparent 40%, black 42%, black 100%);
+  mask:         radial-gradient(circle, transparent 40%, black 42%, black 100%);
   z-index: -1;
+  box-shadow: 0 0 0 1.5px rgba(212,175,55,0.4);
 }
 
-.wax-seal-inner { display: flex; align-items: baseline; gap: 2px; }
-.wax-initial {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.8rem, 5.5cqw, 3.4rem);
-  color: rgba(255,230,180,0.95);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+/* ── Inner decorative rim ─────────── */
+.wax-ring-inner {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.30);
+  box-shadow: inset 0 0 0 2px rgba(212,175,55,0.08);
+  z-index: 1; pointer-events: none;
+}
+.wax-ring-inner::before {
+  content: '';
+  position: absolute; inset: 5px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(212,175,55,0.14);
+}
+
+/* ── Monogram content ─────────────── */
+.wax-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
   line-height: 1;
 }
-.wax-amp {
+
+/* N and H — large, flowing, slightly overlapping */
+.wax-mono {
+  display: flex; align-items: flex-end;
+  margin-bottom: -4px;
+}
+.wm-letter {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(1rem, 3cqw, 2rem);
-  color: rgba(212,175,55,0.75);
-  margin: 0 1px;
+  font-size: clamp(2.2rem, 6.5cqw, 4.2rem);
+  color: rgba(255,235,185,0.97);
+  text-shadow:
+    0 2px 10px rgba(0,0,0,0.55),
+    0 0  18px rgba(212,175,55,0.25);
+  line-height: 1;
+}
+.wm-n { margin-right: clamp(-6px,-1.5cqw,-3px); }
+.wm-h { margin-left:  clamp(-6px,-1.5cqw,-3px); }
+
+/* "&" divider with thin gold lines */
+.wax-divider {
+  display: flex; align-items: center; gap: clamp(4px,1.2cqw,8px);
+  margin-top: 2px;
+}
+.wd-line {
+  display: block;
+  width: clamp(14px, 4cqw, 24px);
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, rgba(212,175,55,0.7), transparent);
+}
+.wd-amp {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.55rem, 1.6cqw, 0.9rem);
+  color: rgba(212,175,55,0.85);
+  letter-spacing: 0.5px;
+}
+
+/* Date stamp at bottom of seal */
+.wax-date-stamp {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.38rem, 1.0cqw, 0.58rem);
+  font-weight: 300;
+  color: rgba(255,220,165,0.60);
+  letter-spacing: clamp(1px, 0.5cqw, 2.5px);
+  margin-top: 5px;
+  text-transform: uppercase;
 }
 
 /* ── BUKA KAD button ─────────────── */

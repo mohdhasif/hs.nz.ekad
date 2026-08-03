@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=62" />
+  <link rel="stylesheet" href="css/style.css?v=63" />
 </head>
 <body>
 <div id="app-frame">
@@ -51,11 +51,22 @@
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
-          <div class="wax-seal-ring"></div>
-          <div class="wax-seal-inner">
-            <span class="wax-initial">N</span>
-            <span class="wax-amp">&amp;</span>
-            <span class="wax-initial">H</span>
+          <!-- outer scallop ring -->
+          <div class="wax-ring-outer"></div>
+          <!-- inner decorative rim -->
+          <div class="wax-ring-inner"></div>
+          <!-- monogram content -->
+          <div class="wax-content">
+            <div class="wax-mono">
+              <span class="wm-letter wm-n">N</span>
+              <span class="wm-letter wm-h">H</span>
+            </div>
+            <div class="wax-divider">
+              <span class="wd-line"></span>
+              <span class="wd-amp">&amp;</span>
+              <span class="wd-line"></span>
+            </div>
+            <p class="wax-date-stamp">04 · 10 · 2026</p>
           </div>
         </div>
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
@@ -215,6 +226,6 @@
 
 </div><!-- end app-frame -->
 
-  <script src="js/main.js?v=62"></script>
+  <script src="js/main.js?v=63"></script>
 </body>
 </html>
