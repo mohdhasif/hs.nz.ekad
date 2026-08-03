@@ -893,7 +893,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: flex-start;
   gap: clamp(10px, 2.2vh, 18px);
-  padding-top: clamp(58px, 9vh, 72px);
+  padding-top: clamp(8px, 1.5vh, 14px);
   padding-bottom: clamp(16px, 4vh, 32px);
   width: 100%;
 }
