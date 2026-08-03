@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=60" />
+  <link rel="stylesheet" href="css/style.css?v=61" />
 </head>
 <body>
 <div id="app-frame">
@@ -33,7 +33,16 @@
        COVER SCREEN
   ══════════════════════════════ -->
   <section id="cover-screen" class="cover-screen">
-    <div class="door-closed">
+    <div class="card-wrap">
+      <!-- Left panel -->
+      <div class="card-panel card-left" id="card-left">
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="card-art" alt="" onerror="this.style.display='none'" />
+      </div>
+      <!-- Right panel -->
+      <div class="card-panel card-right" id="card-right">
+        <img src="assets/flowers/06_border_corner_watercolor.png" class="card-art flip" alt="" onerror="this.style.display='none'" />
+      </div>
+      <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
           <div class="wax-seal-ring"></div>
@@ -46,12 +55,6 @@
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
       </div>
     </div>
-    <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="cover-flower tl" alt="" onerror="this.style.display='none'" />
-    <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="cover-flower tr" alt="" onerror="this.style.display='none'" />
-    <img src="assets/flowers/01_bouquet_blush_peony.png"               class="cover-flower bl" alt="" onerror="this.style.display='none'" />
-    <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="cover-flower br" alt="" onerror="this.style.display='none'" />
-    <img src="assets/flowers/01_bouquet_blush_peony.png"               class="cover-flower ml" alt="" onerror="this.style.display='none'" />
-    <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"          class="cover-flower mr" alt="" onerror="this.style.display='none'" />
   </section>
 
   <!-- ══════════════════════════════
@@ -206,6 +209,6 @@
 
 </div><!-- end app-frame -->
 
-  <script src="js/main.js?v=60"></script>
+  <script src="js/main.js?v=61"></script>
 </body>
 </html>

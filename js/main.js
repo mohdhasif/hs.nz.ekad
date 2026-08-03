@@ -40,20 +40,27 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
   const coverScreen = document.getElementById('cover-screen');
   const mainContent = document.getElementById('main-content');
 
-  // Card-lift: cover slides up + fades, content appears beneath
-  coverScreen.classList.add('opening');
-  setTimeout(() => coverScreen.remove(), 850);
+  // Fold both card panels outward like opening a greeting card
+  document.getElementById('card-left').classList.add('open');
+  document.getElementById('card-right').classList.add('open');
 
+  // Reveal content underneath as panels fold
   mainContent.classList.remove('hidden');
   mainContent.classList.add('visible');
-
   initFadeIn();
   startParallax();
 
+  // Fade overlay + remove after panels finish folding
   setTimeout(() => {
+    coverScreen.style.opacity = '0';
+    coverScreen.style.transition = 'opacity 0.5s ease';
+    coverScreen.style.pointerEvents = 'none';
+  }, 900);
+  setTimeout(() => {
+    coverScreen.remove();
     if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
-  }, 600);
+  }, 1450);
 });
 
 /* ══════════════════════════════════════
