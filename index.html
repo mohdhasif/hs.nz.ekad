@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=67" />
+  <link rel="stylesheet" href="css/style.css?v=68" />
 </head>
 <body>
 <div id="app-frame">
@@ -51,103 +51,117 @@
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
-          <!-- Islamic geometric medallion v2 — clean star, no inner box -->
-          <svg class="wax-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- Islamic Mihrab Arch logo — pointed arch + crescent + N&H -->
+          <svg class="wax-svg" viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <radialGradient id="gBody" cx="40%" cy="32%" r="72%">
-                <stop offset="0%"   stop-color="#7a1428"/>
-                <stop offset="45%"  stop-color="#460b18"/>
-                <stop offset="100%" stop-color="#1c0408"/>
+              <radialGradient id="gDark" cx="42%" cy="30%" r="70%">
+                <stop offset="0%"   stop-color="#6a1425"/>
+                <stop offset="50%"  stop-color="#3e0810"/>
+                <stop offset="100%" stop-color="#180406"/>
               </radialGradient>
               <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%"   stop-color="#f8ea80"/>
-                <stop offset="40%"  stop-color="#d4a843"/>
-                <stop offset="80%"  stop-color="#a87820"/>
+                <stop offset="38%"  stop-color="#d4a843"/>
+                <stop offset="78%"  stop-color="#a87820"/>
                 <stop offset="100%" stop-color="#e0c050"/>
+              </linearGradient>
+              <linearGradient id="gGoldV" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stop-color="#f5e070"/>
+                <stop offset="50%"  stop-color="#c49228"/>
+                <stop offset="100%" stop-color="#e8c850"/>
               </linearGradient>
               <linearGradient id="gText" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%"   stop-color="#fff8dc"/>
                 <stop offset="45%"  stop-color="#f2cc50"/>
                 <stop offset="100%" stop-color="#c49228"/>
               </linearGradient>
-              <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#050001" flood-opacity="0.85"/>
-                <feDropShadow dx="0" dy="3"  stdDeviation="5"  flood-color="#3a0010" flood-opacity="0.5"/>
+              <filter id="fShadow" x="-25%" y="-15%" width="150%" height="140%">
+                <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#050001" flood-opacity="0.88"/>
+                <feDropShadow dx="0" dy="3"  stdDeviation="5"  flood-color="#400010" flood-opacity="0.45"/>
               </filter>
               <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="b"/>
                 <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
-              <!-- Clip content to star shape -->
-              <clipPath id="cStar">
-                <polygon points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"/>
-              </clipPath>
+              <!-- Crescent moon mask -->
+              <mask id="mCrescent">
+                <rect width="280" height="300" fill="white"/>
+                <circle cx="149" cy="71" r="21" fill="black"/>
+              </mask>
             </defs>
 
-            <!-- Star body — dark burgundy fill + drop shadow -->
+            <!-- ═══ OUTER ARCH (gold) — pointed Islamic mihrab shape ═══ -->
+            <path d="M 68,288 L 68,138 C 68,62 104,14 140,8 C 176,14 212,62 212,138 L 212,288 Z"
+              fill="url(#gGold)" filter="url(#fShadow)"/>
+            <!-- Outer arch dark edge -->
+            <path d="M 68,288 L 68,138 C 68,62 104,14 140,8 C 176,14 212,62 212,138 L 212,288 Z"
+              fill="none" stroke="#0a0003" stroke-width="3.5"/>
+
+            <!-- ═══ INNER ARCH (dark) — inset 14px ═══ -->
+            <path d="M 83,282 L 83,143 C 83,76 112,32 140,24 C 168,32 197,76 197,143 L 197,282 Z"
+              fill="url(#gDark)"/>
+            <!-- Inner arch gold rim -->
+            <path d="M 83,282 L 83,143 C 83,76 112,32 140,24 C 168,32 197,76 197,143 L 197,282 Z"
+              fill="none" stroke="url(#gGoldV)" stroke-width="1.8" opacity="0.65"/>
+
+            <!-- Arch side band hairlines (inside gold frame) -->
+            <line x1="78" y1="280" x2="78" y2="155" stroke="#0a0003" stroke-width="1.2" opacity="0.45"/>
+            <line x1="202" y1="280" x2="202" y2="155" stroke="#0a0003" stroke-width="1.2" opacity="0.45"/>
+
+            <!-- Keystone finial — 3-tier ornament at arch apex -->
+            <polygon points="140,8 143.5,17 140,24 136.5,17"  fill="#070002" opacity="0.5"/>
+            <polygon points="140,8 142.5,16 140,22 137.5,16"  fill="url(#gText)" opacity="0.9"/>
+            <!-- Small diamond above -->
+            <polygon points="140,2 141.8,5.5 140,9 138.2,5.5" fill="url(#gText)" opacity="0.75"/>
+
+            <!-- Small geometric diamonds on side bands -->
+            <polygon points="75.5,185 78,191 75.5,197 73,191" fill="#0a0003" opacity="0.35"/>
+            <polygon points="75.5,210 78,216 75.5,222 73,216" fill="#0a0003" opacity="0.35"/>
+            <polygon points="204.5,185 207,191 204.5,197 202,191" fill="#0a0003" opacity="0.35"/>
+            <polygon points="204.5,210 207,216 204.5,222 202,216" fill="#0a0003" opacity="0.35"/>
+
+            <!-- ═══ CRESCENT MOON (gold, masked) ═══ -->
+            <circle cx="140" cy="76" r="24" fill="url(#gGold)" mask="url(#mCrescent)"/>
+
+            <!-- 5-pointed star beside crescent -->
             <polygon
-              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
-              fill="url(#gBody)" filter="url(#fShadow)"/>
+              points="167,61.5 168.65,65.73 173.18,65.99 169.66,68.87 170.82,73.26 167,70.8 163.18,73.26 164.34,68.87 160.82,65.99 165.35,65.73"
+              fill="url(#gGold)" opacity="0.92"/>
 
-            <!-- Clipped interior: subtle geometric pattern -->
-            <g clip-path="url(#cStar)">
-              <!-- 8-pointed star girih lines -->
-              <polygon
-                points="140,78 152,116 184,97 165,131 202,140 165,149 184,183 152,164 140,202 128,164 96,183 115,149 78,140 115,131 96,97 128,116"
-                fill="none" stroke="#f0d050" stroke-width="1" opacity="0.18"/>
-              <!-- 4 diagonal cross lines through center -->
-              <line x1="140" y1="12"  x2="140" y2="268" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
-              <line x1="12"  y1="140" x2="268" y2="140" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
-              <line x1="49.5" y1="49.5"  x2="230.5" y2="230.5" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
-              <line x1="230.5" y1="49.5" x2="49.5"  y2="230.5" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
-              <!-- Subtle inner ring -->
-              <circle cx="140" cy="140" r="64" fill="none" stroke="#f0d050" stroke-width="0.8" opacity="0.22"/>
-            </g>
-
-            <!-- Gold star outer border -->
-            <polygon
-              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
-              fill="none" stroke="url(#gGold)" stroke-width="4.5" stroke-linejoin="miter"/>
-            <!-- Inner thin highlight -->
-            <polygon
-              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
-              fill="none" stroke="#fff9cc" stroke-width="1.2" stroke-linejoin="miter" opacity="0.28"/>
-
-            <!-- Top 4-point star ornament -->
-            <polygon points="140,20 143,28 140,36 137,28" fill="url(#gText)" opacity="0.88"/>
-
-            <!-- N&H — large, prominent -->
-            <text x="140" y="158"
+            <!-- ═══ N & H MONOGRAM ═══ -->
+            <text x="140" y="178"
               text-anchor="middle"
               font-family="'Great Vibes', cursive"
-              font-size="78"
+              font-size="80"
               fill="url(#gText)"
               filter="url(#fGlow)">N&#x26;H</text>
 
-            <!-- Hairlines flanking names -->
-            <line x1="92"  y1="167" x2="118" y2="167" stroke="url(#gGold)" stroke-width="0.7" opacity="0.7"/>
-            <line x1="162" y1="167" x2="188" y2="167" stroke="url(#gGold)" stroke-width="0.7" opacity="0.7"/>
+            <!-- Ornamental hairlines -->
+            <line x1="94"  y1="188" x2="120" y2="188" stroke="url(#gGold)" stroke-width="0.8" opacity="0.75"/>
+            <line x1="160" y1="188" x2="186" y2="188" stroke="url(#gGold)" stroke-width="0.8" opacity="0.75"/>
 
             <!-- Nabila & Hasif -->
-            <text x="140" y="173"
+            <text x="140" y="195"
               text-anchor="middle"
               font-family="'Playfair Display', serif"
               font-style="italic"
-              font-size="10"
+              font-size="10.5"
               fill="url(#gText)"
-              opacity="0.9">Nabila &amp; Hasif</text>
+              opacity="0.92">Nabila &amp; Hasif</text>
 
             <!-- Date -->
-            <text x="140" y="184"
+            <text x="140" y="208"
               text-anchor="middle"
               font-family="'Poppins', sans-serif"
               font-size="7.5"
               letter-spacing="2.5"
               fill="url(#gText)"
-              opacity="0.65">04  ·  10  ·  2026</text>
+              opacity="0.68">04  ·  10  ·  2026</text>
 
-            <!-- Bottom ornament dot -->
-            <circle cx="140" cy="204" r="2.2" fill="url(#gText)" opacity="0.6"/>
+            <!-- Bottom arch ornamental bars -->
+            <rect x="105" y="232" width="70" height="1.5" fill="url(#gGold)" rx="1" opacity="0.65"/>
+            <rect x="116" y="237" width="48" height="1"   fill="url(#gGold)" rx="1" opacity="0.4"/>
+            <polygon points="140,244 142.5,250 140,256 137.5,250" fill="url(#gGold)" opacity="0.55"/>
           </svg>
         </div>
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
