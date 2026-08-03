@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=65" />
+  <link rel="stylesheet" href="css/style.css?v=66" />
 </head>
 <body>
 <div id="app-frame">
@@ -51,86 +51,98 @@
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
-          <svg class="wax-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Islamic geometric medallion — 8-petal star (inspired by UIA logo) -->
+          <svg class="wax-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <!-- Realistic wax gradient -->
-              <radialGradient id="wg" cx="34%" cy="28%" r="72%">
-                <stop offset="0%"   stop-color="#c0304e"/>
-                <stop offset="28%"  stop-color="#8a1430"/>
-                <stop offset="60%"  stop-color="#560a1e"/>
-                <stop offset="100%" stop-color="#2a0510"/>
-              </radialGradient>
-              <!-- Light sheen top-left -->
-              <radialGradient id="sheen" cx="28%" cy="22%" r="45%">
-                <stop offset="0%"  stop-color="rgba(255,255,255,0.14)"/>
-                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-              </radialGradient>
-              <!-- Gold gradient for rings/text -->
-              <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stop-color="#f8e49a"/>
-                <stop offset="40%"  stop-color="#d4a843"/>
-                <stop offset="75%"  stop-color="#c49228"/>
-                <stop offset="100%" stop-color="#e8c860"/>
+              <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#f5e070"/>
+                <stop offset="35%"  stop-color="#d4a843"/>
+                <stop offset="70%"  stop-color="#a87820"/>
+                <stop offset="100%" stop-color="#ddb840"/>
               </linearGradient>
-              <!-- Gold for large text -->
-              <linearGradient id="gt" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%"   stop-color="#fff0cc"/>
-                <stop offset="45%"  stop-color="#e8c860"/>
+              <linearGradient id="gText" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stop-color="#fff8dc"/>
+                <stop offset="50%"  stop-color="#f0c840"/>
                 <stop offset="100%" stop-color="#c49228"/>
               </linearGradient>
-              <!-- Drop-shadow filter -->
-              <filter id="sf" x="-15%" y="-15%" width="130%" height="130%">
-                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1a0008" flood-opacity="0.65"/>
-                <feDropShadow dx="0" dy="3"  stdDeviation="5"  flood-color="#700020" flood-opacity="0.35"/>
+              <radialGradient id="gDark" cx="38%" cy="32%" r="68%">
+                <stop offset="0%"   stop-color="#6a1425"/>
+                <stop offset="55%"  stop-color="#3e0810"/>
+                <stop offset="100%" stop-color="#1a0408"/>
+              </radialGradient>
+              <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#050001" flood-opacity="0.8"/>
+                <feDropShadow dx="0" dy="3"  stdDeviation="4"  flood-color="#3a0010" flood-opacity="0.4"/>
               </filter>
-              <!-- Subtle text glow -->
-              <filter id="tg" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b"/>
-                <feColorMatrix in="b" type="matrix" values="1 0.7 0 0 0.1  0.6 0.4 0 0 0  0 0 0 0 0  0 0 0 0.6 0" result="gb"/>
-                <feMerge><feMergeNode in="gb"/><feMergeNode in="SourceGraphic"/></feMerge>
+              <filter id="fGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
-              <!-- Curved date path -->
-              <path id="dp" d="M 52,148 A 63,63 0 0,0 168,148"/>
             </defs>
 
-            <!-- Wax body -->
-            <circle cx="110" cy="108" r="100" fill="url(#wg)" filter="url(#sf)"/>
-            <!-- Sheen overlay -->
-            <circle cx="110" cy="108" r="100" fill="url(#sheen)"/>
+            <!-- Outer 8-petal geometric star (16 alternating points, r_outer=128, r_inner=84) -->
+            <polygon
+              points="140,12 172.1,62.4 230.5,49.5 217.6,107.8 268,140 217.6,172.2 230.5,230.5 172.1,217.6 140,268 107.9,217.6 49.5,230.5 62.4,172.2 12,140 62.4,107.8 49.5,49.5 107.9,62.4"
+              fill="url(#gGold)" stroke="#0f0005" stroke-width="4.5" stroke-linejoin="miter"
+              filter="url(#fShadow)"/>
 
-            <!-- Outer decorative ring — dashed gold border -->
-            <circle cx="110" cy="108" r="97" fill="none" stroke="url(#gg)" stroke-width="4.5" stroke-dasharray="4.8 3.2"/>
-            <!-- Ring 2 — solid thin -->
-            <circle cx="110" cy="108" r="90" fill="none" stroke="url(#gg)" stroke-width="1.2" opacity="0.75"/>
-            <!-- Ring 3 — hairline -->
-            <circle cx="110" cy="108" r="86" fill="none" stroke="url(#gg)" stroke-width="0.5" opacity="0.35"/>
+            <!-- Thin inner highlight border (same star, slightly shrunk via stroke) -->
+            <polygon
+              points="140,12 172.1,62.4 230.5,49.5 217.6,107.8 268,140 217.6,172.2 230.5,230.5 172.1,217.6 140,268 107.9,217.6 49.5,230.5 62.4,172.2 12,140 62.4,107.8 49.5,49.5 107.9,62.4"
+              fill="none" stroke="#fff5aa" stroke-width="1.2" opacity="0.35"/>
 
-            <!-- Top small diamond ornament -->
-            <text x="110" y="37" text-anchor="middle" font-size="10" fill="url(#gg)" opacity="0.85">◆</text>
+            <!-- Inner octagon — content frame (r=68) -->
+            <polygon
+              points="140,72 188.1,91.9 208,140 188.1,188.1 140,208 91.9,188.1 72,140 91.9,91.9"
+              fill="url(#gDark)" stroke="url(#gGold)" stroke-width="2.5"/>
 
-            <!-- Main monogram N & H in Great Vibes cursive -->
-            <text x="110" y="124"
+            <!-- Geometric 8-pointed star detail inside octagon (r_outer=56, r_inner=24) -->
+            <polygon
+              points="140,84 149.2,117.8 179.6,100.4 162.2,130.8 196,140 162.2,149.2 179.6,179.6 149.2,162.2 140,196 130.8,162.2 100.4,179.6 117.8,149.2 84,140 117.8,130.8 100.4,100.4 130.8,117.8"
+              fill="none" stroke="#f0d050" stroke-width="0.9" opacity="0.28"/>
+
+            <!-- Inner circle for monogram -->
+            <circle cx="140" cy="140" r="52" fill="url(#gDark)" stroke="url(#gGold)" stroke-width="1.3" opacity="0.9"/>
+
+            <!-- 4-pointed star ornament — top of inner octagon -->
+            <polygon points="140,76 142.8,83 140,90 137.2,83" fill="url(#gText)" opacity="0.8"/>
+
+            <!-- Side dots on octagon -->
+            <circle cx="71"  cy="140" r="2.5" fill="url(#gText)" opacity="0.55"/>
+            <circle cx="209" cy="140" r="2.5" fill="url(#gText)" opacity="0.55"/>
+
+            <!-- N&H monogram -->
+            <text x="140" y="156"
               text-anchor="middle"
               font-family="'Great Vibes', cursive"
-              font-size="74"
-              fill="url(#gt)"
-              filter="url(#tg)">N&#x26;H</text>
+              font-size="62"
+              fill="url(#gText)"
+              filter="url(#fGlow)">N&#x26;H</text>
 
-            <!-- Hairline divider below mono -->
-            <line x1="60" y1="138" x2="92"  y2="138" stroke="url(#gg)" stroke-width="0.7" opacity="0.7"/>
-            <text x="110" y="142" text-anchor="middle"
-              font-family="'Playfair Display', serif" font-style="italic"
-              font-size="10" fill="url(#gg)" opacity="0.8">Nabila &amp; Hasif</text>
-            <line x1="128" y1="138" x2="160" y2="138" stroke="url(#gg)" stroke-width="0.7" opacity="0.7"/>
+            <!-- Hairlines -->
+            <line x1="96"  y1="166" x2="120" y2="166" stroke="url(#gText)" stroke-width="0.6" opacity="0.6"/>
+            <line x1="160" y1="166" x2="184" y2="166" stroke="url(#gText)" stroke-width="0.6" opacity="0.6"/>
 
-            <!-- Date curved along bottom arc -->
-            <text font-family="'Poppins', sans-serif" font-size="8" letter-spacing="2.8"
-              fill="url(#gg)" opacity="0.60">
-              <textPath href="#dp" startOffset="50%" text-anchor="middle">04  ·  10  ·  2026</textPath>
-            </text>
+            <!-- Nabila & Hasif -->
+            <text x="140" y="172"
+              text-anchor="middle"
+              font-family="'Playfair Display', serif"
+              font-style="italic"
+              font-size="9.5"
+              fill="url(#gText)"
+              opacity="0.85">Nabila &amp; Hasif</text>
 
-            <!-- Bottom small diamond ornament -->
-            <text x="110" y="184" text-anchor="middle" font-size="8" fill="url(#gg)" opacity="0.6">◆</text>
+            <!-- Date -->
+            <text x="140" y="183"
+              text-anchor="middle"
+              font-family="'Poppins', sans-serif"
+              font-size="7.2"
+              letter-spacing="2.5"
+              fill="url(#gText)"
+              opacity="0.65">04  ·  10  ·  2026</text>
+
+            <!-- Bottom ornament dot -->
+            <circle cx="140" cy="204" r="2.2" fill="url(#gText)" opacity="0.6"/>
           </svg>
         </div>
         <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>

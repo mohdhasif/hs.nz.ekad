@@ -194,9 +194,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ══════════════════════════════════════ */
 .wax-seal {
   position: relative;
-  width: clamp(140px, 31cqw, 205px);
-  height: clamp(140px, 31cqw, 205px);
-  border-radius: 50%;
+  width: clamp(155px, 36cqw, 225px);
+  height: clamp(155px, 36cqw, 225px);
+  border-radius: 0;
   /* Realistic wax: highlight top-left, deep shadow bottom-right */
   background:
     radial-gradient(ellipse at 30% 25%, rgba(168,50,85,0.9) 0%, transparent 55%),
