@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=68" />
+  <link rel="stylesheet" href="css/style.css?v=69" />
 </head>
 <body>
 <div id="app-frame">
@@ -50,8 +50,8 @@
       </div>
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
-        <div class="wax-seal">
-          <!-- Islamic Mihrab Arch logo — pointed arch + crescent + N&H -->
+        <div class="wax-seal" style="display:none">
+          <!-- removed -->
           <svg class="wax-svg" viewBox="0 0 280 300" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="gDark" cx="42%" cy="30%" r="70%">
@@ -164,7 +164,13 @@
             <polygon points="140,244 142.5,250 140,256 137.5,250" fill="url(#gGold)" opacity="0.55"/>
           </svg>
         </div>
-        <button id="buka-kad-btn" class="btn-buka">Buka Kad</button>
+        <div class="buka-seal-wrap">
+          <button id="buka-kad-btn" class="btn-buka">
+            <span class="buka-nh">N &amp; H</span>
+            <span class="buka-divider"></span>
+            <span class="buka-text">Buka Kad</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
