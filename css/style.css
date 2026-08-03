@@ -168,14 +168,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .card-flower { position: absolute; pointer-events: none; z-index: 2; }
 
 /* Left panel */
-.cf-tl { top: -15px; left: -15px;  width: clamp(140px, 52cqw, 240px); opacity: 0.95; }
-.cf-bl { bottom: -15px; left: -15px; width: clamp(120px, 44cqw, 200px); opacity: 0.88; transform: scaleY(-1); }
-.cf-ml { top: 44%; left: -14px; width: clamp(55px, 14cqw, 90px); opacity: 0.70; transform: translateY(-50%) rotate(-15deg); }
+.cf-tl { top: -10px; left: -10px;  width: clamp(90px, 34cqw, 160px); opacity: 0.95; }
+.cf-bl { bottom: -10px; left: -10px; width: clamp(80px, 30cqw, 140px); opacity: 0.88; transform: scaleY(-1); }
+.cf-ml { top: 44%; left: -10px; width: clamp(38px, 9cqw, 62px); opacity: 0.70; transform: translateY(-50%) rotate(-15deg); }
 
 /* Right panel */
-.cf-tr { top: -15px; right: -15px;  width: clamp(140px, 52cqw, 240px); opacity: 0.92; transform: scaleX(-1); }
-.cf-br { bottom: -15px; right: -15px; width: clamp(120px, 44cqw, 200px); opacity: 0.85; transform: scale(-1); }
-.cf-mr { top: 44%; right: -14px; width: clamp(55px, 14cqw, 90px); opacity: 0.68; transform: translateY(-50%) rotate(15deg); }
+.cf-tr { top: -10px; right: -10px;  width: clamp(90px, 34cqw, 160px); opacity: 0.92; transform: scaleX(-1); }
+.cf-br { bottom: -10px; right: -10px; width: clamp(80px, 30cqw, 140px); opacity: 0.85; transform: scale(-1); }
+.cf-mr { top: 44%; right: -10px; width: clamp(38px, 9cqw, 62px); opacity: 0.68; transform: translateY(-50%) rotate(15deg); }
 
 /* ── Open animation (panels fold outward) ── */
 .card-left.open  { transform: perspective(1400px) rotateY(-105deg); }
