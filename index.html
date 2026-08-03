@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=66" />
+  <link rel="stylesheet" href="css/style.css?v=67" />
 </head>
 <body>
 <div id="app-frame">
@@ -51,92 +51,97 @@
       <!-- Centre seam — wax seal + button -->
       <div class="cover-overlay">
         <div class="wax-seal">
-          <!-- Islamic geometric medallion — 8-petal star (inspired by UIA logo) -->
+          <!-- Islamic geometric medallion v2 — clean star, no inner box -->
           <svg class="wax-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
             <defs>
+              <radialGradient id="gBody" cx="40%" cy="32%" r="72%">
+                <stop offset="0%"   stop-color="#7a1428"/>
+                <stop offset="45%"  stop-color="#460b18"/>
+                <stop offset="100%" stop-color="#1c0408"/>
+              </radialGradient>
               <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stop-color="#f5e070"/>
-                <stop offset="35%"  stop-color="#d4a843"/>
-                <stop offset="70%"  stop-color="#a87820"/>
-                <stop offset="100%" stop-color="#ddb840"/>
+                <stop offset="0%"   stop-color="#f8ea80"/>
+                <stop offset="40%"  stop-color="#d4a843"/>
+                <stop offset="80%"  stop-color="#a87820"/>
+                <stop offset="100%" stop-color="#e0c050"/>
               </linearGradient>
               <linearGradient id="gText" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%"   stop-color="#fff8dc"/>
-                <stop offset="50%"  stop-color="#f0c840"/>
+                <stop offset="45%"  stop-color="#f2cc50"/>
                 <stop offset="100%" stop-color="#c49228"/>
               </linearGradient>
-              <radialGradient id="gDark" cx="38%" cy="32%" r="68%">
-                <stop offset="0%"   stop-color="#6a1425"/>
-                <stop offset="55%"  stop-color="#3e0810"/>
-                <stop offset="100%" stop-color="#1a0408"/>
-              </radialGradient>
               <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#050001" flood-opacity="0.8"/>
-                <feDropShadow dx="0" dy="3"  stdDeviation="4"  flood-color="#3a0010" flood-opacity="0.4"/>
+                <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#050001" flood-opacity="0.85"/>
+                <feDropShadow dx="0" dy="3"  stdDeviation="5"  flood-color="#3a0010" flood-opacity="0.5"/>
               </filter>
-              <filter id="fGlow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="b"/>
+              <filter id="fGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
                 <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
+              <!-- Clip content to star shape -->
+              <clipPath id="cStar">
+                <polygon points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"/>
+              </clipPath>
             </defs>
 
-            <!-- Outer 8-petal geometric star (16 alternating points, r_outer=128, r_inner=84) -->
+            <!-- Star body — dark burgundy fill + drop shadow -->
             <polygon
-              points="140,12 172.1,62.4 230.5,49.5 217.6,107.8 268,140 217.6,172.2 230.5,230.5 172.1,217.6 140,268 107.9,217.6 49.5,230.5 62.4,172.2 12,140 62.4,107.8 49.5,49.5 107.9,62.4"
-              fill="url(#gGold)" stroke="#0f0005" stroke-width="4.5" stroke-linejoin="miter"
-              filter="url(#fShadow)"/>
+              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
+              fill="url(#gBody)" filter="url(#fShadow)"/>
 
-            <!-- Thin inner highlight border (same star, slightly shrunk via stroke) -->
+            <!-- Clipped interior: subtle geometric pattern -->
+            <g clip-path="url(#cStar)">
+              <!-- 8-pointed star girih lines -->
+              <polygon
+                points="140,78 152,116 184,97 165,131 202,140 165,149 184,183 152,164 140,202 128,164 96,183 115,149 78,140 115,131 96,97 128,116"
+                fill="none" stroke="#f0d050" stroke-width="1" opacity="0.18"/>
+              <!-- 4 diagonal cross lines through center -->
+              <line x1="140" y1="12"  x2="140" y2="268" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
+              <line x1="12"  y1="140" x2="268" y2="140" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
+              <line x1="49.5" y1="49.5"  x2="230.5" y2="230.5" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
+              <line x1="230.5" y1="49.5" x2="49.5"  y2="230.5" stroke="#f0d050" stroke-width="0.5" opacity="0.10"/>
+              <!-- Subtle inner ring -->
+              <circle cx="140" cy="140" r="64" fill="none" stroke="#f0d050" stroke-width="0.8" opacity="0.22"/>
+            </g>
+
+            <!-- Gold star outer border -->
             <polygon
-              points="140,12 172.1,62.4 230.5,49.5 217.6,107.8 268,140 217.6,172.2 230.5,230.5 172.1,217.6 140,268 107.9,217.6 49.5,230.5 62.4,172.2 12,140 62.4,107.8 49.5,49.5 107.9,62.4"
-              fill="none" stroke="#fff5aa" stroke-width="1.2" opacity="0.35"/>
-
-            <!-- Inner octagon — content frame (r=68) -->
+              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
+              fill="none" stroke="url(#gGold)" stroke-width="4.5" stroke-linejoin="miter"/>
+            <!-- Inner thin highlight -->
             <polygon
-              points="140,72 188.1,91.9 208,140 188.1,188.1 140,208 91.9,188.1 72,140 91.9,91.9"
-              fill="url(#gDark)" stroke="url(#gGold)" stroke-width="2.5"/>
+              points="140,12 174.4,56.8 230.5,49.5 223.2,105.6 268,140 223.2,174.4 230.5,230.5 174.4,223.2 140,268 105.6,223.2 49.5,230.5 56.8,174.4 12,140 56.8,105.6 49.5,49.5 105.6,56.8"
+              fill="none" stroke="#fff9cc" stroke-width="1.2" stroke-linejoin="miter" opacity="0.28"/>
 
-            <!-- Geometric 8-pointed star detail inside octagon (r_outer=56, r_inner=24) -->
-            <polygon
-              points="140,84 149.2,117.8 179.6,100.4 162.2,130.8 196,140 162.2,149.2 179.6,179.6 149.2,162.2 140,196 130.8,162.2 100.4,179.6 117.8,149.2 84,140 117.8,130.8 100.4,100.4 130.8,117.8"
-              fill="none" stroke="#f0d050" stroke-width="0.9" opacity="0.28"/>
+            <!-- Top 4-point star ornament -->
+            <polygon points="140,20 143,28 140,36 137,28" fill="url(#gText)" opacity="0.88"/>
 
-            <!-- Inner circle for monogram -->
-            <circle cx="140" cy="140" r="52" fill="url(#gDark)" stroke="url(#gGold)" stroke-width="1.3" opacity="0.9"/>
-
-            <!-- 4-pointed star ornament — top of inner octagon -->
-            <polygon points="140,76 142.8,83 140,90 137.2,83" fill="url(#gText)" opacity="0.8"/>
-
-            <!-- Side dots on octagon -->
-            <circle cx="71"  cy="140" r="2.5" fill="url(#gText)" opacity="0.55"/>
-            <circle cx="209" cy="140" r="2.5" fill="url(#gText)" opacity="0.55"/>
-
-            <!-- N&H monogram -->
-            <text x="140" y="156"
+            <!-- N&H — large, prominent -->
+            <text x="140" y="158"
               text-anchor="middle"
               font-family="'Great Vibes', cursive"
-              font-size="62"
+              font-size="78"
               fill="url(#gText)"
               filter="url(#fGlow)">N&#x26;H</text>
 
-            <!-- Hairlines -->
-            <line x1="96"  y1="166" x2="120" y2="166" stroke="url(#gText)" stroke-width="0.6" opacity="0.6"/>
-            <line x1="160" y1="166" x2="184" y2="166" stroke="url(#gText)" stroke-width="0.6" opacity="0.6"/>
+            <!-- Hairlines flanking names -->
+            <line x1="92"  y1="167" x2="118" y2="167" stroke="url(#gGold)" stroke-width="0.7" opacity="0.7"/>
+            <line x1="162" y1="167" x2="188" y2="167" stroke="url(#gGold)" stroke-width="0.7" opacity="0.7"/>
 
             <!-- Nabila & Hasif -->
-            <text x="140" y="172"
+            <text x="140" y="173"
               text-anchor="middle"
               font-family="'Playfair Display', serif"
               font-style="italic"
-              font-size="9.5"
+              font-size="10"
               fill="url(#gText)"
-              opacity="0.85">Nabila &amp; Hasif</text>
+              opacity="0.9">Nabila &amp; Hasif</text>
 
             <!-- Date -->
-            <text x="140" y="183"
+            <text x="140" y="184"
               text-anchor="middle"
               font-family="'Poppins', sans-serif"
-              font-size="7.2"
+              font-size="7.5"
               letter-spacing="2.5"
               fill="url(#gText)"
               opacity="0.65">04  ·  10  ·  2026</text>
