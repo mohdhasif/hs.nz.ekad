@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=57" />
+  <link rel="stylesheet" href="css/style.css?v=58" />
 </head>
 <body>
 <div id="app-frame">
@@ -141,58 +141,6 @@
       </div>
     </section>
 
-    <!-- ── 4. SALAM KAUT ── -->
-    <section id="section-salam" class="snap-section section-salam fade-section">
-      <div class="pf">
-        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png"  class="pf-tr parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-bl parallax-flower" data-speed="0.12" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-br parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b" alt="" onerror="this.style.display='none'" />
-      </div>
-      <div class="section-inner">
-        <div class="salam-card-frame">
-          <div class="salam-header">
-            <div class="salam-divider"><span></span><span class="salam-divider-icon">✦</span><span></span></div>
-            <h2 class="section-title">Tanda Kasih</h2>
-            <p class="salam-sub">Dengan penuh kesyukuran,<br>kami menghargai setiap doa dan tanda kasih yang diberikan.</p>
-          </div>
-
-          <div class="salam-single">
-            <!-- QR — tap to enlarge -->
-            <div class="qr-wrap-big" id="qr-duitnow" onclick="document.getElementById('qr-modal').classList.add('open')">
-              <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow" class="qr-img-big" onerror="this.parentElement.classList.add('qr-placeholder')" />
-              <div class="qr-fallback-big"><span>📲</span><p>QR tidak dijumpai</p></div>
-              <div class="qr-tap-hint">👆 Ketuk untuk besarkan</div>
-            </div>
-
-            <!-- Bank details -->
-            <div class="salam-info">
-              <p class="salam-name-big">Nurul Nabila</p>
-              <p class="salam-bank-name">CIMB Bank</p>
-              <div class="acc-row">
-                <span class="acc-num" id="acc-display">7618845421</span>
-                <button class="btn-copy-acc" data-copy="7618845421" aria-label="Salin nombor akaun">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                  <span>Salin</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="salam-divider salam-divider-sm"><span></span><span class="salam-divider-icon">●</span><span></span></div>
-
-          <!-- Verse / doa box -->
-          <div class="salam-verse">
-            <p class="salam-verse-ar">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا</p>
-            <p class="salam-verse-tr">Semoga Allah memberkati kamu berdua dan mencurahkan keberkatan ke atas kamu.</p>
-          </div>
-
-          <p class="salam-note">Terima kasih atas doa dan kehadiran anda.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- ── 5. GALERI ── -->
     <section id="section-gallery" class="snap-section section-gallery fade-section">
@@ -254,76 +202,13 @@
       </div>
     </section>
 
-    <!-- ── 6. RSVP ── -->
-    <section id="section-rsvp" class="snap-section section-rsvp fade-section">
-      <div class="pf pf-dark">
-        <img src="assets/flowers/03_bouquet_burgundy_peony_butterfly.png" class="pf-tl parallax-flower" data-speed="0.18" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/01_bouquet_blush_peony.png"               class="pf-tr parallax-flower" data-speed="0.20" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/07_bouquet_watercolor_burgundy.png"        class="pf-bl parallax-flower" data-speed="0.14" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/15_bouquet_big_pink_ladybug.png"           class="pf-br parallax-flower" data-speed="0.16" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-t pf-dim" alt="" onerror="this.style.display='none'" />
-        <img src="assets/flowers/18_top_border_floral.png" class="pf-strip-b pf-dim" alt="" onerror="this.style.display='none'" />
-      </div>
-      <div class="section-inner rsvp-inner">
-        <div class="rsvp-box">
-          <h2 class="section-title ivory">Sila Sahkan Kehadiran</h2>
-          <form id="rsvp-form" class="rsvp-form">
-            <div class="rsvp-row">
-              <div class="form-group">
-                <label>Nama Penuh</label>
-                <input type="text" id="rsvp-name" placeholder="Nama anda" required />
-              </div>
-              <div class="form-group">
-                <label>Bilangan</label>
-                <select id="rsvp-guests">
-                  <option value="1">1</option><option value="2">2</option>
-                  <option value="3">3</option><option value="4">4</option>
-                  <option value="5+">5+</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Status Kehadiran</label>
-              <select id="rsvp-status">
-                <option value="hadir">✅ Hadir</option>
-                <option value="tidak-hadir">❌ Tidak Dapat Hadir</option>
-                <option value="mungkin">🤔 Mungkin Hadir</option>
-              </select>
-            </div>
-            <button type="submit" class="btn-rsvp">Hantar RSVP</button>
-          </form>
-          <div id="rsvp-success" class="rsvp-success hidden"><p>✅ Terima kasih! Kehadiran anda telah direkodkan.</p></div>
-        </div>
-
-        <div class="rsvp-right">
-          <div class="contact-box">
-            <h3 class="contact-title">Hubungi Kami</h3>
-            <a href="https://wa.me/60123456789" target="_blank" class="btn-contact whatsapp"><span>💬</span> WhatsApp</a>
-            <a href="tel:+60123456789" class="btn-contact phone"><span>📞</span> Telefon</a>
-            <a href="mailto:nabila.hasif2026@gmail.com" class="btn-contact email"><span>✉️</span> Email</a>
-          </div>
-          <div class="footer-mini">
-            <p class="footer-names">Nabila &amp; Hasif</p>
-            <p class="footer-thanks">Terima Kasih 🤍 <em>Jazakumullahu Khairan</em></p>
-            <p class="footer-date">04 · 10 · 2026</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </div><!-- end main-content -->
 
-  <!-- QR Modal -->
-  <div id="qr-modal" class="qr-modal" onclick="this.classList.remove('open')">
-    <div class="qr-modal-inner" onclick="event.stopPropagation()">
-      <img src="assets/images/qr-duitnow.jpg" alt="QR DuitNow Besar" />
-      <p>Nurul Nabila · CIMB Bank</p>
-      <button onclick="document.getElementById('qr-modal').classList.remove('open')">✕ Tutup</button>
-    </div>
   </div>
 
 </div><!-- end app-frame -->
 
-  <script src="js/main.js?v=57"></script>
+  <script src="js/main.js?v=58"></script>
 </body>
 </html>
