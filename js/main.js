@@ -221,12 +221,15 @@ document.querySelectorAll('.btn-copy, .btn-copy-acc').forEach(btn => {
     dotsWrap.appendChild(dot);
   });
 
+  slides[0].classList.add('active');
+
   function goTo(idx) {
     current = (idx + slides.length) % slides.length;
     track.style.transform = `translateX(-${current * 100}%)`;
     dotsWrap.querySelectorAll('.gallery-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
     });
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
   }
 
   document.getElementById('gallery-prev').addEventListener('click', () => goTo(current - 1));
