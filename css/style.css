@@ -394,7 +394,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .buka-text {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(10px, 2.4cqw, 13.5px);
+  font-size: clamp(12px, 3.2cqw, 17px);
   font-style: italic;
   color: rgba(255,228,160,0.88);
   letter-spacing: 1.8px;
