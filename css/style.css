@@ -77,12 +77,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .loading-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--burgundy), var(--gold)); border-radius: 99px; animation: loadFill 2s ease forwards; }
 @keyframes loadFill { to { width: 100%; } }
 
-.load-flower { position: absolute; width: clamp(140px, 22cqw, 260px); opacity: 0.75; pointer-events: none; }
-.load-flower.tl { top: 0; left: 0; }
-.load-flower.tr { top: 0; right: 0; transform: scaleX(-1); }
-.load-flower.bl { bottom: 0; left: 0; transform: scaleY(-1); }
-.load-flower.br { bottom: 0; right: 0; transform: scale(-1); }
-
 /* ══════════════════════════════════════
    MUSIC BUTTON
 ══════════════════════════════════════ */
