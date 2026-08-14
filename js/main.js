@@ -16,8 +16,26 @@ const musicBtn  = document.getElementById('music-btn');
 const bgMusic   = document.getElementById('bg-music');
 let musicPlaying = false;
 
+const MUSIC_START = 64; // mula pada minit 1:04
+
+// Set posisi mula; kalau metadata belum siap, tunggu dulu
+function seekMusicStart() {
+  if (bgMusic.readyState === 0) {
+    bgMusic.addEventListener('loadedmetadata', seekMusicStart, { once: true });
+  } else {
+    bgMusic.currentTime = MUSIC_START;
+  }
+}
+seekMusicStart();
+
+// Ulang balik dari 1:04, bukan dari 0:00
+bgMusic.addEventListener('ended', () => {
+  seekMusicStart();
+  bgMusic.play().catch(() => {});
+});
+
 function playMusic() {
-  if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
+  if (bgMusic.currentTime < MUSIC_START) seekMusicStart();
   bgMusic.play().catch(() => {});
   musicPlaying = true;
   musicBtn.classList.remove('muted');
@@ -58,7 +76,7 @@ document.getElementById('buka-kad-btn').addEventListener('click', () => {
   }, 900);
   setTimeout(() => {
     coverScreen.remove();
-    if (bgMusic.currentTime === 0) bgMusic.currentTime = 4;
+    if (bgMusic.currentTime < MUSIC_START) seekMusicStart();
     bgMusic.play().then(() => { musicPlaying = true; }).catch(() => {});
   }, 1450);
 });
