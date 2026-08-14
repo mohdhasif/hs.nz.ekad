@@ -666,7 +666,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .countdown-block {
   background: linear-gradient(135deg, var(--burgundy) 0%, #3d1015 100%);
   text-align: center;
-  padding: clamp(28px,5cqw,40px) clamp(16px,5cqw,40px) clamp(16px,3cqw,24px);
+  padding: clamp(28px,5cqw,40px) clamp(16px,5cqw,40px) clamp(22px,4cqw,32px);
   position: relative; z-index: 4;
 }
 
@@ -702,8 +702,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .countdown-unit label { display:block; font-size:0.58rem; letter-spacing:2px; color:var(--gold-light); text-transform:uppercase; font-weight:600; margin-top:6px; }
 .countdown-sep { font-size:1.5rem; color:var(--gold); font-weight:bold; margin-top:-14px; }
 
-.lokasi-btns { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.2rem; border-radius:99px; font-size:0.74rem; font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; }
+/* Butang aksi — kini duduk di ruang terang bawah kad majlis */
+.lokasi-btns { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:clamp(14px,2.8vh,24px); }
+.btn-lokasi  { display:inline-flex; align-items:center; gap:5px; padding:0.5rem 1.2rem; border-radius:99px; font-size:0.74rem; font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; background:var(--gold); color:var(--text-dark); transition:transform 0.2s; border:2px solid var(--gold); cursor:pointer; box-shadow:0 4px 14px rgba(107,29,42,0.14); }
 .btn-lokasi.outline { background:var(--gold); color:var(--text-dark); border-color:var(--gold); }
 .btn-lokasi:hover { transform:scale(1.04); }
 .btn-lokasi.outline:hover { background:var(--gold-light); }
